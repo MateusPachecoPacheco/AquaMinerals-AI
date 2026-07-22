@@ -1,0 +1,128 @@
+// Prisma schema — AquaMinerals API
+// Modelagem de Banco de Dados Relacional (PostgreSQL)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ==========================================
+// ENUMS (Garantem integridade e evitam erros de digitação)
+// ==========================================
+
+enum UserRole {
+  ADMIN
+  MODERATOR
+  USER
+}
+
+enum ReportType {
+  ENVIRONMENTAL_ISSUE // Denúncia / Problema Ambiental
+  SUGGESTION          // Sugestão para a comunidade/plataforma
+  PRAISE              // Elogio / Feedback positivo
+}
+
+enum ReportStatus {
+  PENDING
+  IN_REVIEW
+  RESOLVED
+  REJECTED
+}
+
+enum ProjectStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+// ==========================================
+// MODELS (Tabelas do Banco)
+// ==========================================
+
+model User {
+  id        String    @id @default(uuid())
+  name      String
+  email     String    @unique
+  password  String
+  role      UserRole  @default(USER)
+  deletedAt DateTime? // <-- ADICIONE ESTA LINHA PARA EXCLUSÃO LÓGICA
+  
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  reports   EnvironmentalReport[]
+
+  @@map("users")
+}
+
+model EnvironmentalReport {
+  id          String       @id @default(uuid())
+  title       String
+  description String
+  type        ReportType
+  status      ReportStatus @default(PENDING)
+  
+  // Geolocalização (Crucial para o Módulo de Mapa e Denúncias)
+  latitude    Float?
+  longitude   Float?
+  address     String?
+
+  // Relacionamento (Quem fez a denúncia?)
+  userId      String
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  // Índices para performance em buscas frequentes
+  @@index([userId])
+  @@index([status])
+  @@index([type])
+  @@map("environmental_reports")
+}
+
+model EducationalProject {
+  id          String        @id @default(uuid())
+  title       String
+  description String
+  imageUrl    String?
+  status      ProjectStatus @default(DRAFT)
+  
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@map("educational_projects")
+}
+
+model CollectionPoint {
+  id                  String   @id @default(uuid())
+  name                String
+  description         String?
+  latitude            Float
+  longitude           Float
+  
+  // Dados científicos (Madre de Deus - BA)
+  salinityLevel       Float?   // Nível de salinidade
+  phLevel             Float?   // Nível de pH
+  
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@map("collection_points")
+}
+
+model DashboardIndicator {
+  id          String   @id @default(uuid())
+  metricName  String   // Ex: "Minerais Extraídos", "Qualidade da Água"
+  value       Float
+  unit        String   // Ex: "kg", "pH", "%"
+  
+  recordedAt  DateTime @default(now())
+
+  @@index([metricName])
+  @@map("dashboard_indicators")
+}
