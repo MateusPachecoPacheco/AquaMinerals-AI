@@ -16,6 +16,7 @@ import { mapRoutes } from "@modules/map/routes/map.routes.js";
 import { communityRoutes } from "@modules/community/routes/community.routes.js";
 import { newsletterRoutes } from "@modules/community/routes/newsletter.routes.js";
 import { aiRoutes } from "@modules/ai/routes/ai.routes.js";
+import { adminRoutes } from "@modules/admin/routes/admin.routes.js";
 
 export async function buildApp(options: FastifyServerOptions = {}): Promise<FastifyInstance> {
   const app = Fastify({
@@ -110,15 +111,17 @@ export async function buildApp(options: FastifyServerOptions = {}): Promise<Fast
   });
 
   // 4. Encapsulamento da API (Versionamento e Módulos de Negócio)
-  await app.register(async function (api) {
-    await api.register(authRoutes, { prefix: "/auth" });
-    await api.register(usersRoutes, { prefix: "/users" });
-    await api.register(dashboardRoutes, { prefix: "/dashboard" });
-    await api.register(mapRoutes, { prefix: "/map" });
-    await api.register(communityRoutes, { prefix: "/community" });
-    await api.register(newsletterRoutes, { prefix: "/community/newsletter" });
-    await api.register(aiRoutes, { prefix: "/ai" });
-  }, { prefix: env.API_PREFIX });
+    // 4. Encapsulamento da API (Versionamento e Módulos de Negócio)
+    await app.register(async function (api) {
+      await api.register(authRoutes, { prefix: "/auth" });
+      await api.register(usersRoutes, { prefix: "/users" });
+      await api.register(dashboardRoutes, { prefix: "/dashboard" });
+      await api.register(mapRoutes, { prefix: "/map" });
+      await api.register(communityRoutes, { prefix: "/community" });
+      await api.register(newsletterRoutes, { prefix: "/community/newsletter" });
+      await api.register(aiRoutes, { prefix: "/ai" });
+      await api.register(adminRoutes, { prefix: "/admin" }); // ← ADICIONAR ESTA LINHA
+    }, { prefix: env.API_PREFIX });
 
   // 5. Hooks de Banco de Dados
   app.addHook("onReady", async () => {

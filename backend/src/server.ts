@@ -1,9 +1,25 @@
 import "dotenv/config";
+import { execSync } from "child_process";
 
 import { env } from "@config/env.js";
 import { buildApp } from "./app.js";
 
 async function start(): Promise<void> {
+  // 🚀 NOVO: Rodar migrations automaticamente no startup (produção)
+  if (env.NODE_ENV === "production") {
+    try {
+      console.log("🔄 Aplicando migrations do banco de dados...");
+      execSync("npx prisma migrate deploy", {
+        stdio: "inherit",
+        env: { ...process.env },
+      });
+      console.log("✅ Migrations aplicadas com sucesso!");
+    } catch (error) {
+      console.error("❌ Erro ao aplicar migrations:", error);
+      // Não quebra o servidor, apenas avisa
+    }
+  }
+
   const app = await buildApp();
 
   try {
