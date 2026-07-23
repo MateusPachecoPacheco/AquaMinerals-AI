@@ -1,7 +1,7 @@
 import type { FastifyInstance, FastifyError } from "fastify";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
-import { env, isDevelopment } from "@config/env.js"; // <-- Importação corrigida
 import { AppError } from "@shared/errors/AppError.js";
+import { isDevelopment } from "@config/env.js";
 
 export async function registerErrorHandler(app: FastifyInstance): Promise<void> {
   app.setErrorHandler((error: FastifyError | AppError | PrismaClientKnownRequestError | Error, request, reply) => {
@@ -56,8 +56,7 @@ export async function registerErrorHandler(app: FastifyInstance): Promise<void> 
     app.log.error({ err: error, url: request.url }, "Erro inesperado");
     
     const statusCode = (error as any).statusCode || 500;
-    // Em produção, não vaza a mensagem de erro original para evitar expor detalhes do sistema
-    const message = isDevelopment ? error.message : "Ocorreu um erro interno no servidor."; // <-- Uso corrigido
+    const message = isDevelopment ? error.message : "Ocorreu um erro interno no servidor.";
 
     return reply.status(statusCode).send({
       statusCode,
