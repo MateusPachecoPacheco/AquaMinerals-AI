@@ -12,6 +12,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { AuthProvider } from '@/contexts/AuthContext';
 
 
 function NotFoundComponent() {
@@ -142,9 +143,11 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider defaultTheme="system" storageKey="aquaminerals-theme">
-        <Outlet />
-      </ThemeProvider>
+      <AuthProvider>
+        <ThemeProvider>
+          <Outlet />
+        </ThemeProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }

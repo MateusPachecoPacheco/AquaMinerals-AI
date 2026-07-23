@@ -1,11 +1,11 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Waves, Mail, Lock, User, ArrowRight } from "lucide-react";
+import { Mail, Lock, User, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
-import { api } from "@/lib/api";
+import { useAuth } from "@/contexts/AuthContext";
 
 export const Route = createFileRoute("/register")({
   head: () => ({ meta: [{ title: "Criar Conta — AquaMinerals" }] }),
@@ -16,15 +16,17 @@ function Register() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { register } = useAuth();
 
   return (
     <div className="grid min-h-screen bg-background lg:grid-cols-2">
-      {/* Left: form */}
       <div className="flex flex-col justify-center px-6 py-12 sm:px-16">
         <Link to="/" className="mb-12 flex items-center gap-2">
-          <div className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-ocean text-white shadow-glow">
-            <Waves className="h-5 w-5" />
-          </div>
+          <img
+            src="/favicon.svg"
+            alt="AquaMinerals"
+            className="h-9 w-9 rounded-xl shadow-glow"
+          />
           <span className="font-display text-lg font-bold">AquaMinerals</span>
         </Link>
 
@@ -37,7 +39,7 @@ function Register() {
           <p className="mt-2 text-sm text-muted-foreground">Crie sua conta para monitorar os oceanos.</p>
 
           {error && (
-            <div className="mt-4 rounded-md bg-red-50 border border-red-200 p-3 text-sm text-red-600">
+            <div className="mt-4 rounded-md bg-red-50 border border-red-200 p-3 text-sm text-red-600 dark:bg-red-950/50 dark:border-red-900 dark:text-red-400">
               {error}
             </div>
           )}
@@ -55,9 +57,8 @@ function Register() {
               const password = formData.get("password") as string;
 
               try {
-                await api.post("/auth/register", { name, email, password });
-                // Cadastro feito com sucesso! Redireciona para o login.
-                navigate({ to: "/login" });
+                await register(name, email, password);
+                navigate({ to: "/dashboard" });
               } catch (err: any) {
                 setError(err.response?.data?.message || "Erro ao criar conta. Tente novamente.");
                 setIsLoading(false);
@@ -68,25 +69,53 @@ function Register() {
               <Label htmlFor="name">Nome completo</Label>
               <div className="relative">
                 <User className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                <Input id="name" name="name" placeholder="Seu nome" className="pl-9" required />
+                <Input 
+                  id="name" 
+                  name="name" 
+                  placeholder="Seu nome" 
+                  className="pl-9" 
+                  required 
+                  disabled={isLoading}
+                />
               </div>
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="email">E-mail</Label>
               <div className="relative">
                 <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                <Input id="email" name="email" type="email" placeholder="voce@oceano.io" className="pl-9" required />
+                <Input 
+                  id="email" 
+                  name="email" 
+                  type="email" 
+                  placeholder="voce@oceano.io" 
+                  className="pl-9" 
+                  required 
+                  disabled={isLoading}
+                />
               </div>
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="password">Senha</Label>
               <div className="relative">
                 <Lock className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                <Input id="password" name="password" type="password" placeholder="••••••••" className="pl-9" required />
+                <Input 
+                  id="password" 
+                  name="password" 
+                  type="password" 
+                  placeholder="Mínimo 6 caracteres" 
+                  className="pl-9" 
+                  required 
+                  minLength={6}
+                  disabled={isLoading}
+                />
               </div>
             </div>
             
-            <Button type="submit" className="w-full bg-gradient-ocean text-white shadow-glow" disabled={isLoading}>
+            <Button 
+              type="submit" 
+              className="w-full bg-gradient-ocean text-white shadow-glow" 
+              disabled={isLoading}
+            >
               {isLoading ? "Criando conta..." : (<>Criar conta <ArrowRight className="ml-2 h-4 w-4" /></>)}
             </Button>
           </form>
@@ -97,7 +126,6 @@ function Register() {
         </motion.div>
       </div>
 
-      {/* Right: oceanic panel */}
       <div className="relative hidden overflow-hidden bg-gradient-ocean lg:block">
         <div className="absolute inset-0 opacity-30">
           <svg className="absolute inset-x-0 top-1/3 w-full text-white animate-wave" viewBox="0 0 1440 320" preserveAspectRatio="none">

@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
-import { api } from "@/lib/api";
+import { useAuth } from "@/contexts/AuthContext";
 
 export const Route = createFileRoute("/login")({
   head: () => ({ meta: [{ title: "Entrar — AquaMinerals" }] }),
@@ -17,13 +17,16 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth();
+
+  const handleOAuth = (provider: string) => {
+    setError(`Login com ${provider} será implementado em breve. Use e-mail e senha por enquanto.`);
+  };
 
   return (
     <div className="grid min-h-screen bg-background lg:grid-cols-2">
-      {/* Left: form */}
       <div className="flex flex-col justify-center px-6 py-12 sm:px-16">
         <Link to="/" className="mb-12 flex items-center gap-2">
-          {/* 🎨 NOVA LOGO OFICIAL */}
           <img
             src="/favicon.svg"
             alt="AquaMinerals"
@@ -41,8 +44,22 @@ function Login() {
           <p className="mt-2 text-sm text-muted-foreground">Entre para acessar seus painéis e insights.</p>
 
           <div className="mt-8 grid gap-2 sm:grid-cols-2">
-            <Button variant="outline" className="gap-2"><Chrome className="h-4 w-4" /> Google</Button>
-            <Button variant="outline" className="gap-2"><Github className="h-4 w-4" /> GitHub</Button>
+            <Button 
+              variant="outline" 
+              className="gap-2" 
+              onClick={() => handleOAuth("Google")}
+              disabled={isLoading}
+            >
+              <Chrome className="h-4 w-4" /> Google
+            </Button>
+            <Button 
+              variant="outline" 
+              className="gap-2"
+              onClick={() => handleOAuth("GitHub")}
+              disabled={isLoading}
+            >
+              <Github className="h-4 w-4" /> GitHub
+            </Button>
           </div>
 
           <div className="my-6 flex items-center gap-3 text-xs text-muted-foreground">
@@ -52,7 +69,7 @@ function Login() {
           </div>
 
           {error && (
-            <div className="mb-4 rounded-md bg-red-50 border border-red-200 p-3 text-sm text-red-600">
+            <div className="mb-4 rounded-md bg-red-50 border border-red-200 p-3 text-sm text-red-600 dark:bg-red-950/50 dark:border-red-900 dark:text-red-400">
               {error}
             </div>
           )}
@@ -69,9 +86,7 @@ function Login() {
               const password = formData.get("pw") as string;
 
               try {
-                const response = await api.post("/auth/login", { email, password });
-                localStorage.setItem("@aquaminerals:token", response.data.accessToken);
-                localStorage.setItem("@aquaminerals:user", JSON.stringify(response.data.user));
+                await login(email, password);
                 navigate({ to: "/dashboard" });
               } catch (err: any) {
                 const message = err.response?.data?.message || "Falha ao conectar ao servidor.";
@@ -92,6 +107,7 @@ function Login() {
                   className="pl-9" 
                   required 
                   defaultValue="usuario@aquaminerals.com"
+                  disabled={isLoading}
                 />
               </div>
             </div>
@@ -110,11 +126,12 @@ function Login() {
                   className="pl-9" 
                   required 
                   defaultValue="123456"
+                  disabled={isLoading}
                 />
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <Checkbox id="rm" />
+              <Checkbox id="rm" disabled={isLoading} />
               <Label htmlFor="rm" className="text-sm font-normal">Manter conectado</Label>
             </div>
             <Button 
@@ -132,7 +149,6 @@ function Login() {
         </motion.div>
       </div>
 
-      {/* Right: oceanic panel */}
       <div className="relative hidden overflow-hidden bg-gradient-ocean lg:block">
         <div className="absolute inset-0 opacity-30">
           <svg className="absolute inset-x-0 top-1/3 w-full text-white animate-wave" viewBox="0 0 1440 320" preserveAspectRatio="none">
