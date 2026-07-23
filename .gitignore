@@ -10,3 +10,6 @@ backend/.env
 .idea/
 coverage/
 .vite/
+
+# Ignorar package-lock.json (Railway usa npm install)
+package-lock.json

@@ -1,0 +1,15 @@
+[phases.setup]
+nixPkgs = ["nodejs_20", "npm-9_x"]
+
+[phases.install]
+cmds = ["npm install --no-audit --no-fund"]
+
+[phases.build]
+cmds = [
+  "npx prisma generate",
+  "npx tsc -p tsconfig.build.json",
+  "npx tsc-alias -p tsconfig.build.json"
+]
+
+[start]
+cmd = "node dist/server.js"
