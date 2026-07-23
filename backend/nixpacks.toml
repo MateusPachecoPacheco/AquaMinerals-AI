@@ -6,10 +6,9 @@ cmds = ["npm install --no-audit --no-fund"]
 
 [phases.build]
 cmds = [
-  "npx prisma generate",
-  "npx tsc -p tsconfig.build.json",
-  "npx tsc-alias -p tsconfig.build.json"
+  "npm install -D tsx",
+  "npx prisma generate"
 ]
 
 [start]
-cmd = "node dist/server.js"
+cmd = "npx tsx src/server.ts"
