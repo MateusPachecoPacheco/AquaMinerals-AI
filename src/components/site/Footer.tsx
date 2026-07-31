@@ -1,11 +1,14 @@
-import { Waves, Mail, MapPin, Phone, MessageCircle, Instagram, Github, Linkedin } from "lucide-react";
+import { Waves, Mail, MapPin, Phone, MessageCircle, Instagram } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+
+// Inserir email oficial do projeto aqui.
+const projectEmail = "";
 
 // Abrir WhatsApp com mensagem personalizada
 const openWhatsApp = () => {
   const phone = "5571987952529";
   const message = encodeURIComponent(
-    "Olá! Vim através da plataforma AquaMinerals e gostaria de saber mais sobre o projeto."
+    "Olá! Vim através da plataforma AquaMinerals e gostaria de saber mais sobre o projeto.",
   );
   window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
 };
@@ -20,10 +23,9 @@ export function Footer() {
     <footer className="relative border-t border-border/60 bg-secondary/20 backdrop-blur-sm">
       {/* Onda decorativa superior (mantendo identidade oceânica) */}
       <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-      
+
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          
           {/* Coluna 1: Marca */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2">
@@ -33,9 +35,10 @@ export function Footer() {
               <span className="font-display text-lg font-bold">AquaMinerals</span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Plataforma científica dedicada ao estudo e extração sustentável de minerais da água do mar em Madre de Deus, BA.
+              Plataforma científica dedicada ao estudo e extração sustentável de minerais da água do
+              mar em Madre de Deus, BA.
             </p>
-            
+
             {/* 🌊 ÍCONES SOCIAIS — ESTILIZADOS NO TEMA OCEÂNICO */}
             <div className="flex items-center gap-3 pt-2">
               {/* WhatsApp com gradiente ocean do projeto */}
@@ -64,7 +67,7 @@ export function Footer() {
 
               {/* Email */}
               <a
-                href="mailto:contato@aquaminerals.com"
+                href={projectEmail ? `mailto:${projectEmail}` : undefined}
                 aria-label="Email AquaMinerals"
                 className="group grid h-10 w-10 place-items-center rounded-xl border border-border/60 bg-card text-foreground shadow-elegant transition-all hover:scale-110 hover:border-primary/50 hover:shadow-glow"
               >
@@ -77,10 +80,38 @@ export function Footer() {
           <div>
             <h4 className="font-display font-semibold mb-4">Plataforma</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/dashboard" className="text-muted-foreground hover:text-primary transition-colors">Dashboard</Link></li>
-              <li><Link to="/mapa" className="text-muted-foreground hover:text-primary transition-colors">Mapa Interativo</Link></li>
-              <li><Link to="/comunidade" className="text-muted-foreground hover:text-primary transition-colors">Comunidade</Link></li>
-              <li><Link to="/aqua-ai" className="text-muted-foreground hover:text-primary transition-colors">AquaAI</Link></li>
+              <li>
+                <Link
+                  to="/dashboard"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Dashboard
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/mapa"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Mapa Interativo
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/comunidade"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Comunidade
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/aqua-ai"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  AquaAI
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -88,9 +119,30 @@ export function Footer() {
           <div>
             <h4 className="font-display font-semibold mb-4">Institucional</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/sobre" className="text-muted-foreground hover:text-primary transition-colors">Sobre</Link></li>
-              <li><Link to="/como-funciona" className="text-muted-foreground hover:text-primary transition-colors">Como Funciona</Link></li>
-              <li><Link to="/impacto" className="text-muted-foreground hover:text-primary transition-colors">Impacto</Link></li>
+              <li>
+                <Link
+                  to="/sobre"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Sobre
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/como-funciona"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Como Funciona
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/impacto"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Impacto
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -108,7 +160,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-primary shrink-0" />
-                <span>contato@aquaminerals.com</span>
+                <span>{projectEmail || "Email oficial em breve"}</span>
               </li>
             </ul>
           </div>
@@ -117,7 +169,8 @@ export function Footer() {
         {/* Rodapé inferior */}
         <div className="mt-12 pt-6 border-t border-border/60 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} AquaMinerals. Ciência, tecnologia e preservação em Madre de Deus.
+            © {new Date().getFullYear()} AquaMinerals. Ciência, tecnologia e preservação em Madre de
+            Deus.
           </p>
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <div className="h-1.5 w-1.5 rounded-full bg-eco animate-pulse" />

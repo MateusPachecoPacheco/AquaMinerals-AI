@@ -1,11 +1,11 @@
 {
-  "compatibility_date": "2026-07-15",
+  "compatibility_date": "2026-07-28",
   "main": "index.mjs",
   "assets": {
     "binding": "ASSETS",
     "directory": "../public"
   },
-  "name": "tanstack-start-ts",
+  "name": "mateuspachecopacheco-aquaminerals-ai",
   "compatibility_flags": [
     "nodejs_compat"
   ],

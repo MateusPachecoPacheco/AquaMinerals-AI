@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <!-- Gradientes -->
+    <linearGradient id="oceanDeep" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a2a4a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d3b66;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="turquoiseGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0892a5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0dc5c5;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="greenSustain" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d8a4e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1b6b3a;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="metallicSilver" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c0c5ce;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8a95a5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5a6577;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="goldDetail" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a843;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b8902a;stop-opacity:1" />
+    </linearGradient>
+    
+    <radialGradient id="glowCenter" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#0dc5c5;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#0a2a4a;stop-opacity:0" />
+    </radialGradient>
+
+    <linearGradient id="crystalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8f4f8;stop-opacity:0.9" />
+      <stop offset="50%" style="stop-color:#0dc5c5;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#0892a5;stop-opacity:0.9" />
+    </linearGradient>
+
+    <linearGradient id="crystalGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8f4f8;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#2d8a4e;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#1b6b3a;stop-opacity:0.8" />
+    </linearGradient>
+
+    <linearGradient id="waveGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0dc5c5;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#0a2a4a;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo transparente opcional (remover para fundo transparente puro) -->
+  <rect width="500" height="500" fill="transparent" rx="20"/>
+
+  <!-- Círculo principal externo - tecnologia/engenharia -->
+  <circle cx="250" cy="245" r="195" fill="none" stroke="url(#metallicSilver)" stroke-width="2.5" opacity="0.6"/>
+  <circle cx="250" cy="245" r="185" fill="none" stroke="url(#metallicSilver)" stroke-width="0.8" opacity="0.3"/>
+  <circle cx="250" cy="245" r="175" fill="none" stroke="url(#turquoiseGrad)" stroke-width="1.2" opacity="0.4"/>
+
+  <!-- Anel tecnológico com padrão de circuito -->
+  <circle cx="250" cy="245" r="180" fill="none" stroke="url(#turquoiseGrad)" stroke-width="0.5" opacity="0.15" stroke-dasharray="8 6"/>
+  
+  <!-- Brilho de fundo central -->
+  <circle cx="250" cy="245" r="160" fill="url(#glowCenter)" opacity="0.5"/>
+
+  <!-- Ondas do oceano - camada inferior -->
+  <g opacity="0.9">
+    <!-- Onda 1 - base oceano profundo -->
+    <path d="M90 340 Q120 300 150 330 Q180 360 210 320 Q240 280 270 310 Q300 340 330 315 Q360 290 390 325 Q410 345 420 340" 
+          fill="none" stroke="url(#oceanDeep)" stroke-width="22" stroke-linecap="round" opacity="0.9"/>
+    
+    <!-- Onda 2 - fluxo médio turquesa -->
+    <path d="M95 350 Q130 315 165 340 Q200 365 235 325 Q270 285 305 320 Q340 355 375 328 Q400 308 418 348" 
+          fill="none" stroke="url(#turquoiseGrad)" stroke-width="16" stroke-linecap="round" opacity="0.75"/>
+    
+    <!-- Onda 3 - superfície brilhante -->
+    <path d="M85 360 Q115 335 150 355 Q185 375 220 340 Q255 305 290 335 Q325 365 360 338 Q395 315 425 355" 
+          fill="none" stroke="#0dc5c5" stroke-width="10" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Onda 4 - detalhe verde sustentável -->
+    <path d="M80 370 Q110 348 145 365 Q180 382 215 350 Q250 318 285 348 Q320 378 355 348 Q385 325 430 362" 
+          fill="none" stroke="url(#greenSustain)" stroke-width="6" stroke-linecap="round" opacity="0.55"/>
+  </g>
+
+  <!-- Cristal mineral central - estrutura geométrica tecnológica -->
+  <g transform="translate(250, 220)">
+    <!-- Base do cristal - hexagonal -->
+    <polygon points="0,-90 78,-45 78,45 0,90 -78,45 -78,-45" 
+             fill="url(#crystalGrad)" opacity="0.85" stroke="url(#metallicSilver)" stroke-width="1.5"/>
+    
+    <!-- Face superior do cristal -->
+    <polygon points="0,-90 78,-45 0,-20 -78,-45" 
+             fill="#e8f4f8" opacity="0.5"/>
+    
+    <!-- Face lateral direita -->
+    <polygon points="0,-20 78,-45 78,45 0,90" 
+             fill="url(#turquoiseGrad)" opacity="0.45"/>
+    
+    <!-- Face lateral esquerda -->
+    <polygon points="0,-20 -78,-45 -78,45 0,90" 
+             fill="url(#crystalGrad2)" opacity="0.45"/>
+    
+    <!-- Linhas internas do cristal - padrão molecular -->
+    <line x1="0" y1="-90" x2="0" y2="90" stroke="url(#metallicSilver)" stroke-width="0.8" opacity="0.5"/>
+    <line x1="-78" y1="-45" x2="78" y2="-45" stroke="url(#metallicSilver)" stroke-width="0.8" opacity="0.4"/>
+    <line x1="-78" y1="45" x2="78" y2="45" stroke="url(#metallicSilver)" stroke-width="0.8" opacity="0.4"/>
+    
+    <!-- Linhas de conexão cristalina -->
+    <line x1="0" y1="-90" x2="0" y2="-20" stroke="url(#goldDetail)" stroke-width="0.6" opacity="0.4"/>
+    <line x1="0" y1="-20" x2="0" y2="90" stroke="url(#goldDetail)" stroke-width="0.6" opacity="0.3"/>
+    <line x1="-78" y1="-45" x2="0" y2="-20" stroke="url(#goldDetail)" stroke-width="0.6" opacity="0.35"/>
+    <line x1="78" y1="-45" x2="0" y2="-20" stroke="url(#goldDetail)" stroke-width="0.6" opacity="0.35"/>
+    <line x1="-78" y1="45" x2="0" y2="90" stroke="url(#goldDetail)" stroke-width="0.5" opacity="0.3"/>
+    <line x1="78" y1="45" x2="0" y2="90" stroke="url(#goldDetail)" stroke-width="0.5" opacity="0.3"/>
+
+    <!-- Partículas minerais brilhantes -->
+    <circle cx="0" cy="-55" r="3" fill="#e8f4f8" opacity="0.8"/>
+    <circle cx="20" cy="-30" r="2" fill="#e8f4f8" opacity="0.6"/>
+    <circle cx="-20" cy="-30" r="2" fill="#e8f4f8" opacity="0.6"/>
+    <circle cx="35" cy="10" r="2.5" fill="#0dc5c5" opacity="0.7"/>
+    <circle cx="-35" cy="10" r="2.5" fill="#2d8a4e" opacity="0.6"/>
+    <circle cx="0" cy="55" r="2" fill="#e8f4f8" opacity="0.5"/>
+    <circle cx="15" cy="35" r="1.5" fill="#d4a843" opacity="0.5"/>
+    <circle cx="-15" cy="35" r="1.5" fill="#d4a843" opacity="0.5"/>
+  </g>
+
+  <!-- Padrão de circuito tecnológico integrado às ondas -->
+  <g opacity="0.5">
+    <!-- Nó de circuito esquerdo -->
+    <circle cx="140" cy="320" r="4" fill="none" stroke="url(#turquoiseGrad)" stroke-width="1.5"/>
+    <circle cx="140" cy="320" r="2" fill="#0dc5c5"/>
+    <line x1="140" y1="320" x2="170" y2="300" stroke="url(#turquoiseGrad)" stroke-width="1"/>
+    <line x1="140" y1="320" x2="155" y2="345" stroke="url(#turquoiseGrad)" stroke-width="0.8"/>
+    <line x1="170" y1="300" x2="185" y2="285" stroke="url(#turquoiseGrad)" stroke-width="0.8"/>
+    
+    <!-- Nó de circuito direito -->
+    <circle cx="360" cy="325" r="4" fill="none" stroke="url(#greenSustain)" stroke-width="1.5"/>
+    <circle cx="360" cy="325" r="2" fill="#2d8a4e"/>
+    <line x1="360" y1="325" x2="335" y2="308" stroke="url(#greenSustain)" stroke-width="1"/>
+    <line x1="360" y1="325" x2="348" y2="348" stroke="url(#greenSustain)" stroke-width="0.8"/>
+    <line x1="335" y1="308" x2="318" y2="293" stroke="url(#greenSustain)" stroke-width="0.8"/>
+
+    <!-- Conexões digitais superiores -->
+    <line x1="175" y1="195" x2="200" y2="180" stroke="url(#turquoiseGrad)" stroke-width="0.8" opacity="0.4"/>
+    <line x1="325" y1="195" x2="300" y2="180" stroke="url(#turquoiseGrad)" stroke-width="0.8" opacity="0.4"/>
+    <circle cx="185" cy="185" r="2" fill="#0dc5c5" opacity="0.5"/>
+    <circle cx="315" cy="185" r="2" fill="#0dc5c5" opacity="0.5"/>
+  </g>
+
+  <!-- Molécula/átomo decorativo -->
+  <g opacity="0.4">
+    <circle cx="120" cy="260" r="2.5" fill="#d4a843"/>
+    <circle cx="150" cy="250" r="2" fill="#0dc5c5"/>
+    <line x1="120" y1="260" x2="150" y2="250" stroke="#d4a843" stroke-width="0.8"/>
+    <circle cx="380" cy="268" r="2.5" fill="#d4a843"/>
+    <circle cx="350" cy="255" r="2" fill="#2d8a4e"/>
+    <line x1="380" y1="268" x2="350" y2="255" stroke="#d4a843" stroke-width="0.8"/>
+  </g>
+
+  <!-- Nome AQUAMINERALS -->
+  <text x="250" y="435" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" 
+        font-size="38" font-weight="700" letter-spacing="8" fill="#c0c5ce">
+    <tspan fill="#e8f4f8">AQUA</tspan><tspan fill="#0dc5c5">MINERALS</tspan>
+  </text>
+
+  <!-- Linha sutil sob o nome -->
+  <line x1="155" y1="445" x2="345" y2="445" stroke="url(#turquoiseGrad)" stroke-width="1" opacity="0.5"/>
+  <line x1="180" y1="450" x2="320" y2="450" stroke="url(#greenSustain)" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Slogan sutil -->
+  <text x="250" y="470" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" 
+        font-size="10" font-weight="300" letter-spacing="5" fill="#8a95a5" opacity="0.7">
+    OCEAN INNOVATION
+  </text>
+
+  <!-- Anel externo fino - moldura final -->
+  <circle cx="250" cy="245" r="210" fill="none" stroke="url(#oceanDeep)" stroke-width="0.8" opacity="0.4"/>
+  <circle cx="250" cy="245" r="213" fill="none" stroke="url(#turquoiseGrad)" stroke-width="0.3" opacity="0.2"/>
+</svg>

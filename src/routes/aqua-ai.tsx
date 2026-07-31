@@ -45,10 +45,19 @@ function AquaAI() {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [thinking, setThinking] = useState(false);
-  const endRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: "smooth" });
+    const container = chatContainerRef.current;
+
+    if (!container) return;
+
+    const isNearBottom =
+      container.scrollHeight - (container.scrollTop + container.clientHeight) < 160;
+
+    if (isNearBottom) {
+      container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
+    }
   }, [messages, thinking]);
 
   const send = (text?: string) => {
@@ -77,9 +86,13 @@ function AquaAI() {
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-display font-semibold">AquaAI</span>
-                <Badge variant="secondary" className="gap-1 text-[10px]"><Sparkles className="h-3 w-3" /> Beta</Badge>
+                <Badge variant="secondary" className="gap-1 text-[10px]">
+                  <Sparkles className="h-3 w-3" /> Beta
+                </Badge>
               </div>
-              <div className="text-xs text-muted-foreground">Assistente especializado em oceanografia</div>
+              <div className="text-xs text-muted-foreground">
+                Assistente especializado em oceanografia
+              </div>
             </div>
           </div>
           <Button variant="ghost" size="sm" onClick={reset} disabled={empty}>
@@ -87,7 +100,7 @@ function AquaAI() {
           </Button>
         </div>
 
-        <div className="flex-1 overflow-y-auto py-6">
+        <div ref={chatContainerRef} className="flex-1 overflow-y-auto py-6">
           {empty ? (
             <div className="mx-auto max-w-2xl py-12 text-center">
               <motion.div
@@ -121,7 +134,10 @@ function AquaAI() {
                     key={i}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className={cn("flex gap-3", m.role === "user" ? "justify-end" : "justify-start")}
+                    className={cn(
+                      "flex gap-3",
+                      m.role === "user" ? "justify-end" : "justify-start",
+                    )}
                   >
                     {m.role === "assistant" && (
                       <div className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-gradient-ocean text-white">
@@ -161,7 +177,7 @@ function AquaAI() {
                   </div>
                   <div className="rounded-2xl border border-border/60 bg-card px-4 py-3">
                     <div className="flex gap-1">
-                      {[0,1,2].map((i) => (
+                      {[0, 1, 2].map((i) => (
                         <motion.span
                           key={i}
                           className="h-2 w-2 rounded-full bg-primary"
@@ -173,7 +189,6 @@ function AquaAI() {
                   </div>
                 </div>
               )}
-              <div ref={endRef} />
             </div>
           )}
         </div>
@@ -184,7 +199,10 @@ function AquaAI() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); }
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  send();
+                }
               }}
               placeholder="Pergunte sobre qualidade, minerais, temperatura..."
               rows={1}

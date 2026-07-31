@@ -1,4 +1,4 @@
-import { a as __toESM } from "../../_runtime.mjs";
+import { o as __toESM } from "../../_runtime.mjs";
 import { u as require_react } from "../@floating-ui/react-dom+[...].mjs";
 import { n as Primitive, o as useComposedRefs, s as require_jsx_runtime } from "./react-arrow+[...].mjs";
 import { i as useLayoutEffect2, o as createContextScope } from "./react-avatar+[...].mjs";
@@ -54,21 +54,6 @@ function useUncontrolledState({ defaultProp, onChange }) {
 }
 function isFunction$1(value) {
 	return typeof value === "function";
-}
-//#endregion
-//#region node_modules/@radix-ui/react-use-previous/dist/index.mjs
-function usePrevious(value) {
-	const ref = import_react.useRef({
-		value,
-		previous: value
-	});
-	return import_react.useMemo(() => {
-		if (ref.current.value !== value) {
-			ref.current.previous = ref.current.value;
-			ref.current.value = value;
-		}
-		return ref.current.previous;
-	}, [value]);
 }
 //#endregion
 //#region node_modules/@radix-ui/react-use-size/dist/index.mjs
@@ -237,6 +222,21 @@ function getElementRef(element) {
 	mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
 	if (mayWarn) return element.props.ref;
 	return element.props.ref || element.ref;
+}
+//#endregion
+//#region node_modules/@radix-ui/react-use-previous/dist/index.mjs
+function usePrevious(value) {
+	const ref = import_react.useRef({
+		value,
+		previous: value
+	});
+	return import_react.useMemo(() => {
+		if (ref.current.value !== value) {
+			ref.current.previous = ref.current.value;
+			ref.current.value = value;
+		}
+		return ref.current.previous;
+	}, [value]);
 }
 //#endregion
 //#region node_modules/@radix-ui/react-checkbox/dist/index.mjs
@@ -413,4 +413,4 @@ function getState(checked) {
 	return isIndeterminate(checked) ? "indeterminate" : checked ? "checked" : "unchecked";
 }
 //#endregion
-export { usePrevious as a, useSize as i, CheckboxIndicator as n, useControllableState as o, Presence as r, Checkbox as t };
+export { useSize as a, Presence as i, CheckboxIndicator as n, useControllableState as o, usePrevious as r, Checkbox as t };
