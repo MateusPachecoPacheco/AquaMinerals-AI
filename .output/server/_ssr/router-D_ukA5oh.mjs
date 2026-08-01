@@ -15,7 +15,7 @@ import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
 import { t as QueryClientProvider } from "../_libs/tanstack__react-query.mjs";
 import { a as SelectItemIndicator, c as SelectPortal, d as SelectSeparator$1, f as SelectTrigger$1, i as SelectItem$1, l as SelectScrollDownButton$1, m as SelectViewport, n as SelectContent$1, o as SelectItemText, p as SelectValue$1, r as SelectIcon, s as SelectLabel$1, t as Select$1, u as SelectScrollUpButton$1 } from "../_libs/@radix-ui/react-select+[...].mjs";
 import { i as Trigger, n as List, r as Root2, t as Content } from "../_libs/radix-ui__react-tabs.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-COqHJOQy.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-D_ukA5oh.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var styles_default = "/assets/styles-DIN2rAps.css";
@@ -203,7 +203,7 @@ var Route$9 = createFileRoute("/admin")({
 	head: () => ({ meta: [{ title: "Admin — AquaMinerals" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
-var $$splitComponentImporter$3 = () => import("./aqua-ai-EagFrMaz.mjs");
+var $$splitComponentImporter$3 = () => import("./aqua-ai-DmR6iMpJ.mjs");
 var Route$8 = createFileRoute("/aqua-ai")({
 	head: () => ({ meta: [{ title: "AquaAI — Assistente Oceânico" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$3, "component")

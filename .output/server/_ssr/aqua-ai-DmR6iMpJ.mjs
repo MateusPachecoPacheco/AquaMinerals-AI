@@ -6,7 +6,7 @@ import { n as cn, t as Button } from "./button-CFsQTJc0.mjs";
 import { t as Badge } from "./badge-DEsw2Mbx.mjs";
 import { V as Copy, a as User, d as Sparkles, h as RotateCcw, r as Waves, tt as ArrowUp } from "../_libs/lucide-react.mjs";
 import { t as SiteLayout } from "./SiteLayout-Cj46bYj8.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/aqua-ai-EagFrMaz.js
+//#region node_modules/.nitro/vite/services/ssr/assets/aqua-ai-DmR6iMpJ.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var Textarea = import_react.forwardRef(({ className, ...props }, ref) => {
@@ -21,19 +21,22 @@ var suggestions = [
 	"Como está a qualidade da água hoje?",
 	"Quais minerais foram encontrados esta semana?",
 	"Quais pontos estão em estado crítico?",
-	"Explique o índice de preservação"
+	"Explique o índice de preservação",
+	"Os minerais que estão aptos para extração, para onde eles vão?"
 ];
 var canned = {
 	default: "Com base nos últimos dados coletados na Baía de Madre de Deus, os principais indicadores estão dentro dos limites saudáveis. Posso detalhar qualidade, minerais, pH ou temperatura por região — o que você gostaria de explorar?",
 	qualidade: "A qualidade média das últimas 24 horas está em 94%, com leve tendência de alta (+2.4%). Os pontos MDD-01 e MDD-02 lideram, enquanto MDD-05 (Ponta de Suape) está sob atenção com 62%.",
 	minerais: "Nesta semana foram identificados 37 minerais distintos. Os predominantes são Sódio (38%), Magnésio (22%) e Cálcio (14%). Detectamos um pico incomum de Potássio no ponto MDD-03.",
-	criticos: "Atualmente 1 ponto está classificado como crítico: MDD-05 (Ponta de Suape), com pH 7.4 e temperatura 28.2°C. Recomenda-se coleta manual de confirmação nas próximas 6 horas."
+	criticos: "Atualmente 1 ponto está classificado como crítico: MDD-05 (Ponta de Suape), com pH 7.4 e temperatura 28.2°C. Recomenda-se coleta manual de confirmação nas próximas 6 horas.",
+	destino: "Os minerais extraídos por meio da tecnologia AquaMinerals possuem como destino principal a cadeia produtiva industrial e tecnológica, onde podem ser utilizados como matéria-prima estratégica para diferentes setores.\n\nApós o processo sustentável de extração e tratamento, esses minerais podem ser direcionados para aplicações como fabricação de componentes tecnológicos, indústria energética, produção de materiais avançados, pesquisa científica e outros segmentos que dependem desses recursos.\n\nO objetivo do projeto não é apenas retirar minerais do oceano, mas criar uma solução sustentável capaz de transformar recursos naturais em oportunidades econômicas, promovendo inovação, desenvolvimento regional e geração de valor, sempre buscando minimizar impactos ambientais."
 };
 function reply(input) {
 	const q = input.toLowerCase();
 	if (q.includes("qualidade")) return canned.qualidade;
 	if (q.includes("mineral")) return canned.minerais;
 	if (q.includes("crític")) return canned.criticos;
+	if (q.includes("destino") || q.includes("para onde") || q.includes("aptos para extração")) return canned.destino;
 	return canned.default;
 }
 function AquaAI() {

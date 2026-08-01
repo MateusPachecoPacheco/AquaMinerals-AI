@@ -20,6 +20,7 @@ const suggestions = [
   "Quais minerais foram encontrados esta semana?",
   "Quais pontos estão em estado crítico?",
   "Explique o índice de preservação",
+  "Os minerais que estão aptos para extração, para onde eles vão?",
 ];
 
 const canned: Record<string, string> = {
@@ -31,6 +32,8 @@ const canned: Record<string, string> = {
     "Nesta semana foram identificados 37 minerais distintos. Os predominantes são Sódio (38%), Magnésio (22%) e Cálcio (14%). Detectamos um pico incomum de Potássio no ponto MDD-03.",
   criticos:
     "Atualmente 1 ponto está classificado como crítico: MDD-05 (Ponta de Suape), com pH 7.4 e temperatura 28.2°C. Recomenda-se coleta manual de confirmação nas próximas 6 horas.",
+  destino:
+    "Os minerais extraídos por meio da tecnologia AquaMinerals possuem como destino principal a cadeia produtiva industrial e tecnológica, onde podem ser utilizados como matéria-prima estratégica para diferentes setores.\n\nApós o processo sustentável de extração e tratamento, esses minerais podem ser direcionados para aplicações como fabricação de componentes tecnológicos, indústria energética, produção de materiais avançados, pesquisa científica e outros segmentos que dependem desses recursos.\n\nO objetivo do projeto não é apenas retirar minerais do oceano, mas criar uma solução sustentável capaz de transformar recursos naturais em oportunidades econômicas, promovendo inovação, desenvolvimento regional e geração de valor, sempre buscando minimizar impactos ambientais.",
 };
 
 function reply(input: string): string {
@@ -38,6 +41,7 @@ function reply(input: string): string {
   if (q.includes("qualidade")) return canned.qualidade;
   if (q.includes("mineral")) return canned.minerais;
   if (q.includes("crític")) return canned.criticos;
+  if (q.includes("destino") || q.includes("para onde") || q.includes("aptos para extração")) return canned.destino;
   return canned.default;
 }
 
