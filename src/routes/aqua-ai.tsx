@@ -1,19 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Waves, ArrowUp, Sparkles, Copy, RotateCcw, User } from "lucide-react";
+import { Waves, ArrowUp, Sparkles, Copy, RotateCcw, User, BookOpen, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { cn } from "@/lib/utils";
+import { processQuestion } from "@/services/aquaAiService";
+import type { Message, RAGResponse } from "@/types/ai";
 
 export const Route = createFileRoute("/aqua-ai")({
   head: () => ({ meta: [{ title: "AquaAI — Assistente Oceânico" }] }),
   component: AquaAI,
 });
 
-type Msg = { role: "user" | "assistant"; content: string };
+type Msg = Message;
 
 const suggestions = [
   "Como está a qualidade da água hoje?",
@@ -21,34 +23,14 @@ const suggestions = [
   "Quais pontos estão em estado crítico?",
   "Explique o índice de preservação",
   "Os minerais que estão aptos para extração, para onde eles vão?",
+  "Quais impactos econômicos essa tecnologia poderia gerar para cidades costeiras?",
 ];
-
-const canned: Record<string, string> = {
-  default:
-    "Com base nos últimos dados coletados na Baía de Madre de Deus, os principais indicadores estão dentro dos limites saudáveis. Posso detalhar qualidade, minerais, pH ou temperatura por região — o que você gostaria de explorar?",
-  qualidade:
-    "A qualidade média das últimas 24 horas está em 94%, com leve tendência de alta (+2.4%). Os pontos MDD-01 e MDD-02 lideram, enquanto MDD-05 (Ponta de Suape) está sob atenção com 62%.",
-  minerais:
-    "Nesta semana foram identificados 37 minerais distintos. Os predominantes são Sódio (38%), Magnésio (22%) e Cálcio (14%). Detectamos um pico incomum de Potássio no ponto MDD-03.",
-  criticos:
-    "Atualmente 1 ponto está classificado como crítico: MDD-05 (Ponta de Suape), com pH 7.4 e temperatura 28.2°C. Recomenda-se coleta manual de confirmação nas próximas 6 horas.",
-  destino:
-    "Os minerais extraídos por meio da tecnologia AquaMinerals possuem como destino principal a cadeia produtiva industrial e tecnológica, onde podem ser utilizados como matéria-prima estratégica para diferentes setores.\n\nApós o processo sustentável de extração e tratamento, esses minerais podem ser direcionados para aplicações como fabricação de componentes tecnológicos, indústria energética, produção de materiais avançados, pesquisa científica e outros segmentos que dependem desses recursos.\n\nO objetivo do projeto não é apenas retirar minerais do oceano, mas criar uma solução sustentável capaz de transformar recursos naturais em oportunidades econômicas, promovendo inovação, desenvolvimento regional e geração de valor, sempre buscando minimizar impactos ambientais.",
-};
-
-function reply(input: string): string {
-  const q = input.toLowerCase();
-  if (q.includes("qualidade")) return canned.qualidade;
-  if (q.includes("mineral")) return canned.minerais;
-  if (q.includes("crític")) return canned.criticos;
-  if (q.includes("destino") || q.includes("para onde") || q.includes("aptos para extração")) return canned.destino;
-  return canned.default;
-}
 
 function AquaAI() {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [thinking, setThinking] = useState(false);
+  const [currentResponse, setCurrentResponse] = useState<RAGResponse | null>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -64,19 +46,60 @@ function AquaAI() {
     }
   }, [messages, thinking]);
 
-  const send = (text?: string) => {
+  const send = async (text?: string) => {
     const content = (text ?? input).trim();
     if (!content) return;
-    setMessages((m) => [...m, { role: "user", content }]);
+    
+    // Adicionar mensagem do usuário
+    const userMsg: Msg = { 
+      role: "user", 
+      content,
+      timestamp: new Date().toISOString()
+    };
+    setMessages((m) => [...m, userMsg]);
     setInput("");
     setThinking(true);
-    setTimeout(() => {
-      setMessages((m) => [...m, { role: "assistant", content: reply(content) }]);
+    setCurrentResponse(null);
+    
+    try {
+      // Processar pergunta usando o serviço RAG
+      const result = await processQuestion(content, messages);
+      
+      if (result.success && result.data) {
+        const aiMsg: Msg = { 
+          role: "assistant", 
+          content: result.data.answer,
+          timestamp: new Date().toISOString(),
+          sources: result.data.sources,
+        };
+        setMessages((m) => [...m, aiMsg]);
+        setCurrentResponse(result.data);
+      } else {
+        const errorMsg: Msg = { 
+          role: "assistant", 
+          content: "Desculpe, ocorreu um erro ao processar sua pergunta. Por favor, tente novamente.",
+          timestamp: new Date().toISOString(),
+        };
+        setMessages((m) => [...m, errorMsg]);
+      }
+    } catch (error) {
+      console.error("Erro na IA:", error);
+      const errorMsg: Msg = { 
+        role: "assistant", 
+        content: "Ocorreu um erro inesperado. Por favor, tente novamente.",
+        timestamp: new Date().toISOString(),
+      };
+      setMessages((m) => [...m, errorMsg]);
+    } finally {
       setThinking(false);
-    }, 900);
+    }
   };
 
-  const reset = () => setMessages([]);
+  const reset = () => {
+    setMessages([]);
+    setCurrentResponse(null);
+  };
+  
   const empty = messages.length === 0;
 
   return (
@@ -158,12 +181,25 @@ function AquaAI() {
                     >
                       {m.content}
                       {m.role === "assistant" && (
-                        <button
-                          onClick={() => navigator.clipboard.writeText(m.content)}
-                          className="mt-2 flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
-                        >
-                          <Copy className="h-3 w-3" /> Copiar
-                        </button>
+                        <div className="mt-2 space-y-2">
+                          {/* Fontes da resposta */}
+                          {"sources" in m && m.sources && m.sources.length > 0 && (
+                            <div className="flex flex-wrap gap-1">
+                              {m.sources.map((source, idx) => (
+                                <Badge key={idx} variant="secondary" className="gap-1 text-[10px]">
+                                  <BookOpen className="h-2.5 w-2.5" />
+                                  {source}
+                                </Badge>
+                              ))}
+                            </div>
+                          )}
+                          <button
+                            onClick={() => navigator.clipboard.writeText(m.content)}
+                            className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
+                          >
+                            <Copy className="h-3 w-3" /> Copiar
+                          </button>
+                        </div>
                       )}
                     </div>
                     {m.role === "user" && (

@@ -4,13 +4,26 @@ var NullProtoObj = /* @__PURE__ */ (() => {
 	return e.prototype = Object.create(null), Object.freeze(e.prototype), e;
 })();
 //#endregion
-//#region node_modules/srvx/dist/adapters/cloudflare.mjs
+//#region node_modules/h3/node_modules/srvx/dist/adapters/cloudflare.mjs
 var FastURL = URL;
 var FastResponse = Response;
 //#endregion
-//#region node_modules/h3/dist/h3.mjs
+//#region node_modules/h3/dist/response.mjs
+var NEEDLESS_ESCAPE_SRC = String.raw`%(?:2[146-9A-E]|3[0-9ABD]|4[0-9A-F]|5[0-9ABDF]|6[1-9A-F]|7[0-9ACE])`;
+var NEEDLESS_ESCAPE_RE = /* @__PURE__ */ new RegExp(NEEDLESS_ESCAPE_SRC, "i");
+var NEEDLESS_ESCAPE_RE_G = /* @__PURE__ */ new RegExp(NEEDLESS_ESCAPE_SRC, "gi");
+function isNonCanonicalPathname(pathname) {
+	return NEEDLESS_ESCAPE_RE.test(pathname);
+}
+function canonicalPathname(pathname) {
+	return pathname.replace(NEEDLESS_ESCAPE_RE_G, (m) => String.fromCharCode(Number.parseInt(m.slice(1), 16)));
+}
 function decodePathname(pathname) {
-	return decodeURI(pathname.includes("%25") ? pathname.replace(/%25/g, "%2525") : pathname);
+	try {
+		return decodeURI(pathname);
+	} catch {
+		return;
+	}
 }
 var kEventNS = "h3.internal.event.";
 var kEventRes = /* @__PURE__ */ Symbol.for(`${kEventNS}res`);
@@ -24,16 +37,15 @@ var H3Event = class {
 	context;
 	static __is_event__ = true;
 	constructor(req, context, app) {
-		this.context = context || req.context || new NullProtoObj();
+		this.context = req.context = context || req.context || new NullProtoObj();
 		this.req = req;
 		this.app = app;
 		const _url = req._url;
 		let url = _url && _url instanceof URL ? _url : new FastURL(req.url);
-		if (url.pathname.includes("%")) try {
-			const pathname = decodePathname(url.pathname);
-			if (pathname !== url.pathname) url = new FastURL(`${url.protocol}//${url.host}${pathname}${url.search}`);
-		} catch {
-			this[kMalformedURL] = true;
+		const pathname = url.pathname;
+		if (pathname.includes("%")) {
+			if (decodePathname(pathname) === void 0) this[kMalformedURL] = true;
+			else if (isNonCanonicalPathname(pathname)) url = new FastURL(`${url.protocol}//${url.host}${canonicalPathname(pathname)}${url.search}`);
 		}
 		this.url = url;
 	}
@@ -82,7 +94,7 @@ function sanitizeStatusMessage(statusMessage = "") {
 function sanitizeStatusCode(statusCode, defaultStatusCode = 200) {
 	if (!statusCode) return defaultStatusCode;
 	if (typeof statusCode === "string") statusCode = +statusCode;
-	if (Number.isNaN(statusCode) || statusCode < 100 || statusCode > 599) return defaultStatusCode;
+	if (!Number.isInteger(statusCode) || statusCode < 100 || statusCode > 599) return defaultStatusCode;
 	return statusCode;
 }
 var HTTPError = class HTTPError extends Error {
@@ -158,14 +170,33 @@ function isJSONSerializable(value, _type) {
 	const proto = Object.getPrototypeOf(value);
 	return proto === Object.prototype || proto === null;
 }
+var kEventDispose = /* @__PURE__ */ Symbol.for("h3.internal.event.dispose");
 var kNotFound = /* @__PURE__ */ Symbol.for("h3.notFound");
 var kHandled = /* @__PURE__ */ Symbol.for("h3.handled");
 function toResponse(val, event, config = {}) {
-	if (typeof val?.then === "function") return val.then((resolvedVal) => toResponse(resolvedVal, event, config), (r) => toResponse(typeof r === "number" ? new HTTPError({ status: r }) : r, event, config));
-	const response = prepareResponse(val, event, config);
+	if (typeof val?.then === "function") return val.then((resolvedVal) => toResponse(resolvedVal, event, config), (r) => toResponse(toError(r), event, config));
+	let response;
+	try {
+		response = prepareResponse(val, event, config);
+	} catch (error) {
+		return toResponse(toError(error), event, config);
+	}
 	if (typeof response?.then === "function") return toResponse(response, event, config);
 	const { onResponse } = config;
-	return onResponse ? Promise.resolve(onResponse(response, event)).then(() => response) : response;
+	if (onResponse) return Promise.resolve().then(() => onResponse(response, event)).catch((error) => {
+		if (!config.silent) console.error(error);
+	}).then(() => event[kEventDispose]?.observe(response, val) ?? response);
+	return event[kEventDispose]?.observe(response, val) ?? response;
+}
+function toError(value) {
+	if (value === kNotFound || value === kHandled || value instanceof Error) return value;
+	if (typeof value === "number") return new HTTPError({ status: value });
+	const error = new HTTPError({
+		status: 500,
+		unhandled: true
+	});
+	error.cause = value;
+	return error;
 }
 var HTTPResponse = class {
 	#headers;
@@ -176,10 +207,10 @@ var HTTPResponse = class {
 		this.#init = init;
 	}
 	get status() {
-		return this.#init?.status || 200;
+		return this.#init?.status;
 	}
 	get statusText() {
-		return this.#init?.statusText || "OK";
+		return this.#init?.statusText;
 	}
 	get headers() {
 		return this.#headers ||= new Headers(this.#init?.headers);
@@ -201,40 +232,37 @@ function prepareResponse(val, event, config, nested) {
 		if (error.unhandled && !config.silent) console.error(error);
 		const { onError } = config;
 		const errHeaders = event[kEventRes]?.[kEventResErrHeaders];
-		return onError && !nested ? Promise.resolve(onError(error, event)).catch((error) => error).then((newVal) => prepareResponse(newVal ?? val, event, config, true)) : errorResponse(error, config.debug, errHeaders);
+		if (onError && !nested) return Promise.resolve().then(() => onError(error, event)).catch((error) => error).then((newVal) => prepareResponse(newVal ?? val, event, config, true));
+		event[kEventRes] = void 0;
+		return errorResponse(error, config.debug, errHeaders);
 	}
 	const preparedRes = event[kEventRes];
-	const preparedHeaders = preparedRes?.[kEventResHeaders];
+	let preparedHeaders = preparedRes?.[kEventResHeaders];
 	event[kEventRes] = void 0;
 	if (!(val instanceof Response)) {
 		const res = prepareResponseBody(val, event, config);
-		const status = res.status || preparedRes?.status;
+		const rawStatus = res.status || preparedRes?.status;
+		const status = rawStatus ? sanitizeStatusCode(rawStatus) : void 0;
+		const rawStatusText = res.statusText || preparedRes?.statusText;
 		return new FastResponse(nullBody(event.req.method, status) ? null : res.body, {
 			status,
-			statusText: res.statusText || preparedRes?.statusText,
-			headers: res.headers && preparedHeaders ? mergeHeaders$1(res.headers, preparedHeaders) : res.headers || preparedHeaders
+			statusText: rawStatusText === void 0 ? void 0 : sanitizeStatusMessage(rawStatusText),
+			headers: res.headers && preparedHeaders ? mergeHeaders(res.headers, preparedHeaders) : res.headers || preparedHeaders
 		});
 	}
-	if (!preparedHeaders || nested || !val.ok) {
-		if (event.req.method === "HEAD" && val.body !== null) return new FastResponse(null, {
-			status: val.status,
-			statusText: val.statusText,
-			headers: val.headers
-		});
-		return val;
-	}
-	try {
-		mergeHeaders$1(val.headers, preparedHeaders, val.headers);
-		return val;
-	} catch {
-		return new FastResponse(nullBody(event.req.method, val.status) ? null : val.body, {
-			status: val.status,
-			statusText: val.statusText,
-			headers: mergeHeaders$1(val.headers, preparedHeaders)
-		});
-	}
+	if (val.status >= 400) preparedHeaders = preparedRes?.[kEventResErrHeaders];
+	if (preparedHeaders && !nested && !preparedHeaders.keys().next().done) return new FastResponse(nullBody(event.req.method, val.status) ? null : val.body, {
+		status: val.status,
+		statusText: val.statusText,
+		headers: mergeHeaders(val.headers, preparedHeaders)
+	});
+	return event.req.method === "HEAD" && val.body !== null ? new FastResponse(null, {
+		status: val.status,
+		statusText: val.statusText,
+		headers: val.headers
+	}) : val;
 }
-function mergeHeaders$1(base, overrides, target = new Headers(base)) {
+function mergeHeaders(base, overrides, target = new Headers(base)) {
 	for (const [name, value] of overrides) if (name === "set-cookie") target.append(name, value);
 	else target.set(name, value);
 	return target;
@@ -256,10 +284,10 @@ function prepareResponseBody(val, event, config) {
 	};
 	const valType = typeof val;
 	if (valType === "string") return { body: val };
-	if (val instanceof Uint8Array) {
-		event.res.headers.set("content-length", val.byteLength.toString());
-		return { body: val };
-	}
+	if (val instanceof Uint8Array) return {
+		body: val,
+		headers: new Headers({ "content-length": val.byteLength.toString() })
+	};
 	if (val instanceof HTTPResponse || val?.constructor?.name === "HTTPResponse") return val;
 	if (isJSONSerializable(val, valType)) return {
 		body: JSON.stringify(val, void 0, config.debug ? 2 : void 0),
@@ -292,8 +320,8 @@ function nullBody(method, status) {
 	return method === "HEAD" || status === 100 || status === 101 || status === 102 || status === 204 || status === 205 || status === 304;
 }
 function errorResponse(error, debug, errHeaders) {
-	let headers = error.headers ? mergeHeaders$1(jsonHeaders, error.headers) : new Headers(jsonHeaders);
-	if (errHeaders) headers = mergeHeaders$1(headers, errHeaders);
+	let headers = error.headers ? mergeHeaders(jsonHeaders, error.headers) : new Headers(jsonHeaders);
+	if (errHeaders) headers = mergeHeaders(headers, errHeaders);
 	return new FastResponse(JSON.stringify({
 		...error.toJSON(),
 		stack: debug && error.stack ? error.stack.split("\n").map((l) => l.trim()) : void 0
@@ -303,15 +331,33 @@ function errorResponse(error, debug, errHeaders) {
 		headers
 	});
 }
+//#endregion
+//#region node_modules/h3/dist/middleware.mjs
+function composeMiddleware(middleware) {
+	let chain = (event, handler) => handler(event);
+	for (let i = middleware.length - 1; i >= 0; i--) {
+		const fn = middleware[i];
+		const inner = chain;
+		chain = (event, handler) => callLayer(fn, event, handler, inner);
+	}
+	return chain;
+}
+function composeHandler(middleware, handler) {
+	const chain = composeMiddleware(middleware);
+	return function _composedHandler(event) {
+		return chain(event, handler);
+	};
+}
 function callMiddleware(event, middleware, handler, index = 0) {
-	if (index === middleware.length) return handler(event);
-	const fn = middleware[index];
+	return index === middleware.length ? handler(event) : callLayer(middleware[index], event, handler, (_event, _handler) => callMiddleware(_event, middleware, _handler, index + 1));
+}
+function callLayer(fn, event, handler, inner) {
 	let nextCalled;
 	let nextResult;
 	const next = () => {
 		if (nextCalled) return nextResult;
 		nextCalled = true;
-		nextResult = callMiddleware(event, middleware, handler, index + 1);
+		nextResult = inner(event, handler);
 		return nextResult;
 	};
 	const ret = fn(event, next);
@@ -320,26 +366,25 @@ function callMiddleware(event, middleware, handler, index = 0) {
 function isUnhandledResponse(val) {
 	return val === void 0 || val === kNotFound;
 }
+//#endregion
+//#region node_modules/h3/dist/cache.mjs
 function toRequest(input, options) {
 	if (typeof input === "string") {
 		let url = input;
-		if (url[0] === "/") {
-			const headers = options?.headers ? new Headers(options.headers) : void 0;
-			const host = headers?.get("host") || "localhost";
-			url = `${(headers?.get("x-forwarded-proto") || "").split(",")[0].trim() === "https" ? "https" : "http"}://${host}${url}`;
-		}
+		if (url[0] === "/") url = `http://${safeHost((options?.headers ? new Headers(options.headers) : void 0)?.get("host"))}${url}`;
 		return new Request(url, options);
 	} else if (options || input instanceof URL) return new Request(input, options);
 	return input;
+}
+function safeHost(host) {
+	return host && !/[/\\?#@\s]/.test(host) ? host : "localhost";
 }
 function defineHandler(input) {
 	if (typeof input === "function") return handlerWithFetch(input);
 	const handler = input.handler || (input.fetch ? function _fetchHandler(event) {
 		return input.fetch(event.req);
 	} : NoHandler);
-	return Object.assign(handlerWithFetch(input.middleware?.length ? function _handlerMiddleware(event) {
-		return callMiddleware(event, input.middleware, handler);
-	} : handler), input);
+	return Object.assign(handlerWithFetch(input.middleware?.length ? composeHandler(input.middleware, handler) : handler), input);
 }
 function handlerWithFetch(handler) {
 	if ("fetch" in handler) return handler;
@@ -350,7 +395,7 @@ function handlerWithFetch(handler) {
 		try {
 			return Promise.resolve(toResponse(handler(event), event));
 		} catch (error) {
-			return Promise.resolve(toResponse(error, event));
+			return Promise.resolve(toResponse(toError(error), event));
 		}
 	} });
 }
@@ -378,6 +423,8 @@ var H3Core = class {
 	config;
 	"~middleware";
 	"~routes" = [];
+	"~dispatch";
+	"~composed";
 	constructor(config = {}) {
 		this["~middleware"] = [];
 		this.config = config;
@@ -393,9 +440,7 @@ var H3Core = class {
 			event.context.params = route.params;
 			event.context.matchedRoute = route.data;
 		}
-		const routeHandler = route?.data.handler || NoHandler;
-		const middleware = this["~getMiddleware"](event, route);
-		return middleware.length > 0 ? callMiddleware(event, middleware, routeHandler) : routeHandler(event);
+		return (this["~dispatch"] ??= createDispatcher(this))(event, route);
 	}
 	"~request"(request, context) {
 		const event = new H3Event(request, context, this);
@@ -424,6 +469,17 @@ var H3Core = class {
 		return routeMiddleware ? [...globalMiddleware, ...routeMiddleware] : globalMiddleware;
 	}
 };
-/%(?:25)*(?:2f|5c)/i.source;
+function createDispatcher(app) {
+	if (app["~getMiddleware"] !== H3Core.prototype["~getMiddleware"]) return (event, route) => callMiddleware(event, app["~getMiddleware"](event, route), route?.data.handler || NoHandler);
+	const middleware = app["~middleware"];
+	if (middleware.length === 0) return (event, route) => routeHandler(route)(event);
+	const composed = app["~composed"] ??= composeMiddleware(middleware);
+	return (event, route) => composed(event, routeHandler(route));
+}
+function routeHandler(route) {
+	const data = route?.data;
+	if (!data) return NoHandler;
+	return data.middleware?.length ? data["~composed"] ??= composeHandler(data.middleware, data.handler) : data.handler;
+}
 //#endregion
-export { FastResponse as a, toRequest as i, HTTPError as n, FastURL as o, defineLazyEventHandler as r, H3Core as t };
+export { HTTPError as i, defineLazyEventHandler as n, toRequest as r, H3Core as t };

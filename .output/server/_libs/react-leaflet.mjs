@@ -50,7 +50,8 @@ var MapContainer = /*#__PURE__*/ (0, import_react.forwardRef)(MapContainerCompon
 //#endregion
 //#region node_modules/react-leaflet/lib/Popup.js
 var Popup = createOverlayComponent(function createPopup(props, context) {
-	return createElementObject(new import_leaflet_src.Popup(props, context.overlayContainer), context);
+	const popup = new import_leaflet_src.Popup(props, context.overlayContainer);
+	return createElementObject(popup, context);
 }, function usePopupLifecycle(element, context, { position }, setOpen) {
 	(0, import_react.useEffect)(function addPopup() {
 		const { instance } = element;
@@ -89,7 +90,8 @@ var Popup = createOverlayComponent(function createPopup(props, context) {
 //#endregion
 //#region node_modules/react-leaflet/lib/TileLayer.js
 var TileLayer = createTileLayerComponent(function createTileLayer({ url, ...options }, context) {
-	return createElementObject(new import_leaflet_src.TileLayer(url, withPane(options, context)), context);
+	const layer = new import_leaflet_src.TileLayer(url, withPane(options, context));
+	return createElementObject(layer, context);
 }, function updateTileLayer(layer, props, prevProps) {
 	updateGridLayer(layer, props, prevProps);
 	const { url } = props;

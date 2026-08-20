@@ -236,6 +236,19 @@ var Bell = createLucideIcon("bell", [["path", {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var BookOpen = createLucideIcon("book-open", [["path", {
+	d: "M12 7v14",
+	key: "1akyts"
+}], ["path", {
+	d: "M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z",
+	key: "ruj8y"
+}]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var Brain = createLucideIcon("brain", [
 	["path", {
 		d: "M12 18V5",
@@ -1256,4 +1269,4 @@ var X = createLucideIcon("x", [["path", {
 	key: "d8bk6v"
 }]]);
 //#endregion
-export { Bell as $, LayoutDashboard as A, Cpu as B, Menu as C, Lock as D, LogOut as E, Eye as F, ChevronUp as G, Compass as H, Ellipsis as I, Check as J, ChevronRight as K, Earth as L, GraduationCap as M, Funnel as N, Lightbulb as O, FlaskConical as P, Brain as Q, Droplet as R, MessageCircle as S, Mail as T, Circle as U, Copy as V, CircleGauge as W, ChartColumn as X, ChartLine as Y, Calendar as Z, Recycle as _, User as a, Anchor as at, Moon as b, Thermometer as c, Sparkles as d, Beaker as et, ShieldCheck as f, RefreshCcw as g, RotateCcw as h, Users as i, ArrowDown as it, Instagram as j, Leaf as k, Target as l, Search as m, Wind as n, ArrowUpRight as nt, TrendingUp as o, Activity as ot, Settings as p, ChevronDown as q, Waves as r, ArrowRight as rt, TrendingDown as s, X as t, ArrowUp as tt, Sun as u, Plus as v, MapPin as w, MessageSquareWarning as x, Phone as y, Download as z };
+export { BookOpen as $, LayoutDashboard as A, Cpu as B, Menu as C, Lock as D, LogOut as E, Eye as F, ChevronUp as G, Compass as H, Ellipsis as I, Check as J, ChevronRight as K, Earth as L, GraduationCap as M, Funnel as N, Lightbulb as O, FlaskConical as P, Brain as Q, Droplet as R, MessageCircle as S, Mail as T, Circle as U, Copy as V, CircleGauge as W, ChartColumn as X, ChartLine as Y, Calendar as Z, Recycle as _, User as a, ArrowDown as at, Moon as b, Thermometer as c, Sparkles as d, Bell as et, ShieldCheck as f, RefreshCcw as g, RotateCcw as h, Users as i, ArrowRight as it, Instagram as j, Leaf as k, Target as l, Search as m, Wind as n, ArrowUp as nt, TrendingUp as o, Anchor as ot, Settings as p, ChevronDown as q, Waves as r, ArrowUpRight as rt, TrendingDown as s, Activity as st, X as t, Beaker as tt, Sun as u, Plus as v, MapPin as w, MessageSquareWarning as x, Phone as y, Download as z };
