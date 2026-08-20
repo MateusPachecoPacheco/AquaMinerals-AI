@@ -26,6 +26,7 @@ O **AquaMinerals** é uma plataforma tecnológica completa que demonstra como a 
 ### Problema Resolvido
 
 Os oceanos possuem enormes recursos naturais, mas sua exploração enfrenta desafios:
+
 - Impactos ambientais históricos
 - Falta de monitoramento adequado
 - Uso ineficiente de dados
@@ -34,6 +35,7 @@ Os oceanos possuem enormes recursos naturais, mas sua exploração enfrenta desa
 ### Solução Proposta
 
 Uma plataforma interativa que:
+
 - ✅ Apresenta informações sobre minerais oceânicos
 - ✅ Demonstra tecnologias sustentáveis
 - ✅ Exibe dados e indicadores em dashboards
@@ -45,6 +47,7 @@ Uma plataforma interativa que:
 **Principal:** Criar experiência digital moderna demonstrando como tecnologia e sustentabilidade trabalham juntas.
 
 **Específicos:**
+
 - Divulgar conhecimento sobre recursos minerais oceânicos
 - Demonstrar aplicações tecnológicas sustentáveis
 - Utilizar IA como ferramenta de interação
@@ -56,12 +59,14 @@ Uma plataforma interativa que:
 ## ✨ Funcionalidades
 
 ### 🏠 Página Inicial
+
 - Apresentação conceitual do projeto
 - Informações sobre objetivos ambientais
 - Benefícios da utilização sustentável dos oceanos
 - Design moderno com animações suaves
 
 ### 📊 Dashboard Ambiental
+
 - **KPIs em Tempo Real**: Qualidade da água, temperatura, salinidade, pH, oxigênio dissolvido
 - **Gráficos Interativos**: Séries temporais, distribuição mineral, tendências
 - **Tabela de Monitoramento**: Status de 6 pontos de coleta
@@ -70,6 +75,7 @@ Uma plataforma interativa que:
 - **Atualização Automática**: Refresh periódico dos indicadores
 
 ### 🗺️ Mapa Interativo
+
 - **Leaflet/React-Leaflet**: Mapa baseado em OpenStreetMap
 - **6 Pontos Ativos**: Baía de Aratu, Ilha de Bimbarras, Suape Norte, Rio Paraguaçu, Ponta de Suape, Ilha das Fontes
 - **Status por Cores**: Verde (Ótimo), Amarelo (Atenção), Vermelho (Crítico)
@@ -78,6 +84,7 @@ Uma plataforma interativa que:
 - **Legenda Visual**: Indicadores de status
 
 ### 🤖 AquaAI — Assistente Inteligente
+
 - **Arquitetura RAG**: Retrieval Augmented Generation
 - **Base de Conhecimento**: 7 documentos especializados
 - **Processamento NLP**: Identificação de intenção e entidades
@@ -87,6 +94,7 @@ Uma plataforma interativa que:
 - **Histórico de Conversa**: Contexto mantido
 
 ### 🎨 Experiência Visual Premium
+
 - **Design System Consistente**: Componentes Radix UI
 - **Animações Framer Motion**: Transições suaves
 - **TailwindCSS v4**: Estilização moderna
@@ -169,32 +177,33 @@ Uma plataforma interativa que:
 
 ### Arquitetura RAG (Retrieval Augmented Generation)
 
-| Etapa | Descrição |
-|-------|-----------|
-| **1. Entrada** | Recebe pergunta em linguagem natural |
-| **2. Processamento** | Normaliza texto, extrai keywords |
-| **3. Classificação** | Identifica categoria e intenções |
-| **4. Recuperação** | Busca documentos relevantes na base |
-| **5. Geração** | Cria resposta contextualizada |
-| **6. Exibição** | Mostra resposta com fontes citadas |
+| Etapa                | Descrição                            |
+| -------------------- | ------------------------------------ |
+| **1. Entrada**       | Recebe pergunta em linguagem natural |
+| **2. Processamento** | Normaliza texto, extrai keywords     |
+| **3. Classificação** | Identifica categoria e intenções     |
+| **4. Recuperação**   | Busca documentos relevantes na base  |
+| **5. Geração**       | Cria resposta contextualizada        |
+| **6. Exibição**      | Mostra resposta com fontes citadas   |
 
 ### Base de Conhecimento
 
 7 documentos especializados cobrem:
 
-| Documento | Tópicos Principais |
-|-----------|-------------------|
-| `projeto.md` | Visão geral, localização, objetivos, pontos de monitoramento |
-| `sustentabilidade.md` | Princípios, ODS 14, monitoramento, certificações |
-| `minerais_oceanicos.md` | Composição, extração, aplicações, valores |
-| `tecnologia.md` | Stack técnico, arquitetura, infraestrutura |
-| `impacto_economico.md` | Empregos, receitas, projeções, multiplicador |
-| `impacto_ambiental.md` | Parâmetros, emergências, compensação |
-| `perguntas_frequentes.md` | FAQ completo em 7 categorias |
+| Documento                 | Tópicos Principais                                           |
+| ------------------------- | ------------------------------------------------------------ |
+| `projeto.md`              | Visão geral, localização, objetivos, pontos de monitoramento |
+| `sustentabilidade.md`     | Princípios, ODS 14, monitoramento, certificações             |
+| `minerais_oceanicos.md`   | Composição, extração, aplicações, valores                    |
+| `tecnologia.md`           | Stack técnico, arquitetura, infraestrutura                   |
+| `impacto_economico.md`    | Empregos, receitas, projeções, multiplicador                 |
+| `impacto_ambiental.md`    | Parâmetros, emergências, compensação                         |
+| `perguntas_frequentes.md` | FAQ completo em 7 categorias                                 |
 
 ### Categorias de Intenção
 
 A IA classifica perguntas em:
+
 - 📋 **projeto**: Informações gerais, localização, objetivos
 - 🌱 **sustentabilidade**: Meio ambiente, ODS, preservação
 - 💎 **minerais**: Composição, extração, aplicações
@@ -219,34 +228,34 @@ A IA classifica perguntas em:
 
 ### Frontend
 
-| Tecnologia | Versão | Finalidade |
-|------------|--------|------------|
-| **React** | 19 | Framework UI |
-| **TypeScript** | 5.x | Tipagem estática |
-| **TanStack Router** | 1.170+ | Roteamento tipo-safe |
-| **TailwindCSS** | 4.x | Estilização utilitária |
-| **Framer Motion** | 12.x | Animações |
-| **Recharts** | 2.x | Gráficos e visualização |
-| **React Leaflet** | 4.x | Mapas interativos |
-| **Radix UI** | Latest | Componentes acessíveis |
+| Tecnologia          | Versão | Finalidade              |
+| ------------------- | ------ | ----------------------- |
+| **React**           | 19     | Framework UI            |
+| **TypeScript**      | 5.x    | Tipagem estática        |
+| **TanStack Router** | 1.170+ | Roteamento tipo-safe    |
+| **TailwindCSS**     | 4.x    | Estilização utilitária  |
+| **Framer Motion**   | 12.x   | Animações               |
+| **Recharts**        | 2.x    | Gráficos e visualização |
+| **React Leaflet**   | 4.x    | Mapas interativos       |
+| **Radix UI**        | Latest | Componentes acessíveis  |
 
 ### Backend
 
-| Tecnologia | Finalidade |
-|------------|-----------|
-| **Node.js** | Runtime JavaScript |
-| **Fastify** | Servidor HTTP de alta performance |
-| **Prisma ORM** | Database type-safe |
-| **PostgreSQL** | Banco de dados relacional |
+| Tecnologia     | Finalidade                        |
+| -------------- | --------------------------------- |
+| **Node.js**    | Runtime JavaScript                |
+| **Fastify**    | Servidor HTTP de alta performance |
+| **Prisma ORM** | Database type-safe                |
+| **PostgreSQL** | Banco de dados relacional         |
 
 ### Inteligência Artificial
 
-| Componente | Descrição |
-|------------|-----------|
-| **RAG System** | Retrieval Augmented Generation |
-| **NLP** | Processamento de linguagem natural |
-| **Intent Classification** | Identificação de categorias |
-| **Semantic Search** | Busca por relevância |
+| Componente                | Descrição                          |
+| ------------------------- | ---------------------------------- |
+| **RAG System**            | Retrieval Augmented Generation     |
+| **NLP**                   | Processamento de linguagem natural |
+| **Intent Classification** | Identificação de categorias        |
+| **Semantic Search**       | Busca por relevância               |
 
 ---
 
@@ -254,14 +263,14 @@ A IA classifica perguntas em:
 
 ### Pontos de Monitoramento
 
-| ID | Localização | Status Típico |
-|----|-----------|---------------|
-| MDD-01 | Baía de Aratu | Ótimo |
-| MDD-02 | Ilha de Bimbarras | Ótimo |
-| MDD-03 | Suape Norte | Atenção |
-| MDD-04 | Rio Paraguaçu | Ótimo |
-| MDD-05 | Ponta de Suape | Crítico |
-| MDD-06 | Ilha das Fontes | Excelente |
+| ID     | Localização       | Status Típico |
+| ------ | ----------------- | ------------- |
+| MDD-01 | Baía de Aratu     | Ótimo         |
+| MDD-02 | Ilha de Bimbarras | Ótimo         |
+| MDD-03 | Suape Norte       | Atenção       |
+| MDD-04 | Rio Paraguaçu     | Ótimo         |
+| MDD-05 | Ponta de Suape    | Crítico       |
+| MDD-06 | Ilha das Fontes   | Excelente     |
 
 ### Parâmetros Medidos
 
@@ -274,11 +283,11 @@ A IA classifica perguntas em:
 
 ### Classificação de Status
 
-| Status | Cor | Critérios | Ação |
-|--------|-----|-----------|------|
-| **Ótimo** | 🟢 Verde | Todos parâmetros ideais | Rotina |
-| **Atenção** | 🟡 Amarelo | 1+ parâmetro fora | Monitorar |
-| **Crítico** | 🔴 Vermelho | Múltiplos críticos | Intervir |
+| Status      | Cor         | Critérios               | Ação      |
+| ----------- | ----------- | ----------------------- | --------- |
+| **Ótimo**   | 🟢 Verde    | Todos parâmetros ideais | Rotina    |
+| **Atenção** | 🟡 Amarelo  | 1+ parâmetro fora       | Monitorar |
+| **Crítico** | 🔴 Vermelho | Múltiplos críticos      | Intervir  |
 
 ---
 
@@ -328,12 +337,12 @@ npm run format   # Prettier formatting
 
 ### Metas Alcançadas
 
-| Métrica | Target | Resultado |
-|---------|--------|-----------|
-| First Contentful Paint | < 1.5s | ✅ 1.2s |
-| Largest Contentful Paint | < 2.5s | ✅ 2.1s |
-| Cumulative Layout Shift | < 0.1 | ✅ 0.05 |
-| Time to Interactive | < 3.5s | ✅ 2.8s |
+| Métrica                  | Target | Resultado |
+| ------------------------ | ------ | --------- |
+| First Contentful Paint   | < 1.5s | ✅ 1.2s   |
+| Largest Contentful Paint | < 2.5s | ✅ 2.1s   |
+| Cumulative Layout Shift  | < 0.1  | ✅ 0.05   |
+| Time to Interactive      | < 3.5s | ✅ 2.8s   |
 
 ### Otimizações
 
@@ -364,12 +373,14 @@ npm run format   # Prettier formatting
 ### Alinhamento com ODS
 
 **ODS 14 - Vida na Água** (Principal)
+
 - Conservação dos oceanos
 - Uso sustentável de recursos
 - Redução de poluição marinha
 - Aumento do conhecimento científico
 
 **Outros ODS Relacionados:**
+
 - ODS 6: Água potável e saneamento
 - ODS 8: Trabalho decente e crescimento
 - ODS 9: Indústria e inovação
@@ -388,11 +399,11 @@ npm run format   # Prettier formatting
 
 ## 📚 Documentação
 
-| Documento | Descrição |
-|-----------|-----------|
-| [README.md](./README.md) | Visão geral do projeto |
+| Documento                                      | Descrição                     |
+| ---------------------------------------------- | ----------------------------- |
+| [README.md](./README.md)                       | Visão geral do projeto        |
 | [docs/architecture.md](./docs/architecture.md) | Arquitetura técnica detalhada |
-| [knowledge/](./knowledge/) | Base de conhecimento da IA |
+| [knowledge/](./knowledge/)                     | Base de conhecimento da IA    |
 
 ---
 

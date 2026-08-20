@@ -17,6 +17,7 @@ O projeto está focado na região da Baía de Madre de Deus, no estado da Bahia,
 ### Quem pode usar a plataforma?
 
 A plataforma é acessível para:
+
 - Público em geral interessado em sustentabilidade
 - Estudantes e pesquisadores
 - Profissionais da área ambiental
@@ -30,6 +31,7 @@ A plataforma é acessível para:
 ### Quais minerais podem ser extraídos do oceano?
 
 Os principais minerais monitorados incluem:
+
 - **Sódio (38%)**: Indústria química, dessalinização
 - **Magnésio (22%)**: Ligas metálicas, suplementos
 - **Cálcio (14%)**: Construção, suplementos alimentícios
@@ -41,6 +43,7 @@ Totalizamos 37 tipos de minerais monitorados.
 ### A extração de minerais do oceano é viável economicamente?
 
 Sim, quando realizada de forma sustentável e com tecnologias adequadas. Os minerais oceânicos têm valor significativo, especialmente elementos como lítio, magnésio e potássio, cuja demanda global está crescendo. A viabilidade depende de:
+
 - Tecnologia eficiente de extração
 - Escala de operação adequada
 - Gestão ambiental responsável
@@ -49,6 +52,7 @@ Sim, quando realizada de forma sustentável e com tecnologias adequadas. Os mine
 ### Qual é o destino dos minerais extraídos?
 
 Os minerais obtidos são direcionados para:
+
 - Indústria tecnológica e de componentes
 - Setor energético (baterias, combustíveis)
 - Produção de materiais avançados
@@ -59,6 +63,7 @@ Os minerais obtidos são direcionados para:
 ### A extração prejudica o meio ambiente?
 
 Quando realizada com tecnologias sustentáveis e monitoramento adequado, a extração pode ser feita com mínimo impacto ambiental. O AquaMinerals demonstra que é possível:
+
 - Extrair volumes abaixo da capacidade de renovação natural
 - Monitorar continuamente a qualidade da água
 - Detectar e responder rapidamente a anomalias
@@ -71,6 +76,7 @@ Quando realizada com tecnologias sustentáveis e monitoramento adequado, a extra
 ### Como o projeto garante a sustentabilidade ambiental?
 
 Através de múltiplas medidas:
+
 - **Monitoramento contínuo**: Sensores 24/7 em todos os pontos
 - **Limites rigorosos**: Extração abaixo da capacidade de renovação
 - **Zoneamento**: Áreas protegidas sem extração
@@ -90,6 +96,7 @@ O sistema possui classificação em três níveis:
 ### O projeto contribui para os Objetivos de Desenvolvimento Sustentável (ODS)?
 
 Sim, principalmente para o **ODS 14 - Vida na Água**, mas também contribui para:
+
 - ODS 6: Água potável e saneamento
 - ODS 8: Trabalho decente e crescimento econômico
 - ODS 9: Indústria, inovação e infraestrutura
@@ -99,6 +106,7 @@ Sim, principalmente para o **ODS 14 - Vida na Água**, mas também contribui par
 ### Como a comunidade local é beneficiada?
 
 Benefícios incluem:
+
 - Geração de empregos diretos e indiretos
 - Capacitação profissional gratuita
 - Receitas fiscais para melhorias públicas
@@ -113,6 +121,7 @@ Benefícios incluem:
 ### O que é a AquaAI?
 
 A AquaAI é uma assistente virtual especializada no projeto AquaMinerals. Ela utiliza processamento de linguagem natural e uma base de conhecimento especializada para responder perguntas sobre:
+
 - O projeto e seus objetivos
 - Minerais oceânicos e suas aplicações
 - Sustentabilidade e impacto ambiental
@@ -132,6 +141,7 @@ A IA segue uma arquitetura RAG (Retrieval Augmented Generation):
 ### A AquaAI pode cometer erros?
 
 Sim. Embora a IA seja treinada com informações verificadas do projeto, ela pode:
+
 - Interpretar incorretamente perguntas ambíguas
 - Ter informações desatualizadas
 - Não compreender contexto complexo
@@ -141,6 +151,7 @@ Sim. Embora a IA seja treinada com informações verificadas do projeto, ela pod
 ### Posso fazer qualquer pergunta para a AquaAI?
 
 A AquaAI é especializada no projeto AquaMinerals. Ela responde melhor a perguntas relacionadas a:
+
 - ✅ Projeto e objetivos
 - ✅ Minerais e extração sustentável
 - ✅ Dados ambientais e monitoramento
@@ -156,6 +167,7 @@ Perguntas fora deste escopo podem receber respostas genéricas ou indicar limita
 ### Como acessar o dashboard de monitoramento?
 
 O dashboard está disponível na rota `/dashboard` da plataforma. Ele mostra:
+
 - Indicadores em tempo real
 - Gráficos de tendências
 - Composição mineral
@@ -165,6 +177,7 @@ O dashboard está disponível na rota `/dashboard` da plataforma. Ele mostra:
 ### Os dados são atualizados em tempo real?
 
 Os dados do dashboard representam demonstração conceitual. Em uma implementação real:
+
 - Sensores IoT enviariam dados continuamente
 - Atualizações ocorreriam a cada 5-15 minutos
 - Alertas seriam gerados automaticamente
@@ -173,6 +186,7 @@ Os dados do dashboard representam demonstração conceitual. Em uma implementaç
 ### Posso exportar os dados para análise?
 
 Sim! O dashboard possui funcionalidade de exportação em formato CSV, permitindo:
+
 - Análise em ferramentas externas
 - Geração de relatórios customizados
 - Integração com outros sistemas
@@ -181,6 +195,7 @@ Sim! O dashboard possui funcionalidade de exportação em formato CSV, permitind
 ### O mapa interativo mostra quais informações?
 
 O mapa (`/mapa`) apresenta:
+
 - Localização dos pontos de monitoramento
 - Status atual de cada ponto (cores)
 - Informações detalhadas ao clicar
@@ -194,6 +209,7 @@ O mapa (`/mapa`) apresenta:
 ### Quais tecnologias são utilizadas no projeto?
 
 **Frontend:**
+
 - React 19 com TypeScript
 - TanStack Router
 - TailwindCSS
@@ -202,12 +218,14 @@ O mapa (`/mapa`) apresenta:
 - React Leaflet (mapas)
 
 **Backend:**
+
 - Node.js com Fastify
 - Prisma ORM
 - PostgreSQL
 - APIs REST
 
 **IA:**
+
 - Processamento de linguagem natural
 - Sistema RAG (Retrieval Augmented Generation)
 - Base de conhecimento estruturada
@@ -219,6 +237,7 @@ O projeto tem fins educacionais e demonstrativos. Para acesso ao código fonte o
 ### É possível replicar o projeto em outras regiões?
 
 Sim! A arquitetura foi projetada para ser escalável e adaptável. Para implementação em outras localidades, considere:
+
 - Características oceanográficas locais
 - Regulamentação específica da região
 - Engajamento com comunidades locais
@@ -232,6 +251,7 @@ Sim! A arquitetura foi projetada para ser escalável e adaptável. Para implemen
 ### Quantos pontos de monitoramento existem?
 
 Atualmente são 6 pontos principais:
+
 - MDD-01: Baía de Aratu
 - MDD-02: Ilha de Bimbarras
 - MDD-03: Suape Norte
@@ -242,6 +262,7 @@ Atualmente são 6 pontos principais:
 ### Com que frequência os dados são coletados?
 
 A frequência varia conforme o status do ponto:
+
 - **Status Ótimo**: Coleta semanal
 - **Status Atenção**: Coleta a cada 48 horas
 - **Status Crítico**: Coleta diária
@@ -250,6 +271,7 @@ A frequência varia conforme o status do ponto:
 ### Quais parâmetros são medidos?
 
 Principais parâmetros:
+
 - Qualidade da água (%)
 - Temperatura (°C)
 - pH
@@ -261,6 +283,7 @@ Principais parâmetros:
 ### Como é determinado o status de cada ponto?
 
 O status é calculado baseado em:
+
 - Faixas ideais de cada parâmetro
 - Peso relativo de cada indicador
 - Tendências históricas
@@ -273,6 +296,7 @@ O status é calculado baseado em:
 ### Quantos empregos o projeto pode gerar?
 
 Estimativas por fase:
+
 - **Pesquisa**: 15-25 empregos diretos
 - **Implementação**: 50-100 empregos diretos
 - **Operação**: 30-60 empregos diretos
@@ -283,6 +307,7 @@ Cada emprego direto gera aproximadamente 3 empregos indiretos.
 ### Qual é o potencial de receita?
 
 Cenários projetados (5 anos):
+
 - **Conservador**: R$ 20 milhões/ano
 - **Moderado**: R$ 80 milhões/ano
 - **Otimista**: R$ 250 milhões/ano
@@ -290,6 +315,7 @@ Cenários projetados (5 anos):
 ### Como os royalties são distribuídos?
 
 Distribuição estimada:
+
 - União: 45%
 - Estado: 25%
 - Municípios: 30%
@@ -304,6 +330,7 @@ Distribuição estimada:
 ### Como entrar em contato com o projeto?
 
 Para mais informações:
+
 - Explore a plataforma completa
 - Utilize a AquaAI para dúvidas rápidas
 - Consulte a documentação técnica
@@ -312,6 +339,7 @@ Para mais informações:
 ### O projeto aceita parcerias?
 
 Sim! O AquaMinerals está aberto a parcerias com:
+
 - Universidades e centros de pesquisa
 - Empresas de tecnologia
 - Organizações ambientais
@@ -321,6 +349,7 @@ Sim! O AquaMinerals está aberto a parcerias com:
 ### Como acompanhar as novidades do projeto?
 
 Acompanhe através de:
+
 - Newsletter mensal
 - Relatórios trimestrais públicos
 - Publicações científicas

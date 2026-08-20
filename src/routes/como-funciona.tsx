@@ -8,19 +8,43 @@ export const Route = createFileRoute("/como-funciona")({
   head: () => ({
     meta: [
       { title: "Como Funciona — AquaMinerals" },
-      { name: "description", content: "Do oceano ao insight: veja o fluxo científico e tecnológico da plataforma AquaMinerals." },
+      {
+        name: "description",
+        content:
+          "Do oceano ao insight: veja o fluxo científico e tecnológico da plataforma AquaMinerals.",
+      },
     ],
   }),
   component: HowItWorks,
 });
 
 const flow = [
-  { icon: Droplet, title: "Água do Mar", desc: "Ecossistema fonte, monitorado in situ com bóias e sensores autônomos." },
-  { icon: FlaskConical, title: "Coleta", desc: "Amostras periódicas capturadas por equipes técnicas e sensores IoT." },
-  { icon: FlaskConical, title: "Análise Química", desc: "Espectrometria e cromatografia identificam composição mineral." },
-  { icon: Cpu, title: "Processamento IA", desc: "Modelos ML normalizam, correlacionam e detectam anomalias." },
+  {
+    icon: Droplet,
+    title: "Água do Mar",
+    desc: "Ecossistema fonte, monitorado in situ com bóias e sensores autônomos.",
+  },
+  {
+    icon: FlaskConical,
+    title: "Coleta",
+    desc: "Amostras periódicas capturadas por equipes técnicas e sensores IoT.",
+  },
+  {
+    icon: FlaskConical,
+    title: "Análise Química",
+    desc: "Espectrometria e cromatografia identificam composição mineral.",
+  },
+  {
+    icon: Cpu,
+    title: "Processamento IA",
+    desc: "Modelos ML normalizam, correlacionam e detectam anomalias.",
+  },
   { icon: LineChart, title: "Visualização", desc: "Dashboards, mapas e relatórios em tempo real." },
-  { icon: Eye, title: "Tomada de decisão", desc: "Comunidade, ciência e gestão pública decidem com base em evidências." },
+  {
+    icon: Eye,
+    title: "Tomada de decisão",
+    desc: "Comunidade, ciência e gestão pública decidem com base em evidências.",
+  },
 ];
 
 export default function HowItWorks() {
@@ -28,12 +52,15 @@ export default function HowItWorks() {
     <SiteLayout>
       <section className="relative overflow-hidden bg-gradient-hero py-24 sm:py-32">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <Badge variant="outline" className="glass mb-6">Fluxo científico</Badge>
+          <Badge variant="outline" className="glass mb-6">
+            Fluxo científico
+          </Badge>
           <h1 className="font-display text-4xl font-bold sm:text-6xl">
             Do oceano ao <span className="text-gradient-ocean">insight</span>.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-            Cada gota de água percorre um caminho estruturado de ciência, tecnologia e transparência.
+            Cada gota de água percorre um caminho estruturado de ciência, tecnologia e
+            transparência.
           </p>
         </div>
       </section>

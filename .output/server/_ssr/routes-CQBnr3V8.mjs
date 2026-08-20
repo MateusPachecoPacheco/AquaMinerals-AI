@@ -2,8 +2,8 @@ import { t as motion } from "../_libs/framer-motion.mjs";
 import { f as require_jsx_runtime } from "../_libs/@radix-ui/react-avatar+[...].mjs";
 import { v as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { L as Earth, P as FlaskConical, Q as Brain, R as Droplet, X as ChartColumn, d as Sparkles, f as ShieldCheck, it as ArrowRight, k as Leaf, r as Waves, st as Activity, w as MapPin } from "../_libs/lucide-react.mjs";
-import { f as Button, l as SiteLayout, u as Badge } from "./router-Dpas2j5G.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-DBnk0cvk.js
+import { f as Button, l as SiteLayout, u as Badge } from "./router-CDLd4puj.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-CQBnr3V8.js
 var import_jsx_runtime = require_jsx_runtime();
 function OceanBackdrop() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {

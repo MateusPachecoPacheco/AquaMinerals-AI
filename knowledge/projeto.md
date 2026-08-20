@@ -55,6 +55,7 @@ A plataforma monitora continuamente os seguintes parâmetros:
 ## Tecnologia Utilizada
 
 ### Frontend
+
 - React 19 com TypeScript
 - TanStack Router para navegação
 - TailwindCSS para estilização
@@ -63,11 +64,13 @@ A plataforma monitora continuamente os seguintes parâmetros:
 - Leaflet/React-Leaflet para mapas
 
 ### Backend
+
 - Node.js com Fastify
 - Prisma ORM para banco de dados
 - APIs REST para comunicação
 
 ### Inteligência Artificial
+
 - Processamento de linguagem natural
 - Sistema RAG (Retrieval Augmented Generation)
 - Base de conhecimento especializada

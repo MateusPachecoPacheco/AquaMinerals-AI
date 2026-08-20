@@ -2,13 +2,13 @@ import { o as __toESM } from "../_runtime.mjs";
 import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
 import { f as require_jsx_runtime } from "../_libs/@radix-ui/react-avatar+[...].mjs";
 import { a as useMap, i as CircleMarker, n as Popup, r as MapContainer, t as TileLayer } from "../_libs/react-leaflet.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/LeafletMap-j5JwhgMh.js
+//#region node_modules/.nitro/vite/services/ssr/assets/LeafletMap-BnhOh98s.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var statusFill = {
-	"Ótimo": "#10b981",
-	"Atenção": "#f59e0b",
-	"Crítico": "#ef4444"
+	Ótimo: "#10b981",
+	Atenção: "#f59e0b",
+	Crítico: "#ef4444"
 };
 function Recenter({ selected }) {
 	const map = useMap();

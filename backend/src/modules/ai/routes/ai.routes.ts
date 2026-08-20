@@ -8,19 +8,23 @@ export async function aiRoutes(app: FastifyInstance): Promise<void> {
   // A IA só pode ser acessada por usuários autenticados
   app.addHook("preHandler", verifyJwt);
 
-  app.post("/chat", {
-    schema: {
-      tags: ["AquaAI"],
-      summary: "Enviar mensagem para a Inteligência Artificial da plataforma",
-      security: [{ bearerAuth: [] }],
-      body: {
-        type: "object",
-        required: ["message"],
-        properties: {
-          message: { type: "string", maxLength: 1000 },
-          context: { type: "string" },
+  app.post(
+    "/chat",
+    {
+      schema: {
+        tags: ["AquaAI"],
+        summary: "Enviar mensagem para a Inteligência Artificial da plataforma",
+        security: [{ bearerAuth: [] }],
+        body: {
+          type: "object",
+          required: ["message"],
+          properties: {
+            message: { type: "string", maxLength: 1000 },
+            context: { type: "string" },
+          },
         },
       },
     },
-  }, aiController.chat);
+    aiController.chat,
+  );
 }

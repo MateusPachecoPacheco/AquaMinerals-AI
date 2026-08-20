@@ -22,8 +22,8 @@ enum UserRole {
 
 enum ReportType {
   ENVIRONMENTAL_ISSUE // Denúncia / Problema Ambiental
-  SUGGESTION          // Sugestão para a comunidade/plataforma
-  PRAISE              // Elogio / Feedback positivo
+  SUGGESTION // Sugestão para a comunidade/plataforma
+  PRAISE // Elogio / Feedback positivo
 }
 
 enum ReportStatus {
@@ -50,11 +50,11 @@ model User {
   password  String
   role      UserRole  @default(USER)
   deletedAt DateTime? // <-- ADICIONE ESTA LINHA PARA EXCLUSÃO LÓGICA
-  
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
 
-  reports   EnvironmentalReport[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  reports EnvironmentalReport[]
 
   @@map("users")
 }
@@ -65,18 +65,18 @@ model EnvironmentalReport {
   description String
   type        ReportType
   status      ReportStatus @default(PENDING)
-  
+
   // Geolocalização (Crucial para o Módulo de Mapa e Denúncias)
-  latitude    Float?
-  longitude   Float?
-  address     String?
+  latitude  Float?
+  longitude Float?
+  address   String?
 
   // Relacionamento (Quem fez a denúncia?)
-  userId      String
-  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   // Índices para performance em buscas frequentes
   @@index([userId])
@@ -91,37 +91,37 @@ model EducationalProject {
   description String
   imageUrl    String?
   status      ProjectStatus @default(DRAFT)
-  
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("educational_projects")
 }
 
 model CollectionPoint {
-  id                  String   @id @default(uuid())
-  name                String
-  description         String?
-  latitude            Float
-  longitude           Float
-  
+  id          String  @id @default(uuid())
+  name        String
+  description String?
+  latitude    Float
+  longitude   Float
+
   // Dados científicos (Madre de Deus - BA)
-  salinityLevel       Float?   // Nível de salinidade
-  phLevel             Float?   // Nível de pH
-  
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+  salinityLevel Float? // Nível de salinidade
+  phLevel       Float? // Nível de pH
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("collection_points")
 }
 
 model DashboardIndicator {
-  id          String   @id @default(uuid())
-  metricName  String   // Ex: "Minerais Extraídos", "Qualidade da Água"
-  value       Float
-  unit        String   // Ex: "kg", "pH", "%"
-  
-  recordedAt  DateTime @default(now())
+  id         String @id @default(uuid())
+  metricName String // Ex: "Minerais Extraídos", "Qualidade da Água"
+  value      Float
+  unit       String // Ex: "kg", "pH", "%"
+
+  recordedAt DateTime @default(now())
 
   @@index([metricName])
   @@map("dashboard_indicators")

@@ -9,23 +9,23 @@ export interface KnowledgeDocument {
   lastUpdated: string;
 }
 
-export type KnowledgeCategory = 
-  | 'projeto'
-  | 'sustentabilidade'
-  | 'minerais'
-  | 'tecnologia'
-  | 'impacto_economico'
-  | 'impacto_ambiental'
-  | 'perguntas_frequentes';
+export type KnowledgeCategory =
+  | "projeto"
+  | "sustentabilidade"
+  | "minerais"
+  | "tecnologia"
+  | "impacto_economico"
+  | "impacto_ambiental"
+  | "perguntas_frequentes";
 
 export interface UserMessage {
-  role: 'user';
+  role: "user";
   content: string;
   timestamp: string;
 }
 
 export interface AssistantMessage {
-  role: 'assistant';
+  role: "assistant";
   content: string;
   timestamp: string;
   sources?: string[];
@@ -49,7 +49,7 @@ export interface IntentClassification {
 }
 
 export interface Entity {
-  type: 'mineral' | 'location' | 'parameter' | 'metric' | 'date';
+  type: "mineral" | "location" | "parameter" | "metric" | "date";
   value: string;
   confidence: number;
 }

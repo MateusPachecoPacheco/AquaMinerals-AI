@@ -36,24 +36,24 @@ O AquaMinerals foi desenvolvido com a premissa fundamental de que desenvolviment
 
 **Parâmetros Físico-Químicos:**
 
-| Parâmetro | Método de Análise | Frequência | Limite Crítico |
-|-----------|------------------|------------|----------------|
-| pH | Eletrometria | Contínuo | < 7.5 ou > 8.5 |
-| Temperatura | Termometria digital | Contínuo | Variação > 2°C |
-| Salinidade | Refratometria | Contínuo | < 30 ou > 40 PSU |
-| Oxigênio Dissolvido | Sensor óptico | Contínuo | < 5 mg/L |
-| Turbidez | Nefelometria | Diário | > 10 NTU |
-| Condutividade | Condutivimetria | Contínuo | Variações bruscas |
+| Parâmetro           | Método de Análise   | Frequência | Limite Crítico    |
+| ------------------- | ------------------- | ---------- | ----------------- |
+| pH                  | Eletrometria        | Contínuo   | < 7.5 ou > 8.5    |
+| Temperatura         | Termometria digital | Contínuo   | Variação > 2°C    |
+| Salinidade          | Refratometria       | Contínuo   | < 30 ou > 40 PSU  |
+| Oxigênio Dissolvido | Sensor óptico       | Contínuo   | < 5 mg/L          |
+| Turbidez            | Nefelometria        | Diário     | > 10 NTU          |
+| Condutividade       | Condutivimetria     | Contínuo   | Variações bruscas |
 
 **Parâmetros Químicos:**
 
-| Parâmetro | Método | Frequência | Valor de Referência |
-|-----------|--------|------------|---------------------|
-| Nitrogênio Amoniacal | Colorimetria | Semanal | < 0.5 mg/L |
-| Nitrato | Cromatografia | Semanal | < 10 mg/L |
-| Fosfato Total | Colorimetria | Semanal | < 0.1 mg/L |
-| Metais Pesados | ICP-MS | Mensal | Conforme CONAMA |
-| Hidrocarbonetos | GC-MS | Mensal | Não detectável |
+| Parâmetro            | Método        | Frequência | Valor de Referência |
+| -------------------- | ------------- | ---------- | ------------------- |
+| Nitrogênio Amoniacal | Colorimetria  | Semanal    | < 0.5 mg/L          |
+| Nitrato              | Cromatografia | Semanal    | < 10 mg/L           |
+| Fosfato Total        | Colorimetria  | Semanal    | < 0.1 mg/L          |
+| Metais Pesados       | ICP-MS        | Mensal     | Conforme CONAMA     |
+| Hidrocarbonetos      | GC-MS         | Mensal     | Não detectável      |
 
 ### Biodiversidade Marinha
 
@@ -114,6 +114,7 @@ O AquaMinerals foi desenvolvido com a premissa fundamental de que desenvolviment
 **Causa:** Operações de bombeamento de água
 
 **Medidas Mitigadoras:**
+
 - Velocidade controlada de bombeamento
 - Difusores para dispersão suave
 - Horários otimizados (maré cheia)
@@ -126,6 +127,7 @@ O AquaMinerals foi desenvolvido com a premissa fundamental de que desenvolviment
 **Causa:** Operação de equipamentos
 
 **Medidas Mitigadoras:**
+
 - Equipamentos de baixo ruído
 - Isolamento acústico
 - Pausas operacionais
@@ -138,6 +140,7 @@ O AquaMinerals foi desenvolvido com a premissa fundamental de que desenvolviment
 **Causa:** Presença de infraestrutura e operações
 
 **Medidas Mitigadoras:**
+
 - Sinalização adequada
 - Velocidade reduzida de embarcações
 - Treinamento de operadores
@@ -152,6 +155,7 @@ O AquaMinerals foi desenvolvido com a premissa fundamental de que desenvolviment
 **Status ÓTIMO (Verde)**
 
 Todos os parâmetros devem atender:
+
 - pH entre 7.8 e 8.4
 - Temperatura dentro da variação sazonal normal
 - Oxigênio dissolvido > 6 mg/L
@@ -162,6 +166,7 @@ Todos os parâmetros devem atender:
 **Status ATENÇÃO (Amarelo)**
 
 Um ou mais parâmetros apresentam:
+
 - pH entre 7.5-7.8 ou 8.4-8.6
 - Variação de temperatura de 1-2°C acima do normal
 - Oxigênio dissolvido entre 5-6 mg/L
@@ -169,6 +174,7 @@ Um ou mais parâmetros apresentam:
 - Alterações leves na composição de espécies
 
 Ações requeridas:
+
 - Intensificar monitoramento
 - Investigar causas
 - Preparar medidas corretivas
@@ -176,6 +182,7 @@ Ações requeridas:
 **Status CRÍTICO (Vermelho)**
 
 Um ou mais parâmetros apresentam:
+
 - pH < 7.5 ou > 8.6
 - Variação de temperatura > 2°C
 - Oxigênio dissolvido < 5 mg/L
@@ -184,6 +191,7 @@ Um ou mais parâmetros apresentam:
 - Mortandade de organismos
 
 Ações requeridas:
+
 - Suspensão imediata das operações
 - Notificação aos órgãos ambientais
 - Investigação emergencial
@@ -195,23 +203,25 @@ Ações requeridas:
 
 **Pontos de Monitoramento:**
 
-| Ponto | Dias em Ótimo | Dias em Atenção | Dias em Crítico | Tendência |
-|-------|--------------|-----------------|-----------------|-----------|
-| MDD-01 | 350 | 15 | 0 | Estável |
-| MDD-02 | 345 | 18 | 2 | Melhorando |
-| MDD-03 | 290 | 65 | 10 | Atenção |
-| MDD-04 | 340 | 22 | 3 | Estável |
-| MDD-05 | 220 | 100 | 45 | Requer ação |
-| MDD-06 | 355 | 10 | 0 | Excelente |
+| Ponto  | Dias em Ótimo | Dias em Atenção | Dias em Crítico | Tendência   |
+| ------ | ------------- | --------------- | --------------- | ----------- |
+| MDD-01 | 350           | 15              | 0               | Estável     |
+| MDD-02 | 345           | 18              | 2               | Melhorando  |
+| MDD-03 | 290           | 65              | 10              | Atenção     |
+| MDD-04 | 340           | 22              | 3               | Estável     |
+| MDD-05 | 220           | 100             | 45              | Requer ação |
+| MDD-06 | 355           | 10              | 0               | Excelente   |
 
 ### Análise de Tendências
 
 **Parâmetros com Melhoria:**
+
 - Redução de turbidez nos pontos MDD-01 e MDD-02
 - Aumento nos níveis de oxigênio dissolvido
 - Estabilidade no pH após ajustes operacionais
 
 **Parâmetros Requerendo Atenção:**
+
 - Temperatura elevada no ponto MDD-05 (influência externa)
 - Variação sazonal de salinidade no ponto MDD-03
 - Necessidade de investigação de fonte pontual
@@ -221,18 +231,21 @@ Ações requeridas:
 ### Protocolo de Resposta Rápida
 
 **Nível 1 - Anomalia Leve:**
+
 - Detecção automática pelo sistema
 - Alerta à equipe de operação
 - Intensificação do monitoramento
 - Relatório em 24 horas
 
 **Nível 2 - Incidente Moderado:**
+
 - Parâmetros fora dos limites por > 6 horas
 - Notificação ao gestor ambiental
 - Acionamento da equipe de resposta
 - Relatório preliminar em 12 horas
 
 **Nível 3 - Emergência Ambiental:**
+
 - Risco comprovado ao ecossistema
 - Suspensão total das operações
 - Notificação imediata aos órgãos ambientais
@@ -252,6 +265,7 @@ Ações requeridas:
 ### Investimento em Conservação
 
 **Percentual da Receita Destinado:**
+
 - 2% para projetos de conservação marinha
 - 1% para pesquisa científica
 - 0.5% para educação ambiental comunitária
@@ -278,11 +292,13 @@ Ações requeridas:
 ### Licenciamento Ambiental
 
 **Licenças Obtidas:**
+
 - Licença Prévia (LP): Nº 001/2024
 - Licença de Instalação (LI): Nº 045/2024
 - Licença de Operação (LO): Nº 089/2024
 
 **Órgãos Envolvidos:**
+
 - IBAMA - Instituto Brasileiro do Meio Ambiente
 - INEA - Instituto Estadual do Ambiente
 - Prefeitura Municipal de Madre de Deus
@@ -290,11 +306,13 @@ Ações requeridas:
 ### Auditorias Ambientais
 
 **Frequência:**
+
 - Auditoria interna: Trimestral
 - Auditoria externa: Anual
 - Vistoria dos órgãos: Semestral
 
 **Resultados das Últimas Auditorias:**
+
 - 2024: Conformidade total (100%)
 - 2023: Conformidade total (100%)
 - 2022: Conformidade com melhorias identificadas (95%)
@@ -321,6 +339,7 @@ Ações requeridas:
 ### Publicações Científicas
 
 **Artigos Publicados (últimos 2 anos):**
+
 - "Impacto de Operações Sustentáveis em Ecossistemas Costeiros" - Marine Ecology Journal
 - "Monitoramento Contínuo de Parâmetros Oceanográficos" - Brazilian Journal of Oceanography
 - "Eficiência de Medidas Mitigadoras em Ambientes Marinhos" - Environmental Science & Technology
@@ -330,12 +349,14 @@ Ações requeridas:
 ### Acesso à Informação
 
 **Dados Disponíveis Publicamente:**
+
 - Resultados de monitoramento em tempo real
 - Relatórios mensais de conformidade
 - Planos de gestão ambiental
 - Registros de incidentes e ações corretivas
 
 **Canais de Comunicação:**
+
 - Portal online de dados ambientais
 - Ouvidoria ambiental (telefone e email)
 - Reuniões públicas trimestrais
@@ -344,12 +365,14 @@ Ações requeridas:
 ### Comitê de Acompanhamento Ambiental
 
 **Composição:**
+
 - Representantes do poder público (40%)
 - Representantes da comunidade (30%)
 - Especialistas independentes (20%)
 - Representantes do projeto (10%)
 
 **Atribuições:**
+
 - Analisar relatórios de monitoramento
 - Recomendar medidas adicionais
 - Avaliar eficácia das ações

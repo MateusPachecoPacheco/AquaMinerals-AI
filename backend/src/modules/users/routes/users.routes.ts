@@ -10,37 +10,49 @@ export async function usersRoutes(app: FastifyInstance): Promise<void> {
   // Aplica o JWT em todas as rotas abaixo deste hook
   app.addHook("preHandler", verifyJwt);
 
-  app.get("/me", {
-    schema: {
-      tags: ["Usuários"],
-      summary: "Obter perfil do usuário autenticado",
-      security: [{ bearerAuth: [] }],
+  app.get(
+    "/me",
+    {
+      schema: {
+        tags: ["Usuários"],
+        summary: "Obter perfil do usuário autenticado",
+        security: [{ bearerAuth: [] }],
+      },
     },
-  }, usersController.me);
+    usersController.me,
+  );
 
-  app.put("/me", {
-    schema: {
-      tags: ["Usuários"],
-      summary: "Atualizar perfil do usuário autenticado",
-      security: [{ bearerAuth: [] }],
-      body: {
-        type: "object",
-        properties: {
-          name: { type: "string", minLength: 3 },
-          email: { type: "string", format: "email" },
-          password: { type: "string", minLength: 6 },
+  app.put(
+    "/me",
+    {
+      schema: {
+        tags: ["Usuários"],
+        summary: "Atualizar perfil do usuário autenticado",
+        security: [{ bearerAuth: [] }],
+        body: {
+          type: "object",
+          properties: {
+            name: { type: "string", minLength: 3 },
+            email: { type: "string", format: "email" },
+            password: { type: "string", minLength: 6 },
+          },
         },
       },
     },
-  }, usersController.update);
+    usersController.update,
+  );
 
   // Rota Administrativa (Exige JWT + Role ADMIN)
-  app.get("/", {
-    preHandler: [verifyUserRole(UserRole.ADMIN)],
-    schema: {
-      tags: ["Usuários"],
-      summary: "Listar todos os usuários (Apenas Admins)",
-      security: [{ bearerAuth: [] }],
+  app.get(
+    "/",
+    {
+      preHandler: [verifyUserRole(UserRole.ADMIN)],
+      schema: {
+        tags: ["Usuários"],
+        summary: "Listar todos os usuários (Apenas Admins)",
+        security: [{ bearerAuth: [] }],
+      },
     },
-  }, usersController.list);
+    usersController.list,
+  );
 }

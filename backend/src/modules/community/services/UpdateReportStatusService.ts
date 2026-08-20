@@ -7,7 +7,7 @@ export class UpdateReportStatusService {
 
   async execute(reportId: string, data: UpdateReportStatusDto) {
     const report = await this.reportsRepository.findById(reportId);
-    
+
     if (!report) {
       throw new AppError("Denúncia ou sugestão não encontrada.", 404);
     }

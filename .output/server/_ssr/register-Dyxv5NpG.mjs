@@ -4,9 +4,9 @@ import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
 import { f as require_jsx_runtime } from "../_libs/@radix-ui/react-avatar+[...].mjs";
 import { v as Link, y as useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
 import { D as Lock, T as Mail, a as User, it as ArrowRight } from "../_libs/lucide-react.mjs";
-import { c as Input, d as useAuth, f as Button } from "./router-Dpas2j5G.mjs";
+import { c as Input, d as useAuth, f as Button } from "./router-CDLd4puj.mjs";
 import { t as Label } from "./label-CG8S7mEM.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/register-Dg5XvCrS.js
+//#region node_modules/.nitro/vite/services/ssr/assets/register-Dyxv5NpG.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function Register() {
@@ -135,11 +135,15 @@ function Register() {
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 						className: "mt-6 text-center text-sm text-muted-foreground",
-						children: ["Já tem conta? ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-							to: "/login",
-							className: "font-medium text-primary hover:underline",
-							children: "Fazer login"
-						})]
+						children: [
+							"Já tem conta?",
+							" ",
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+								to: "/login",
+								className: "font-medium text-primary hover:underline",
+								children: "Fazer login"
+							})
+						]
 					})
 				]
 			})]

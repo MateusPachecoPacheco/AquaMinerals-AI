@@ -9,6 +9,7 @@ O AquaMinerals demonstra como a exploração sustentável de recursos oceânicos
 ### Contexto Global
 
 A economia azul mundial movimenta aproximadamente:
+
 - **USD 2.5 trilhões** em valor anual
 - **31 milhões** de empregos diretos
 - **Crescimento projetado**: 5% ao ano até 2030
@@ -16,6 +17,7 @@ A economia azul mundial movimenta aproximadamente:
 ### Contexto Brasileiro
 
 O Brasil possui:
+
 - **8.500 km** de costa marítima
 - **3.5 milhões km²** de Zona Econômica Exclusiva
 - **Potencial subexplorado**: < 10% do potencial total
@@ -25,6 +27,7 @@ O Brasil possui:
 ### Geração de Empregos
 
 **Empregos Diretos:**
+
 - Técnicos em monitoramento ambiental
 - Operadores de equipamentos
 - Analistas de dados oceanográficos
@@ -32,6 +35,7 @@ O Brasil possui:
 - Engenheiros de processos
 
 **Empregos Indiretos:**
+
 - Fornecedores de equipamentos
 - Serviços de manutenção
 - Transporte e logística
@@ -40,27 +44,30 @@ O Brasil possui:
 
 **Estimativa de Empregos por Fase:**
 
-| Fase | Empregos Diretos | Empregos Indiretos |
-|------|-----------------|-------------------|
-| Pesquisa | 15-25 | 30-50 |
-| Implementação | 50-100 | 150-250 |
-| Operação | 30-60 | 100-150 |
-| Expansão | 100-200 | 300-500 |
+| Fase          | Empregos Diretos | Empregos Indiretos |
+| ------------- | ---------------- | ------------------ |
+| Pesquisa      | 15-25            | 30-50              |
+| Implementação | 50-100           | 150-250            |
+| Operação      | 30-60            | 100-150            |
+| Expansão      | 100-200          | 300-500            |
 
 ### Receitas Fiscais
 
 **Municípios Costeiros:**
+
 - ISS sobre serviços
 - ITBI em transações imobiliárias
 - Taxas de licenciamento
 - Participação em royalties
 
 **Estado:**
+
 - ICMS sobre circulação de mercadorias
 - Royalties de exploração mineral
 - Taxas ambientais
 
 **União:**
+
 - CFEM (Compensação Financeira pela Exploração Mineral)
 - Imposto de Renda
 - Contribuições sociais
@@ -127,6 +134,7 @@ Receita Total de Royalties
 **Efeito Multiplicador Regional:**
 
 Cada R$ 1 investido no projeto gera:
+
 - **R$ 2.50** em atividade econômica direta
 - **R$ 1.80** em atividade econômica indireta
 - **R$ 0.70** em atividade econômica induzida
@@ -174,6 +182,7 @@ Cada R$ 1 investido no projeto gera:
    - Ênfase em machine learning
 
 **Bolsas de Estudo:**
+
 - Graduação em áreas relacionadas
 - Mestrado e doutorado
 - Intercâmbio internacional
@@ -202,12 +211,14 @@ Cada R$ 1 investido no projeto gera:
 ### Noruega - Aquicultura Sustentável
 
 **Resultados:**
+
 - 15.000 empregos diretos
 - USD 8 bilhões em exportações anuais
 - Liderança tecnológica mundial
 - Preservação ambiental comprovada
 
 **Lições Aplicáveis:**
+
 - Regulamentação clara
 - Investimento em P&D
 - Parceria indústria-governo-universidade
@@ -215,12 +226,14 @@ Cada R$ 1 investido no projeto gera:
 ### Chile - Mineração de Lítio
 
 **Resultados:**
+
 - Maior produtor mundial
 - 5.000 empregos especializados
 - USD 3 bilhões em receitas anuais
 - Desenvolvimento de regiões remotas
 
 **Lições Aplicáveis:**
+
 - Gestão sustentável de recursos hídricos
 - Benefícios compartilhados com comunidades
 - Transparência de operações
@@ -228,12 +241,14 @@ Cada R$ 1 investido no projeto gera:
 ### Canadá - Observatório Oceânico
 
 **Resultados:**
+
 - Rede de sensores subaquáticos
 - 500 pesquisadores envolvidos
 - 200 publicações científicas/ano
 - Spin-offs tecnológicas
 
 **Lições Aplicáveis:**
+
 - Colaboração internacional
 - Dados abertos para pesquisa
 - Transferência de tecnologia
@@ -269,6 +284,7 @@ Cada R$ 1 investido no projeto gera:
 ### Custos do Projeto
 
 **Investimento Inicial:**
+
 - Infraestrutura: 40%
 - Equipamentos: 30%
 - P&D: 15%
@@ -276,6 +292,7 @@ Cada R$ 1 investido no projeto gera:
 - Capital de giro: 5%
 
 **Custos Operacionais Anuais:**
+
 - Pessoal: 50%
 - Manutenção: 20%
 - Energia: 15%
@@ -285,18 +302,21 @@ Cada R$ 1 investido no projeto gera:
 ### Benefícios Quantificados
 
 **Benefícios Tangíveis:**
+
 - Receita de vendas de minerais
 - Royalties e impostos
 - Economia em importações
 - Geração de empregos
 
 **Benefícios Intangíveis:**
+
 - Desenvolvimento tecnológico
 - Capacitação profissional
 - Posicionamento estratégico
 - Preservação ambiental
 
 **Relação Custo-Benefício Estimada:**
+
 - Para cada R$ 1 investido: R$ 4.50 em benefícios sociais
 - Payback period: 6-8 anos
 - TIR projetada: 15-20% ao ano
@@ -306,6 +326,7 @@ Cada R$ 1 investido no projeto gera:
 ### Diversificação de Receitas
 
 **Fontes de Receita:**
+
 1. Venda de minerais processados
 2. Licenciamento de tecnologia
 3. Prestação de serviços especializados
@@ -315,12 +336,14 @@ Cada R$ 1 investido no projeto gera:
 ### Gestão de Riscos
 
 **Riscos Mitigados:**
+
 - Volatilidade de preços de commodities
 - Mudanças regulatórias
 - Impactos ambientais
 - Flutuações cambiais
 
 **Estratégias de Mitigação:**
+
 - Hedge de preços
 - Seguros ambientais
 - Contratos de longo prazo

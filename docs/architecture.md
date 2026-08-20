@@ -38,34 +38,34 @@ O AquaMinerals segue uma arquitetura moderna full-stack baseada em React, projet
 
 ### Frontend
 
-| Tecnologia | Versão | Finalidade |
-|------------|--------|------------|
-| React | 19 | Framework UI |
-| TypeScript | 5.x | Tipagem estática |
-| TanStack Router | 1.170+ | Roteamento tipo-safe |
-| TailwindCSS | 4.x | Estilização utilitária |
-| Framer Motion | 12.x | Animações |
-| Recharts | 2.x | Visualização de dados |
-| React Leaflet | 4.x | Mapas interativos |
-| Radix UI | Latest | Componentes acessíveis |
+| Tecnologia      | Versão | Finalidade             |
+| --------------- | ------ | ---------------------- |
+| React           | 19     | Framework UI           |
+| TypeScript      | 5.x    | Tipagem estática       |
+| TanStack Router | 1.170+ | Roteamento tipo-safe   |
+| TailwindCSS     | 4.x    | Estilização utilitária |
+| Framer Motion   | 12.x   | Animações              |
+| Recharts        | 2.x    | Visualização de dados  |
+| React Leaflet   | 4.x    | Mapas interativos      |
+| Radix UI        | Latest | Componentes acessíveis |
 
 ### Backend
 
-| Tecnologia | Versão | Finalidade |
-|------------|--------|------------|
-| Node.js | 18+ | Runtime JavaScript |
-| Fastify | 5.x | Servidor HTTP |
-| Prisma | 6.x | ORM tipo-safe |
-| PostgreSQL | 14+ | Banco de dados |
+| Tecnologia | Versão | Finalidade         |
+| ---------- | ------ | ------------------ |
+| Node.js    | 18+    | Runtime JavaScript |
+| Fastify    | 5.x    | Servidor HTTP      |
+| Prisma     | 6.x    | ORM tipo-safe      |
+| PostgreSQL | 14+    | Banco de dados     |
 
 ### Inteligência Artificial
 
-| Componente | Descrição |
-|------------|-----------|
-| RAG System | Retrieval Augmented Generation |
-| Knowledge Base | Documentos Markdown estruturados |
+| Componente            | Descrição                         |
+| --------------------- | --------------------------------- |
+| RAG System            | Retrieval Augmented Generation    |
+| Knowledge Base        | Documentos Markdown estruturados  |
 | Intent Classification | Classificação baseada em keywords |
-| Semantic Search | Busca por relevância semântica |
+| Semantic Search       | Busca por relevância semântica    |
 
 ## Estrutura de Diretórios
 
@@ -134,6 +134,7 @@ Usuário → TanStack Router → Layout → Página → Componentes
 ### SiteLayout
 
 Wrapper de layout consistente em todas as páginas:
+
 - Navbar responsiva
 - Footer informativo
 - Container centralizado
@@ -141,6 +142,7 @@ Wrapper de layout consistente em todas as páginas:
 ### Dashboard
 
 Visualização de dados ambientais:
+
 - KPIs em tempo real
 - Gráficos (Recharts)
 - Tabela de pontos monitorados
@@ -149,6 +151,7 @@ Visualização de dados ambientais:
 ### Mapa Interativo
 
 Geolocalização de pontos de monitoramento:
+
 - React Leaflet + OpenStreetMap
 - Marcadores coloridos por status
 - Popup com detalhes
@@ -157,6 +160,7 @@ Geolocalização de pontos de monitoramento:
 ### AquaAI Chat
 
 Interface conversacional inteligente:
+
 - Processamento RAG
 - Histórico de mensagens
 - Sugestões de perguntas
@@ -190,11 +194,11 @@ export function Card({ title, children }: Props) {
 // Hook para gerenciamento de conversa
 export function useConversation() {
   const [messages, setMessages] = useState<Message[]>([]);
-  
+
   const sendMessage = async (content: string) => {
     // Lógica de envio
   };
-  
+
   return { messages, sendMessage };
 }
 ```
@@ -205,7 +209,7 @@ export function useConversation() {
 // Serviço com tipagem forte
 export async function processQuestion(
   query: string,
-  context?: Message[]
+  context?: Message[],
 ): Promise<ServiceResponse<RAGResponse>> {
   // Implementação RAG
 }
@@ -251,11 +255,11 @@ export async function processQuestion(
 ### Metas
 
 | Métrica | Target |
-|---------|--------|
-| FCP | < 1.5s |
-| LCP | < 2.5s |
-| CLS | < 0.1 |
-| TTI | < 3.5s |
+| ------- | ------ |
+| FCP     | < 1.5s |
+| LCP     | < 2.5s |
+| CLS     | < 0.1  |
+| TTI     | < 3.5s |
 
 ## Escalabilidade
 

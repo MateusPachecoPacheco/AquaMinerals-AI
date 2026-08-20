@@ -39,29 +39,32 @@ Compromisso com a transparência:
 
 A plataforma acompanha continuamente:
 
-| Parâmetro | Faixa Ideal | Impacto se Alterado |
-|-----------|-------------|---------------------|
-| pH | 7.8 - 8.4 | Afeta vida marinha |
-| Temperatura | 24°C - 28°C | Indica mudanças climáticas |
-| Oxigênio Dissolvido | > 6 mg/L | Essencial para fauna |
-| Salinidade | 33-37 PSU | Equilíbrio ecológico |
-| Turbidez | < 5 NTU | Qualidade da água |
+| Parâmetro           | Faixa Ideal | Impacto se Alterado        |
+| ------------------- | ----------- | -------------------------- |
+| pH                  | 7.8 - 8.4   | Afeta vida marinha         |
+| Temperatura         | 24°C - 28°C | Indica mudanças climáticas |
+| Oxigênio Dissolvido | > 6 mg/L    | Essencial para fauna       |
+| Salinidade          | 33-37 PSU   | Equilíbrio ecológico       |
+| Turbidez            | < 5 NTU     | Qualidade da água          |
 
 ### Sistema de Alertas
 
 O sistema classifica os pontos de monitoramento em:
 
 **Ótimo (Verde)**
+
 - Todos os parâmetros dentro da faixa ideal
 - Nenhuma ação necessária
 - Monitoramento de rotina
 
 **Atenção (Amarelo)**
+
 - Um ou mais parâmetros fora da faixa ideal
 - Requer monitoramento reforçado
 - Coleta adicional recomendada
 
 **Crítico (Vermelho)**
+
 - Múltiplos parâmetros críticos
 - Necessita intervenção imediata
 - Acionamento de protocolos de emergência

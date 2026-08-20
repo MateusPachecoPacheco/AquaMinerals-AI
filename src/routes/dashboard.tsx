@@ -2,20 +2,54 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useState, useMemo } from "react";
 import {
-  Droplet, Thermometer, Waves, Beaker, Wind, FlaskConical,
-  TrendingUp, TrendingDown, Search, Filter, Calendar, Download, RefreshCcw,
+  Droplet,
+  Thermometer,
+  Waves,
+  Beaker,
+  Wind,
+  FlaskConical,
+  TrendingUp,
+  TrendingDown,
+  Search,
+  Filter,
+  Calendar,
+  Download,
+  RefreshCcw,
 } from "lucide-react";
 import {
-  Area, AreaChart, Bar, BarChart, CartesianGrid, Cell, Line, LineChart,
-  Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis,
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  Line,
+  LineChart,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from "recharts";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
-  Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from "@/components/ui/table";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { cn } from "@/lib/utils";
@@ -29,12 +63,60 @@ export const Route = createFileRoute("/dashboard")({
 });
 
 const kpis = [
-  { label: "Qualidade da Água", value: "94", unit: "%", delta: 2.4, up: true, icon: Droplet, tint: "text-chart-1" },
-  { label: "Temperatura", value: "26.8", unit: "°C", delta: 0.6, up: true, icon: Thermometer, tint: "text-chart-5" },
-  { label: "Salinidade", value: "34.2", unit: "PSU", delta: 0.3, up: false, icon: Waves, tint: "text-chart-2" },
-  { label: "pH", value: "8.1", unit: "", delta: 0.05, up: true, icon: Beaker, tint: "text-chart-3" },
-  { label: "Oxigênio Dissolvido", value: "7.4", unit: "mg/L", delta: 0.2, up: false, icon: Wind, tint: "text-chart-4" },
-  { label: "Minerais Identificados", value: "37", unit: "", delta: 3, up: true, icon: FlaskConical, tint: "text-primary" },
+  {
+    label: "Qualidade da Água",
+    value: "94",
+    unit: "%",
+    delta: 2.4,
+    up: true,
+    icon: Droplet,
+    tint: "text-chart-1",
+  },
+  {
+    label: "Temperatura",
+    value: "26.8",
+    unit: "°C",
+    delta: 0.6,
+    up: true,
+    icon: Thermometer,
+    tint: "text-chart-5",
+  },
+  {
+    label: "Salinidade",
+    value: "34.2",
+    unit: "PSU",
+    delta: 0.3,
+    up: false,
+    icon: Waves,
+    tint: "text-chart-2",
+  },
+  {
+    label: "pH",
+    value: "8.1",
+    unit: "",
+    delta: 0.05,
+    up: true,
+    icon: Beaker,
+    tint: "text-chart-3",
+  },
+  {
+    label: "Oxigênio Dissolvido",
+    value: "7.4",
+    unit: "mg/L",
+    delta: 0.2,
+    up: false,
+    icon: Wind,
+    tint: "text-chart-4",
+  },
+  {
+    label: "Minerais Identificados",
+    value: "37",
+    unit: "",
+    delta: 3,
+    up: true,
+    icon: FlaskConical,
+    tint: "text-primary",
+  },
 ];
 
 const timeSeries = Array.from({ length: 24 }).map((_, i) => ({
@@ -63,17 +145,52 @@ const minerals = [
 ];
 
 const tableRows = [
-  { id: "MDD-01", local: "Baía de Aratu", status: "Ótimo", ph: 8.2, temp: 26.5, atualizado: "há 2 min" },
-  { id: "MDD-02", local: "Ilha de Bimbarras", status: "Ótimo", ph: 8.1, temp: 26.9, atualizado: "há 4 min" },
-  { id: "MDD-03", local: "Suape Norte", status: "Atenção", ph: 7.7, temp: 27.6, atualizado: "há 6 min" },
-  { id: "MDD-04", local: "Rio Paraguaçu", status: "Ótimo", ph: 8.0, temp: 26.3, atualizado: "há 8 min" },
-  { id: "MDD-05", local: "Ponta de Suape", status: "Crítico", ph: 7.4, temp: 28.2, atualizado: "há 10 min" },
+  {
+    id: "MDD-01",
+    local: "Baía de Aratu",
+    status: "Ótimo",
+    ph: 8.2,
+    temp: 26.5,
+    atualizado: "há 2 min",
+  },
+  {
+    id: "MDD-02",
+    local: "Ilha de Bimbarras",
+    status: "Ótimo",
+    ph: 8.1,
+    temp: 26.9,
+    atualizado: "há 4 min",
+  },
+  {
+    id: "MDD-03",
+    local: "Suape Norte",
+    status: "Atenção",
+    ph: 7.7,
+    temp: 27.6,
+    atualizado: "há 6 min",
+  },
+  {
+    id: "MDD-04",
+    local: "Rio Paraguaçu",
+    status: "Ótimo",
+    ph: 8.0,
+    temp: 26.3,
+    atualizado: "há 8 min",
+  },
+  {
+    id: "MDD-05",
+    local: "Ponta de Suape",
+    status: "Crítico",
+    ph: 7.4,
+    temp: 28.2,
+    atualizado: "há 10 min",
+  },
 ];
 
 const statusStyles: Record<string, string> = {
-  "Ótimo": "bg-eco/15 text-eco border-eco/30",
-  "Atenção": "bg-amber-500/15 text-amber-600 border-amber-500/30 dark:text-amber-400",
-  "Crítico": "bg-destructive/15 text-destructive border-destructive/30",
+  Ótimo: "bg-eco/15 text-eco border-eco/30",
+  Atenção: "bg-amber-500/15 text-amber-600 border-amber-500/30 dark:text-amber-400",
+  Crítico: "bg-destructive/15 text-destructive border-destructive/30",
 };
 
 // Períodos de filtro cíclicos
@@ -100,7 +217,7 @@ export default function Dashboard() {
       (row) =>
         row.local.toLowerCase().includes(term) ||
         row.id.toLowerCase().includes(term) ||
-        row.status.toLowerCase().includes(term)
+        row.status.toLowerCase().includes(term),
     );
   }, [searchTerm]);
 
@@ -133,9 +250,13 @@ export default function Dashboard() {
       <section className="border-b border-border/60 bg-secondary/30">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 sm:flex-row sm:items-end sm:justify-between sm:px-6 lg:px-8">
           <div>
-            <Badge variant="secondary" className="mb-2">Ao vivo</Badge>
+            <Badge variant="secondary" className="mb-2">
+              Ao vivo
+            </Badge>
             <h1 className="font-display text-3xl font-bold sm:text-4xl">Dashboard Ambiental</h1>
-            <p className="mt-1 text-muted-foreground">Monitoramento em tempo real da baía de Madre de Deus.</p>
+            <p className="mt-1 text-muted-foreground">
+              Monitoramento em tempo real da baía de Madre de Deus.
+            </p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
             {/* 🆕 SEARCH com filtragem em tempo real */}
@@ -157,13 +278,20 @@ export default function Dashboard() {
               </SelectTrigger>
               <SelectContent>
                 {filterPeriods.map((p) => (
-                  <SelectItem key={p.value} value={p.value}>{p.label}</SelectItem>
+                  <SelectItem key={p.value} value={p.value}>
+                    {p.label}
+                  </SelectItem>
                 ))}
               </SelectContent>
             </Select>
 
             {/* 🆕 FILTER (cicla entre períodos) */}
-            <Button variant="outline" size="icon" onClick={handleFilter} title="Alternar filtro de período">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={handleFilter}
+              title="Alternar filtro de período"
+            >
               <Filter className="h-4 w-4" />
             </Button>
 
@@ -175,12 +303,15 @@ export default function Dashboard() {
               disabled={isRefreshing}
               title="Recarregar dados"
             >
-              <RefreshCcw className={cn("h-4 w-4 transition-transform", isRefreshing && "animate-spin")} />
+              <RefreshCcw
+                className={cn("h-4 w-4 transition-transform", isRefreshing && "animate-spin")}
+              />
             </Button>
 
             {/* 🆕 EXPORT CSV */}
             <Button className="bg-gradient-ocean text-white" onClick={handleExport}>
-              <Download className="mr-2 h-4 w-4" />Exportar
+              <Download className="mr-2 h-4 w-4" />
+              Exportar
             </Button>
           </div>
         </div>
@@ -198,13 +329,23 @@ export default function Dashboard() {
             >
               <div className="flex items-center justify-between">
                 <k.icon className={cn("h-5 w-5", k.tint)} />
-                <div className={cn("flex items-center gap-1 text-xs font-medium", k.up ? "text-eco" : "text-destructive")}>
-                  {k.up ? <TrendingUp className="h-3.5 w-3.5" /> : <TrendingDown className="h-3.5 w-3.5" />}
+                <div
+                  className={cn(
+                    "flex items-center gap-1 text-xs font-medium",
+                    k.up ? "text-eco" : "text-destructive",
+                  )}
+                >
+                  {k.up ? (
+                    <TrendingUp className="h-3.5 w-3.5" />
+                  ) : (
+                    <TrendingDown className="h-3.5 w-3.5" />
+                  )}
                   {k.delta}
                 </div>
               </div>
               <div className="mt-3 font-display text-2xl font-bold">
-                {k.value}<span className="ml-1 text-sm font-medium text-muted-foreground">{k.unit}</span>
+                {k.value}
+                <span className="ml-1 text-sm font-medium text-muted-foreground">{k.unit}</span>
               </div>
               <div className="mt-1 text-xs text-muted-foreground">{k.label}</div>
             </motion.div>
@@ -236,10 +377,34 @@ export default function Dashboard() {
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-                  <XAxis dataKey="hora" stroke="var(--color-muted-foreground)" fontSize={11} tickLine={false} axisLine={false} />
-                  <YAxis stroke="var(--color-muted-foreground)" fontSize={11} tickLine={false} axisLine={false} domain={[80, 100]} />
-                  <Tooltip contentStyle={{ background: "var(--color-card)", border: "1px solid var(--color-border)", borderRadius: 12 }} />
-                  <Area type="monotone" dataKey="qualidade" stroke="var(--chart-1)" strokeWidth={2.5} fill="url(#gArea)" />
+                  <XAxis
+                    dataKey="hora"
+                    stroke="var(--color-muted-foreground)"
+                    fontSize={11}
+                    tickLine={false}
+                    axisLine={false}
+                  />
+                  <YAxis
+                    stroke="var(--color-muted-foreground)"
+                    fontSize={11}
+                    tickLine={false}
+                    axisLine={false}
+                    domain={[80, 100]}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      background: "var(--color-card)",
+                      border: "1px solid var(--color-border)",
+                      borderRadius: 12,
+                    }}
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="qualidade"
+                    stroke="var(--chart-1)"
+                    strokeWidth={2.5}
+                    fill="url(#gArea)"
+                  />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
@@ -251,10 +416,25 @@ export default function Dashboard() {
             <div className="h-56">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
-                  <Pie data={minerals} dataKey="value" nameKey="name" innerRadius={50} outerRadius={80} paddingAngle={3}>
-                    {minerals.map((m) => <Cell key={m.name} fill={m.color} />)}
+                  <Pie
+                    data={minerals}
+                    dataKey="value"
+                    nameKey="name"
+                    innerRadius={50}
+                    outerRadius={80}
+                    paddingAngle={3}
+                  >
+                    {minerals.map((m) => (
+                      <Cell key={m.name} fill={m.color} />
+                    ))}
                   </Pie>
-                  <Tooltip contentStyle={{ background: "var(--color-card)", border: "1px solid var(--color-border)", borderRadius: 12 }} />
+                  <Tooltip
+                    contentStyle={{
+                      background: "var(--color-card)",
+                      border: "1px solid var(--color-border)",
+                      borderRadius: 12,
+                    }}
+                  />
                 </PieChart>
               </ResponsiveContainer>
             </div>
@@ -277,11 +457,28 @@ export default function Dashboard() {
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={barData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-                  <XAxis dataKey="mes" stroke="var(--color-muted-foreground)" fontSize={11} tickLine={false} axisLine={false} />
-                  <YAxis stroke="var(--color-muted-foreground)" fontSize={11} tickLine={false} axisLine={false} />
-                  <Tooltip contentStyle={{ background: "var(--color-card)", border: "1px solid var(--color-border)", borderRadius: 12 }} />
-                  <Bar dataKey="coletas" fill="var(--chart-1)" radius={[8,8,0,0]} />
-                  <Bar dataKey="anomalias" fill="var(--chart-4)" radius={[8,8,0,0]} />
+                  <XAxis
+                    dataKey="mes"
+                    stroke="var(--color-muted-foreground)"
+                    fontSize={11}
+                    tickLine={false}
+                    axisLine={false}
+                  />
+                  <YAxis
+                    stroke="var(--color-muted-foreground)"
+                    fontSize={11}
+                    tickLine={false}
+                    axisLine={false}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      background: "var(--color-card)",
+                      border: "1px solid var(--color-border)",
+                      borderRadius: 12,
+                    }}
+                  />
+                  <Bar dataKey="coletas" fill="var(--chart-1)" radius={[8, 8, 0, 0]} />
+                  <Bar dataKey="anomalias" fill="var(--chart-4)" radius={[8, 8, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -292,10 +489,34 @@ export default function Dashboard() {
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={timeSeries}>
                   <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-                  <XAxis dataKey="hora" stroke="var(--color-muted-foreground)" fontSize={11} tickLine={false} axisLine={false} />
-                  <YAxis stroke="var(--color-muted-foreground)" fontSize={11} tickLine={false} axisLine={false} domain={[7.7, 8.3]} />
-                  <Tooltip contentStyle={{ background: "var(--color-card)", border: "1px solid var(--color-border)", borderRadius: 12 }} />
-                  <Line type="monotone" dataKey="ph" stroke="var(--chart-3)" strokeWidth={2.5} dot={false} />
+                  <XAxis
+                    dataKey="hora"
+                    stroke="var(--color-muted-foreground)"
+                    fontSize={11}
+                    tickLine={false}
+                    axisLine={false}
+                  />
+                  <YAxis
+                    stroke="var(--color-muted-foreground)"
+                    fontSize={11}
+                    tickLine={false}
+                    axisLine={false}
+                    domain={[7.7, 8.3]}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      background: "var(--color-card)",
+                      border: "1px solid var(--color-border)",
+                      borderRadius: 12,
+                    }}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="ph"
+                    stroke="var(--chart-3)"
+                    strokeWidth={2.5}
+                    dot={false}
+                  />
                 </LineChart>
               </ResponsiveContainer>
             </div>
@@ -344,11 +565,15 @@ export default function Dashboard() {
                     <TableCell className="font-mono text-xs">{r.id}</TableCell>
                     <TableCell className="font-medium">{r.local}</TableCell>
                     <TableCell>
-                      <Badge variant="outline" className={cn("border", statusStyles[r.status])}>{r.status}</Badge>
+                      <Badge variant="outline" className={cn("border", statusStyles[r.status])}>
+                        {r.status}
+                      </Badge>
                     </TableCell>
                     <TableCell>{r.ph}</TableCell>
                     <TableCell>{r.temp}</TableCell>
-                    <TableCell className="text-right text-muted-foreground">{r.atualizado}</TableCell>
+                    <TableCell className="text-right text-muted-foreground">
+                      {r.atualizado}
+                    </TableCell>
                   </TableRow>
                 ))
               )}

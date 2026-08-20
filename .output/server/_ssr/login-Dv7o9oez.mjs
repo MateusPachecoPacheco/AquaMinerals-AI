@@ -5,9 +5,9 @@ import { f as require_jsx_runtime } from "../_libs/@radix-ui/react-avatar+[...].
 import { v as Link, y as useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
 import { D as Lock, J as Check, T as Mail, it as ArrowRight } from "../_libs/lucide-react.mjs";
 import { n as CheckboxIndicator, t as Checkbox$1 } from "../_libs/@radix-ui/react-checkbox+[...].mjs";
-import { c as Input, d as useAuth, f as Button, p as cn } from "./router-Dpas2j5G.mjs";
+import { c as Input, d as useAuth, f as Button, p as cn } from "./router-CDLd4puj.mjs";
 import { t as Label } from "./label-CG8S7mEM.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/login-DLINyY_b.js
+//#region node_modules/.nitro/vite/services/ssr/assets/login-Dv7o9oez.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var Checkbox = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Checkbox$1, {

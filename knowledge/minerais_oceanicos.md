@@ -10,15 +10,15 @@ A água do mar contém aproximadamente 3,5% de sais dissolvidos, compreendendo:
 
 ### Macrominerais (> 1 ppm)
 
-| Mineral | Símbolo | Concentração Média | Percentual |
-|---------|---------|-------------------|------------|
-| Sódio | Na⁺ | 10.760 ppm | 38% |
-| Magnésio | Mg²⁺ | 1.290 ppm | 22% |
-| Cálcio | Ca²⁺ | 411 ppm | 14% |
-| Potássio | K⁺ | 399 ppm | 12% |
-| Estrôncio | Sr²⁺ | 8 ppm | < 1% |
-| Bromo | Br⁻ | 67 ppm | < 1% |
-| Carbono (Inorgânico) | C | 28 ppm | < 1% |
+| Mineral              | Símbolo | Concentração Média | Percentual |
+| -------------------- | ------- | ------------------ | ---------- |
+| Sódio                | Na⁺     | 10.760 ppm         | 38%        |
+| Magnésio             | Mg²⁺    | 1.290 ppm          | 22%        |
+| Cálcio               | Ca²⁺    | 411 ppm            | 14%        |
+| Potássio             | K⁺      | 399 ppm            | 12%        |
+| Estrôncio            | Sr²⁺    | 8 ppm              | < 1%       |
+| Bromo                | Br⁻     | 67 ppm             | < 1%       |
+| Carbono (Inorgânico) | C       | 28 ppm             | < 1%       |
 
 ### Microminerais e Oligoelementos (< 1 ppm)
 
@@ -40,6 +40,7 @@ O projeto monitora 37 tipos de minerais, incluindo:
 ### Sódio (Na)
 
 **Aplicações:**
+
 - Indústria química (hidróxido de sódio)
 - Dessalinização de água
 - Produção de sal industrial
@@ -52,6 +53,7 @@ Recurso abundante com aplicações em múltiplos setores industriais.
 ### Magnésio (Mg)
 
 **Aplicações:**
+
 - Ligas metálicas leves (aeronáutica)
 - Produção de alumínio
 - Suplementos nutricionais
@@ -64,6 +66,7 @@ Metal estrutural leve essencial para indústria aeroespacial.
 ### Cálcio (Ca)
 
 **Aplicações:**
+
 - Indústria da construção (cimento)
 - Suplementos alimentícios
 - Tratamento de água
@@ -76,6 +79,7 @@ Elemento fundamental para infraestrutura e saúde.
 ### Potássio (K)
 
 **Aplicações:**
+
 - Fertilizantes agrícolas
 - Indústria farmacêutica
 - Sabões e detergentes
@@ -88,6 +92,7 @@ Crítico para segurança alimentar global.
 ### Lítio (Li)
 
 **Aplicações:**
+
 - Baterias de íon-lítio
 - Veículos elétricos
 - Eletrônicos portáteis
@@ -107,6 +112,7 @@ Recurso crítico para transição energética global.
 Utilização de membranas semipermeáveis para separação de minerais específicos.
 
 **Vantagens:**
+
 - Baixo consumo energético
 - Seletividade por mineral
 - Mínimo impacto ambiental
@@ -118,6 +124,7 @@ Utilização de membranas semipermeáveis para separação de minerais específi
 Resinas trocadoras de íons capturam minerais específicos da água.
 
 **Vantagens:**
+
 - Alta eficiência de captura
 - Seletividade ajustável
 - Resinas regeneráveis
@@ -129,6 +136,7 @@ Resinas trocadoras de íons capturam minerais específicos da água.
 Campos elétricos separam íons através de membranas seletivas.
 
 **Vantagens:**
+
 - Eficiência energética
 - Controle preciso
 - Baixa manutenção
@@ -140,6 +148,7 @@ Campos elétricos separam íons através de membranas seletivas.
 Materiais adsorventes capturam minerais específicos.
 
 **Vantagens:**
+
 - Alta seletividade
 - Materiais reutilizáveis
 - Baixo custo operacional
@@ -152,16 +161,19 @@ Materiais adsorventes capturam minerais específicos.
 O projeto utiliza métodos analíticos avançados:
 
 **Espectrometria de Emissão Atômica (ICP-AES)**
+
 - Detecção de múltiplos elementos simultaneamente
 - Alta precisão e sensibilidade
 - Faixa dinâmica ampla
 
 **Espectrometria de Massa (ICP-MS)**
+
 - Detecção de traços ultra-baixos
 - Isótopos específicos
 - Análise quantitativa precisa
 
 **Cromatografia Iônica**
+
 - Separação de ânions e cátions
 - Alta resolução
 - Baixo limite de detecção
@@ -177,13 +189,13 @@ O projeto utiliza métodos analíticos avançados:
 
 ### Valor de Mercado Estimado
 
-| Mineral | Preço Médio (USD/kg) | Demanda Global |
-|---------|---------------------|----------------|
-| Lítio | 15-25 | Crescente (EVs) |
-| Magnésio | 2-4 | Estável |
-| Potássio | 0.5-1 | Crescente (agricultura) |
-| Sódio | 0.1-0.3 | Estável |
-| Cálcio | 0.2-0.5 | Estável |
+| Mineral  | Preço Médio (USD/kg) | Demanda Global          |
+| -------- | -------------------- | ----------------------- |
+| Lítio    | 15-25                | Crescente (EVs)         |
+| Magnésio | 2-4                  | Estável                 |
+| Potássio | 0.5-1                | Crescente (agricultura) |
+| Sódio    | 0.1-0.3              | Estável                 |
+| Cálcio   | 0.2-0.5              | Estável                 |
 
 ### Potencial Econômico Regional
 

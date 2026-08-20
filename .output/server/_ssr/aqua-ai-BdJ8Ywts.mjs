@@ -3,8 +3,8 @@ import { n as AnimatePresence, t as motion } from "../_libs/framer-motion.mjs";
 import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
 import { f as require_jsx_runtime } from "../_libs/@radix-ui/react-avatar+[...].mjs";
 import { $ as BookOpen, V as Copy, a as User, d as Sparkles, h as RotateCcw, nt as ArrowUp, r as Waves } from "../_libs/lucide-react.mjs";
-import { f as Button, l as SiteLayout, p as cn, u as Badge } from "./router-Dpas2j5G.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/aqua-ai-Bc38n9JO.js
+import { f as Button, l as SiteLayout, p as cn, u as Badge } from "./router-CDLd4puj.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/aqua-ai-BdJ8Ywts.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var Textarea = import_react.forwardRef(({ className, ...props }, ref) => {

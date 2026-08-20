@@ -10,13 +10,13 @@ export class AuthenticateUserService {
 
   async execute({ email, password }: LoginBodyDto) {
     const user = await this.usersRepository.findByEmail(email);
-    
+
     if (!user) {
       throw new InvalidCredentialsError();
     }
 
     const passwordMatch = await bcrypt.compare(password, user.password);
-    
+
     if (!passwordMatch) {
       throw new InvalidCredentialsError();
     }

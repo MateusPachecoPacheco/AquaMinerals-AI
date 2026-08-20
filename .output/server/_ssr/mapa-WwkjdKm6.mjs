@@ -3,8 +3,8 @@ import { n as AnimatePresence, t as motion } from "../_libs/framer-motion.mjs";
 import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
 import { f as require_jsx_runtime } from "../_libs/@radix-ui/react-avatar+[...].mjs";
 import { P as FlaskConical, R as Droplet, Z as Calendar, c as Thermometer, t as X, w as MapPin } from "../_libs/lucide-react.mjs";
-import { f as Button, l as SiteLayout, p as cn, u as Badge } from "./router-Dpas2j5G.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/mapa-CXLCIBak.js
+import { f as Button, l as SiteLayout, p as cn, u as Badge } from "./router-CDLd4puj.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/mapa-WwkjdKm6.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var points = [
@@ -88,21 +88,21 @@ var points = [
 	}
 ];
 var statusColor = {
-	"Ótimo": "bg-eco",
-	"Atenção": "bg-amber-500",
-	"Crítico": "bg-destructive"
+	Ótimo: "bg-eco",
+	Atenção: "bg-amber-500",
+	Crítico: "bg-destructive"
 };
 var statusBadge = {
-	"Ótimo": "bg-eco/15 text-eco border-eco/30",
-	"Atenção": "bg-amber-500/15 text-amber-600 border-amber-500/30 dark:text-amber-400",
-	"Crítico": "bg-destructive/15 text-destructive border-destructive/30"
+	Ótimo: "bg-eco/15 text-eco border-eco/30",
+	Atenção: "bg-amber-500/15 text-amber-600 border-amber-500/30 dark:text-amber-400",
+	Crítico: "bg-destructive/15 text-destructive border-destructive/30"
 };
 function MapPage() {
 	const [selected, setSelected] = (0, import_react.useState)(null);
 	const [MapComp, setMapComp] = (0, import_react.useState)(null);
 	(0, import_react.useEffect)(() => {
 		let mounted = true;
-		import("./LeafletMap-j5JwhgMh.mjs").then((m) => {
+		import("./LeafletMap-BnhOh98s.mjs").then((m) => {
 			if (mounted) setMapComp(() => m.LeafletMap);
 		});
 		return () => {

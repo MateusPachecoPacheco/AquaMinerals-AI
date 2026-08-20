@@ -13,7 +13,7 @@ import { a as Label2, c as Root2, d as SubTrigger2, f as Trigger, i as ItemIndic
 import { a as YAxis, c as Line, d as Pie, f as Cell, i as LineChart, l as CartesianGrid, m as Tooltip, n as PieChart, o as XAxis, p as ResponsiveContainer, r as BarChart, s as Area, t as AreaChart, u as Bar } from "../_libs/recharts+[...].mjs";
 import { a as SelectItemIndicator, c as SelectPortal, d as SelectSeparator$1, f as SelectTrigger$1, i as SelectItem$1, l as SelectScrollDownButton$1, m as SelectViewport, n as SelectContent$1, o as SelectItemText, p as SelectValue$1, r as SelectIcon, s as SelectLabel$1, t as Select$1, u as SelectScrollUpButton$1 } from "../_libs/@radix-ui/react-select+[...].mjs";
 import { i as Trigger$1, n as List, r as Root2$1, t as Content } from "../_libs/radix-ui__react-tabs.mjs";
-import { r as __exportAll } from "./server-CotQ1a5t.mjs";
+import { r as __exportAll } from "./server-BvJQC7zP.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/button-CFsQTJc0.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
@@ -81,7 +81,7 @@ var Button = import_react.forwardRef(({ className, variant, size, asChild = fals
 });
 Button.displayName = "Button";
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-Dpas2j5G.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-CDLd4puj.js
 var ThemeProviderContext = (0, import_react.createContext)({
 	theme: "system",
 	setTheme: () => null
@@ -342,7 +342,7 @@ function RootComponent() {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AuthProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThemeProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {}) }) })
 	});
 }
-var $$splitComponentImporter$5 = () => import("./routes-DBnk0cvk.mjs");
+var $$splitComponentImporter$5 = () => import("./routes-CQBnr3V8.mjs");
 var Route$10 = createFileRoute("/")({
 	head: () => ({ meta: [
 		{ title: "AquaMinerals — Inteligência Oceânica Sustentável" },
@@ -361,12 +361,12 @@ var Route$10 = createFileRoute("/")({
 	] }),
 	component: lazyRouteComponent($$splitComponentImporter$5, "component")
 });
-var $$splitComponentImporter$4 = () => import("./admin-Cv8C0CXV.mjs");
+var $$splitComponentImporter$4 = () => import("./admin-Bev973TJ.mjs");
 var Route$9 = createFileRoute("/admin")({
 	head: () => ({ meta: [{ title: "Admin — AquaMinerals" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
-var $$splitComponentImporter$3 = () => import("./aqua-ai-Bc38n9JO.mjs");
+var $$splitComponentImporter$3 = () => import("./aqua-ai-BdJ8Ywts.mjs");
 var Route$8 = createFileRoute("/aqua-ai")({
 	head: () => ({ meta: [{ title: "AquaAI — Assistente Oceânico" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$3, "component")
@@ -1533,9 +1533,9 @@ var tableRows = [
 	}
 ];
 var statusStyles = {
-	"Ótimo": "bg-eco/15 text-eco border-eco/30",
-	"Atenção": "bg-amber-500/15 text-amber-600 border-amber-500/30 dark:text-amber-400",
-	"Crítico": "bg-destructive/15 text-destructive border-destructive/30"
+	Ótimo: "bg-eco/15 text-eco border-eco/30",
+	Atenção: "bg-amber-500/15 text-amber-600 border-amber-500/30 dark:text-amber-400",
+	Crítico: "bg-destructive/15 text-destructive border-destructive/30"
 };
 var filterPeriods = [
 	{
@@ -2225,17 +2225,17 @@ function Impact() {
 		})
 	})] });
 }
-var $$splitComponentImporter$2 = () => import("./login-DLINyY_b.mjs");
+var $$splitComponentImporter$2 = () => import("./login-Dv7o9oez.mjs");
 var Route$3 = createFileRoute("/login")({
 	head: () => ({ meta: [{ title: "Entrar — AquaMinerals" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-var $$splitComponentImporter$1 = () => import("./mapa-CXLCIBak.mjs");
+var $$splitComponentImporter$1 = () => import("./mapa-WwkjdKm6.mjs");
 var Route$2 = createFileRoute("/mapa")({
 	head: () => ({ meta: [{ title: "Mapa Interativo — AquaMinerals" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-var $$splitComponentImporter = () => import("./register-Dg5XvCrS.mjs");
+var $$splitComponentImporter = () => import("./register-Dyxv5NpG.mjs");
 var Route$1 = createFileRoute("/register")({
 	head: () => ({ meta: [{ title: "Criar Conta — AquaMinerals" }] }),
 	component: lazyRouteComponent($$splitComponentImporter, "component")

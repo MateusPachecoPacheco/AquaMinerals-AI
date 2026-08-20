@@ -13,6 +13,7 @@ Este documento consolida todas as melhorias e evoluções implementadas no proje
 **Implementado:** Sistema completo de IA baseado em Retrieval Augmented Generation (RAG)
 
 **Características:**
+
 - Processamento de linguagem natural para português
 - Classificação automática de intenção (6 categorias)
 - Busca semântica na base de conhecimento
@@ -22,6 +23,7 @@ Este documento consolida todas as melhorias e evoluções implementadas no proje
 - Sugestões de perguntas inteligentes
 
 **Arquitetura:**
+
 ```
 Pergunta → Classificação → Recuperação → Geração → Resposta
            (Intent)       (RAG)         (Context)  (com fontes)
@@ -35,15 +37,15 @@ Pergunta → Classificação → Recuperação → Geração → Resposta
 
 **Criados:** 7 documentos completos estruturados em Markdown
 
-| Arquivo | Conteúdo | Palavras |
-|---------|----------|----------|
-| `knowledge/projeto.md` | Visão geral, localização, objetivos, pontos de monitoramento | ~800 |
-| `knowledge/sustentabilidade.md` | Princípios, ODS 14, monitoramento, certificações | ~1200 |
-| `knowledge/minerais_oceanicos.md` | Composição, extração, aplicações, valores de mercado | ~1500 |
-| `knowledge/tecnologia.md` | Stack técnico, arquitetura, infraestrutura, segurança | ~1300 |
-| `knowledge/impacto_economico.md` | Empregos, receitas, projeções, multiplicador econômico | ~1400 |
-| `knowledge/impacto_ambiental.md` | Parâmetros, emergências, compensação, conformidade | ~1600 |
-| `knowledge/perguntas_frequentes.md` | FAQ completo em 7 categorias | ~2000 |
+| Arquivo                             | Conteúdo                                                     | Palavras |
+| ----------------------------------- | ------------------------------------------------------------ | -------- |
+| `knowledge/projeto.md`              | Visão geral, localização, objetivos, pontos de monitoramento | ~800     |
+| `knowledge/sustentabilidade.md`     | Princípios, ODS 14, monitoramento, certificações             | ~1200    |
+| `knowledge/minerais_oceanicos.md`   | Composição, extração, aplicações, valores de mercado         | ~1500    |
+| `knowledge/tecnologia.md`           | Stack técnico, arquitetura, infraestrutura, segurança        | ~1300    |
+| `knowledge/impacto_economico.md`    | Empregos, receitas, projeções, multiplicador econômico       | ~1400    |
+| `knowledge/impacto_ambiental.md`    | Parâmetros, emergências, compensação, conformidade           | ~1600    |
+| `knowledge/perguntas_frequentes.md` | FAQ completo em 7 categorias                                 | ~2000    |
 
 **Total:** ~9.800 palavras de conhecimento especializado
 
@@ -52,6 +54,7 @@ Pergunta → Classificação → Recuperação → Geração → Resposta
 ### 3. 🎨 Interface Conversacional Premium
 
 **Melhorias na UI do Chat:**
+
 - Badges indicando fontes da resposta
 - Animações suaves com Framer Motion
 - Indicador de "pensando" animado
@@ -65,6 +68,7 @@ Pergunta → Classificação → Recuperação → Geração → Resposta
 ### 4. 📊 Dashboard Inteligente
 
 **Funcionalidades existentes mantidas e documentadas:**
+
 - KPIs em tempo real (qualidade, temperatura, salinidade, pH, oxigênio)
 - Gráficos interativos Recharts
 - Tabela de monitoramento com filtros
@@ -76,6 +80,7 @@ Pergunta → Classificação → Recuperação → Geração → Resposta
 ### 5. 🗺️ Mapa Interativo
 
 **Funcionalidades existentes mantidas e documentadas:**
+
 - Leaflet/React-Leaflet com OpenStreetMap
 - 6 pontos de monitoramento georreferenciados
 - Status por cores (verde/amarelo/vermelho)
@@ -125,12 +130,14 @@ Pergunta → Classificação → Recuperação → Geração → Resposta
 
 **Antes:** Lógica de IA misturada com componente React
 
-**Depois:** 
+**Depois:**
+
 - `services/aquaAiService.ts`: Lógica de negócios pura
 - `routes/aqua-ai.tsx`: Apenas UI e estado
 - `types/ai.ts`: Contratos bem definidos
 
 **Benefícios:**
+
 - Testabilidade aumentada
 - Reusabilidade de código
 - Manutenção facilitada
@@ -142,26 +149,26 @@ Pergunta → Classificação → Recuperação → Geração → Resposta
 
 ### Stack Principal (mantida)
 
-| Categoria | Tecnologia | Versão |
-|-----------|------------|--------|
-| Framework | React | 19 |
-| Linguagem | TypeScript | 5.x |
-| Router | TanStack Router | 1.170+ |
-| Estilização | TailwindCSS | 4.x |
-| Animações | Framer Motion | 12.x |
-| Gráficos | Recharts | 2.x |
-| Mapas | React Leaflet | 4.x |
-| UI Components | Radix UI | Latest |
+| Categoria     | Tecnologia      | Versão |
+| ------------- | --------------- | ------ |
+| Framework     | React           | 19     |
+| Linguagem     | TypeScript      | 5.x    |
+| Router        | TanStack Router | 1.170+ |
+| Estilização   | TailwindCSS     | 4.x    |
+| Animações     | Framer Motion   | 12.x   |
+| Gráficos      | Recharts        | 2.x    |
+| Mapas         | React Leaflet   | 4.x    |
+| UI Components | Radix UI        | Latest |
 
 ### Novas Implementações
 
-| Componente | Finalidade |
-|------------|-----------|
-| **RAG System** | Recuperação + Geração de respostas |
-| **NLP Processor** | Normalização, tokenização, extração de keywords |
-| **Intent Classifier** | Classificação baseada em keywords ponderadas |
-| **Semantic Search** | Busca por relevância com scoring |
-| **Knowledge Index** | Indexação de documentos Markdown |
+| Componente            | Finalidade                                      |
+| --------------------- | ----------------------------------------------- |
+| **RAG System**        | Recuperação + Geração de respostas              |
+| **NLP Processor**     | Normalização, tokenização, extração de keywords |
+| **Intent Classifier** | Classificação baseada em keywords ponderadas    |
+| **Semantic Search**   | Busca por relevância com scoring                |
+| **Knowledge Index**   | Indexação de documentos Markdown                |
 
 ---
 
@@ -196,26 +203,26 @@ Pergunta → Classificação → Recuperação → Geração → Resposta
 
 ### Criados (Novos)
 
-| Arquivo | Tamanho | Finalidade |
-|---------|---------|-----------|
-| `src/types/ai.ts` | ~90 linhas | Tipos TypeScript para IA |
-| `src/services/aquaAiService.ts` | ~430 linhas | Serviço RAG completo |
-| `knowledge/projeto.md` | ~800 palavras | Base de conhecimento projeto |
-| `knowledge/sustentabilidade.md` | ~1200 palavras | Base sustentabilidade |
-| `knowledge/minerais_oceanicos.md` | ~1500 palavras | Base minerais |
-| `knowledge/tecnologia.md` | ~1300 palavras | Base tecnologia |
-| `knowledge/impacto_economico.md` | ~1400 palavras | Base economia |
-| `knowledge/impacto_ambiental.md` | ~1600 palavras | Base ambiental |
-| `knowledge/perguntas_frequentes.md` | ~2000 palavras | FAQ completo |
-| `docs/architecture.md` | ~350 linhas | Documentação técnica |
-| `README.md` (novo) | ~420 linhas | README profissional |
+| Arquivo                             | Tamanho        | Finalidade                   |
+| ----------------------------------- | -------------- | ---------------------------- |
+| `src/types/ai.ts`                   | ~90 linhas     | Tipos TypeScript para IA     |
+| `src/services/aquaAiService.ts`     | ~430 linhas    | Serviço RAG completo         |
+| `knowledge/projeto.md`              | ~800 palavras  | Base de conhecimento projeto |
+| `knowledge/sustentabilidade.md`     | ~1200 palavras | Base sustentabilidade        |
+| `knowledge/minerais_oceanicos.md`   | ~1500 palavras | Base minerais                |
+| `knowledge/tecnologia.md`           | ~1300 palavras | Base tecnologia              |
+| `knowledge/impacto_economico.md`    | ~1400 palavras | Base economia                |
+| `knowledge/impacto_ambiental.md`    | ~1600 palavras | Base ambiental               |
+| `knowledge/perguntas_frequentes.md` | ~2000 palavras | FAQ completo                 |
+| `docs/architecture.md`              | ~350 linhas    | Documentação técnica         |
+| `README.md` (novo)                  | ~420 linhas    | README profissional          |
 
 ### Modificados (Evoluídos)
 
-| Arquivo | Mudanças | Impacto |
-|---------|----------|---------|
-| `src/routes/aqua-ai.tsx` | +80 linhas | Integração com serviço RAG, fontes citadas, UI melhorada |
-| `README.md` | Substituído | Documentação profissional completa |
+| Arquivo                  | Mudanças    | Impacto                                                  |
+| ------------------------ | ----------- | -------------------------------------------------------- |
+| `src/routes/aqua-ai.tsx` | +80 linhas  | Integração com serviço RAG, fontes citadas, UI melhorada |
+| `README.md`              | Substituído | Documentação profissional completa                       |
 
 **Total de linhas adicionadas:** ~2.500+
 **Total de palavras criadas:** ~10.000+
@@ -286,6 +293,7 @@ Pergunta → Classificação → Recuperação → Geração → Resposta
 ### Curto Prazo (1-2 semanas)
 
 1. **Testes Automatizados**
+
    ```bash
    npm install -D vitest @testing-library/react
    ```
@@ -391,13 +399,13 @@ Pergunta → Classificação → Recuperação → Geração → Resposta
 
 ### Valor Agregado
 
-| Dimensão | Melhoria |
-|----------|----------|
-| **Complexidade Técnica** | +300% |
-| **Linhas de Código** | +2.500+ |
-| **Conhecimento Especializado** | +10.000 palavras |
-| **Documentação** | +500% |
-| **Profissionalismo** | Produto enterprise-ready |
+| Dimensão                       | Melhoria                 |
+| ------------------------------ | ------------------------ |
+| **Complexidade Técnica**       | +300%                    |
+| **Linhas de Código**           | +2.500+                  |
+| **Conhecimento Especializado** | +10.000 palavras         |
+| **Documentação**               | +500%                    |
+| **Profissionalismo**           | Produto enterprise-ready |
 
 ---
 
@@ -412,6 +420,7 @@ O AquaMinerals foi transformado de uma demonstração conceitual para uma **plat
 5. **Experiência Premium**: UI moderna, animações, acessibilidade
 
 **Pronto para:**
+
 - Apresentações para investidores
 - Submissão em portfólios profissionais
 - Base para desenvolvimento comercial

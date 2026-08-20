@@ -1,7 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Leaf, Droplet, Recycle, TrendingUp, ShieldCheck } from "lucide-react";
-import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 import { Badge } from "@/components/ui/badge";
 import { SiteLayout } from "@/components/site/SiteLayout";
 
@@ -18,14 +26,23 @@ const stats = [
 ];
 
 const trend = Array.from({ length: 12 }).map((_, i) => ({
-  mes: ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"][i],
+  mes: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"][i],
   preservacao: 40 + i * 4 + Math.random() * 6,
 }));
 
 const pillars = [
-  { title: "Redução de impactos", desc: "Identificação precoce de poluentes reduz danos aos ecossistemas costeiros." },
-  { title: "Preservação", desc: "Mapeamento contínuo de áreas sensíveis e biodiversidade marinha." },
-  { title: "Sustentabilidade", desc: "Insumos técnicos para políticas públicas e projetos regenerativos." },
+  {
+    title: "Redução de impactos",
+    desc: "Identificação precoce de poluentes reduz danos aos ecossistemas costeiros.",
+  },
+  {
+    title: "Preservação",
+    desc: "Mapeamento contínuo de áreas sensíveis e biodiversidade marinha.",
+  },
+  {
+    title: "Sustentabilidade",
+    desc: "Insumos técnicos para políticas públicas e projetos regenerativos.",
+  },
   { title: "Economia Azul", desc: "Base científica para cadeias produtivas responsáveis." },
 ];
 
@@ -34,12 +51,15 @@ export default function Impact() {
     <SiteLayout>
       <section className="relative overflow-hidden bg-gradient-hero py-24 sm:py-32">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <Badge variant="outline" className="glass mb-6">Impacto ambiental</Badge>
+          <Badge variant="outline" className="glass mb-6">
+            Impacto ambiental
+          </Badge>
           <h1 className="font-display text-4xl font-bold sm:text-6xl">
             Cada dado gera <span className="text-gradient-ocean">preservação</span>.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-            Medimos, monitoramos e reportamos o efeito real da AquaMinerals no oceano e nas comunidades.
+            Medimos, monitoramos e reportamos o efeito real da AquaMinerals no oceano e nas
+            comunidades.
           </p>
         </div>
       </section>
@@ -67,7 +87,9 @@ export default function Impact() {
             <div className="mb-4 flex items-center justify-between">
               <div>
                 <h3 className="font-display font-semibold">Índice de preservação — 12 meses</h3>
-                <p className="text-xs text-muted-foreground">Composto por qualidade, biodiversidade e conformidade</p>
+                <p className="text-xs text-muted-foreground">
+                  Composto por qualidade, biodiversidade e conformidade
+                </p>
               </div>
               <div className="flex items-center gap-1 rounded-full bg-eco/15 px-3 py-1 text-xs font-medium text-eco">
                 <TrendingUp className="h-3.5 w-3.5" /> +38% ano/ano
@@ -83,10 +105,33 @@ export default function Impact() {
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-                  <XAxis dataKey="mes" stroke="var(--color-muted-foreground)" fontSize={11} tickLine={false} axisLine={false} />
-                  <YAxis stroke="var(--color-muted-foreground)" fontSize={11} tickLine={false} axisLine={false} />
-                  <Tooltip contentStyle={{ background: "var(--color-card)", border: "1px solid var(--color-border)", borderRadius: 12 }} />
-                  <Area type="monotone" dataKey="preservacao" stroke="var(--chart-2)" strokeWidth={2.5} fill="url(#ecoArea)" />
+                  <XAxis
+                    dataKey="mes"
+                    stroke="var(--color-muted-foreground)"
+                    fontSize={11}
+                    tickLine={false}
+                    axisLine={false}
+                  />
+                  <YAxis
+                    stroke="var(--color-muted-foreground)"
+                    fontSize={11}
+                    tickLine={false}
+                    axisLine={false}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      background: "var(--color-card)",
+                      border: "1px solid var(--color-border)",
+                      borderRadius: 12,
+                    }}
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="preservacao"
+                    stroke="var(--chart-2)"
+                    strokeWidth={2.5}
+                    fill="url(#ecoArea)"
+                  />
                 </AreaChart>
               </ResponsiveContainer>
             </div>

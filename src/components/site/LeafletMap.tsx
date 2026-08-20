@@ -14,9 +14,9 @@ type Point = {
 };
 
 const statusFill: Record<Point["status"], string> = {
-  "Ótimo": "#10b981",
-  "Atenção": "#f59e0b",
-  "Crítico": "#ef4444",
+  Ótimo: "#10b981",
+  Atenção: "#f59e0b",
+  Crítico: "#ef4444",
 };
 
 function Recenter({ selected }: { selected: Point | null }) {

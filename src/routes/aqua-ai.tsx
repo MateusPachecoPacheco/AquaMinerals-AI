@@ -1,7 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Waves, ArrowUp, Sparkles, Copy, RotateCcw, User, BookOpen, CheckCircle } from "lucide-react";
+import {
+  Waves,
+  ArrowUp,
+  Sparkles,
+  Copy,
+  RotateCcw,
+  User,
+  BookOpen,
+  CheckCircle,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
@@ -49,25 +58,25 @@ function AquaAI() {
   const send = async (text?: string) => {
     const content = (text ?? input).trim();
     if (!content) return;
-    
+
     // Adicionar mensagem do usuário
-    const userMsg: Msg = { 
-      role: "user", 
+    const userMsg: Msg = {
+      role: "user",
       content,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
     setMessages((m) => [...m, userMsg]);
     setInput("");
     setThinking(true);
     setCurrentResponse(null);
-    
+
     try {
       // Processar pergunta usando o serviço RAG
       const result = await processQuestion(content, messages);
-      
+
       if (result.success && result.data) {
-        const aiMsg: Msg = { 
-          role: "assistant", 
+        const aiMsg: Msg = {
+          role: "assistant",
           content: result.data.answer,
           timestamp: new Date().toISOString(),
           sources: result.data.sources,
@@ -75,17 +84,18 @@ function AquaAI() {
         setMessages((m) => [...m, aiMsg]);
         setCurrentResponse(result.data);
       } else {
-        const errorMsg: Msg = { 
-          role: "assistant", 
-          content: "Desculpe, ocorreu um erro ao processar sua pergunta. Por favor, tente novamente.",
+        const errorMsg: Msg = {
+          role: "assistant",
+          content:
+            "Desculpe, ocorreu um erro ao processar sua pergunta. Por favor, tente novamente.",
           timestamp: new Date().toISOString(),
         };
         setMessages((m) => [...m, errorMsg]);
       }
     } catch (error) {
       console.error("Erro na IA:", error);
-      const errorMsg: Msg = { 
-        role: "assistant", 
+      const errorMsg: Msg = {
+        role: "assistant",
         content: "Ocorreu um erro inesperado. Por favor, tente novamente.",
         timestamp: new Date().toISOString(),
       };
@@ -99,7 +109,7 @@ function AquaAI() {
     setMessages([]);
     setCurrentResponse(null);
   };
-  
+
   const empty = messages.length === 0;
 
   return (

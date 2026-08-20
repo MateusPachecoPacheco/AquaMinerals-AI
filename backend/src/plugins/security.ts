@@ -2,7 +2,7 @@ import type { FastifyInstance } from "fastify";
 import fastifyHelmet from "@fastify/helmet";
 import fastifyRateLimit from "@fastify/rate-limit";
 import { isDevelopment } from "@config/env.js"; // Removido o 'env' que não estava sendo usado
- // <-- Importação corrigida
+// <-- Importação corrigida
 
 export async function registerSecurity(app: FastifyInstance): Promise<void> {
   // Helmet: Protege contra vulnerabilidades comuns (XSS, Clickjacking, etc.)

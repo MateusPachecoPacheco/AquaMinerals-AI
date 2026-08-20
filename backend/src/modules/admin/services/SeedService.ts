@@ -56,7 +56,7 @@ export class SeedService {
           data: {
             name: "Estação Baía de Todos os Santos",
             description: "Monitoramento ambiental da Baía de Todos os Santos",
-            latitude: -12.9730,
+            latitude: -12.973,
             longitude: -38.5109,
             salinityLevel: 34.8,
             phLevel: 8.2,

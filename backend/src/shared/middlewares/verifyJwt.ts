@@ -4,7 +4,7 @@ import { env } from "@config/env.js";
 import { AppError } from "@shared/errors/AppError.js";
 
 export async function verifyJwt(request: FastifyRequest, _reply: FastifyReply) {
-    try {
+  try {
     const authHeader = request.headers.authorization;
 
     if (!authHeader) {

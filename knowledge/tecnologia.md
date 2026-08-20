@@ -9,31 +9,37 @@ O AquaMinerals é construído sobre uma arquitetura moderna e escalável, projet
 ### Frontend
 
 **React 19 com TypeScript**
+
 - Componentização moderna com hooks
 - Tipagem estática para segurança de código
 - Renderização eficiente com React Server Components
 
 **TanStack Router**
+
 - Roteamento baseado em arquivos
 - Carregamento de dados no roteador
 - Navegação fluida entre páginas
 
 **TailwindCSS 4**
+
 - Estilização utilitária
 - Design responsivo nativo
 - Temas customizáveis via CSS variables
 
 **Framer Motion**
+
 - Animações declarativas
 - Transições suaves entre estados
 - Experiência premium do usuário
 
 **Recharts**
+
 - Gráficos baseados em SVG
 - Componentes reutilizáveis
 - Visualização de dados científicos
 
 **React Leaflet**
+
 - Mapas interativos
 - Marcadores customizados
 - Integração com OpenStreetMap
@@ -41,16 +47,19 @@ O AquaMinerals é construído sobre uma arquitetura moderna e escalável, projet
 ### Backend
 
 **Node.js com Fastify**
+
 - Servidor HTTP de alta performance
 - Baixa latência e alto throughput
 - Ecossistema rico de plugins
 
 **Prisma ORM**
+
 - Type-safe database access
 - Migrations automatizadas
 - Suporte a múltiplos bancos de dados
 
 **APIs REST**
+
 - Endpoints bem definidos
 - Documentação OpenAPI/Swagger
 - Versionamento de API
@@ -58,11 +67,13 @@ O AquaMinerals é construído sobre uma arquitetura moderna e escalável, projet
 ### Banco de Dados
 
 **PostgreSQL**
+
 - Dados relacionais estruturados
 - Extensão PostGIS para dados geoespaciais
 - Consultas complexas otimizadas
 
 **TimescaleDB (opcional)**
+
 - Séries temporais para dados de sensores
 - Compressão automática
 - Retenção de dados configurável
@@ -108,21 +119,25 @@ A inteligência artificial do projeto segue uma arquitetura RAG (Retrieval Augme
 ### Componentes da IA
 
 **Processamento de Linguagem Natural**
+
 - Tokenização e normalização
 - Extração de entidades nomeadas
 - Análise de sentimento
 
 **Sistema de Recuperação**
+
 - Indexação de documentos
 - Similaridade semântica
 - Ranking de relevância
 
 **Base de Conhecimento**
+
 - Documentos estruturados em Markdown
 - Metadados de contexto
 - Versionamento de conteúdo
 
 **Gerador de Respostas**
+
 - Template-based responses
 - Context-aware generation
 - Fallback para respostas padrão
@@ -166,6 +181,7 @@ A IA classifica perguntas nas seguintes categorias:
 ### Hospedagem
 
 **Opções de Deploy:**
+
 - Railway.app (backend)
 - Vercel/Netlify (frontend)
 - AWS/GCP/Azure (enterprise)
@@ -173,6 +189,7 @@ A IA classifica perguntas nas seguintes categorias:
 ### Containerização
 
 **Docker**
+
 - Imagens otimizadas
 - Multi-stage builds
 - Docker Compose para desenvolvimento
@@ -180,6 +197,7 @@ A IA classifica perguntas nas seguintes categorias:
 ### CI/CD
 
 **Pipeline de Deploy:**
+
 1. Testes automatizados
 2. Build da aplicação
 3. Deploy em staging
@@ -191,21 +209,25 @@ A IA classifica perguntas nas seguintes categorias:
 ### Práticas Implementadas
 
 **Proteção de Dados**
+
 - HTTPS obrigatório
 - Headers de segurança (Helmet)
 - Rate limiting
 
 **Autenticação**
+
 - JWT tokens
 - Refresh tokens
 - Sessões seguras
 
 **Validação de Input**
+
 - Zod schema validation
 - Sanitização de dados
 - Prevenção de SQL injection
 
 **Controle de Acesso**
+
 - RBAC (Role-Based Access Control)
 - Permissões granulares
 - Auditoria de ações
@@ -215,11 +237,13 @@ A IA classifica perguntas nas seguintes categorias:
 ### Métricas Coletadas
 
 **Performance**
+
 - Tempo de resposta da API
 - Latência de banco de dados
 - Taxa de erro por endpoint
 
 **Negócio**
+
 - Número de usuários ativos
 - Perguntas à IA
 - Acessos ao dashboard
@@ -235,16 +259,19 @@ A IA classifica perguntas nas seguintes categorias:
 ### Estratégias
 
 **Horizontal Scaling**
+
 - Múltiplas instâncias do servidor
 - Load balancing
 - Session externalization
 
 **Caching**
+
 - Redis para cache de consultas
 - CDN para assets estáticos
 - Cache de respostas da IA
 
 **Database Optimization**
+
 - Indexação adequada
 - Query optimization
 - Connection pooling
@@ -254,11 +281,13 @@ A IA classifica perguntas nas seguintes categorias:
 ### APIs Externas
 
 **Dados Oceanográficos**
+
 - INPE (dados satelitais)
 - Marinha do Brasil (marés)
 - NOAA (dados globais)
 
 **Serviços de Mapa**
+
 - OpenStreetMap
 - CartoDB tiles
 - Futuramente: Mapbox
@@ -274,11 +303,13 @@ A IA classifica perguntas nas seguintes categorias:
 ### Ambiente Local
 
 **Pré-requisitos:**
+
 - Node.js 18+
 - PostgreSQL 14+
 - Docker (opcional)
 
 **Setup:**
+
 ```bash
 # Instalar dependências
 npm install
@@ -296,16 +327,19 @@ npm run dev
 ### Padrões de Código
 
 **TypeScript**
+
 - Strict mode habilitado
 - Interfaces bem definidas
 - Generics quando aplicável
 
 **Componentes React**
+
 - Functional components
 - Hooks customizados
 - Separação de concerns
 
 **Testes**
+
 - Testes unitários (Vitest)
 - Testes de integração
 - E2E tests (Playwright)
@@ -315,16 +349,19 @@ npm run dev
 ### Otimizações Implementadas
 
 **Frontend**
+
 - Code splitting por rota
 - Lazy loading de componentes
 - Image optimization
 
 **Backend**
+
 - Query optimization
 - Connection pooling
 - Response compression
 
 **Banco de Dados**
+
 - Índices estratégicos
 - Materialized views
 - Partitioning (quando necessário)
@@ -341,16 +378,19 @@ npm run dev
 ### Roadmap de Evolução
 
 **Curto Prazo (3 meses)**
+
 - Integração com sensores IoT reais
 - Dashboard mobile app
 - Exportação de relatórios em PDF
 
 **Médio Prazo (6 meses)**
+
 - Machine learning preditivo
 - API pública documentada
 - Plugin para QGIS
 
 **Longo Prazo (12 meses)**
+
 - Digital twin do ecossistema
 - Blockchain para rastreabilidade
 - Parcerias com instituições de pesquisa
