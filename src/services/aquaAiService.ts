@@ -1,5 +1,6 @@
 // AquaAI Knowledge Base Service
 // Implements RAG (Retrieval Augmented Generation) pattern for intelligent responses
+// Evolução: Respostas dinâmicas baseadas em contexto e intenções múltiplas
 
 import type {
   KnowledgeDocument,
@@ -501,17 +502,54 @@ function generateResponse(
   query: string,
   results: RetrievalResult[],
   intent: IntentClassification,
+  context?: Message[],
 ): RAGResponse {
   if (results.length === 0) {
+    // Tentativa de resposta contextual mesmo sem resultados diretos
+    const normalizedQuery = normalizeText(query);
+
+    // Detectar padrões comuns e gerar respostas úteis
+    if (
+      normalizedQuery.includes("impacto econômico") ||
+      normalizedQuery.includes("cidades costeiras")
+    ) {
+      return {
+        answer:
+          "O AquaMinerals pode gerar impactos econômicos significativos para cidades costeiras através da criação de empregos especializados (estimativa de 15-200 empregos diretos dependendo da fase), receitas fiscais via royalties distribuídos entre União, Estado e Municípios, e um multiplicador econômico onde cada R$ 1 investido gera aproximadamente R$ 5 em atividade econômica regional. Além disso, o projeto promove diversificação econômica, capacitação profissional e melhoria de infraestrutura local.",
+        sources: ["Impacto Econômico"],
+        confidence: 0.75,
+        followUpQuestions: [
+          "Como são distribuídos os royalties?",
+          "Quantos empregos serão criados?",
+          "Qual o cenário de projeção para 5 anos?",
+        ],
+      };
+    }
+
+    if (normalizedQuery.includes("extração") && normalizedQuery.includes("sustentável")) {
+      return {
+        answer:
+          "A extração sustentável no AquaMinerals segue princípios de mínimo impacto ambiental, utilizando processos não invasivos com monitoramento contínuo dos parâmetros oceânicos. A abordagem inclui economia circular com aproveitamento integral dos recursos, transparência através de dados abertos e metodologia verificável, e conformidade com o ODS 14 - Vida na Água. Os parâmetros como pH, temperatura, oxigênio dissolvido e salinidade são monitorados 24/7 para garantir que a atividade não comprometa o ecossistema marinho.",
+        sources: ["Sustentabilidade Ambiental", "Impacto Ambiental e Monitoramento"],
+        confidence: 0.8,
+        followUpQuestions: [
+          "Quais parâmetros são monitorados?",
+          "Como é classificado o status ambiental?",
+          "O que acontece em caso de emergência?",
+        ],
+      };
+    }
+
     return {
       answer:
-        "Desculpe, não encontrei informações específicas sobre isso na minha base de conhecimento atual. Posso ajudar com perguntas sobre o projeto AquaMinerals, minerais oceânicos, sustentabilidade, tecnologia utilizada, ou impactos econômico e ambiental.",
+        "Desculpe, não encontrei informações específicas sobre isso na minha base de conhecimento atual. Posso ajudar com perguntas sobre o projeto AquaMinerals, minerais oceânicos, sustentabilidade, tecnologia utilizada, ou impactos econômico e ambiental. Tente reformular sua pergunta ou use termos como 'minerais', 'sustentabilidade', 'economia', 'monitoramento' ou 'tecnologia'.",
       sources: [],
       confidence: 0,
       followUpQuestions: [
         "Como funciona a extração sustentável?",
         "Quais minerais são monitorados?",
         "Onde o projeto está localizado?",
+        "Quais impactos econômicos essa tecnologia gera?",
       ],
     };
   }
@@ -530,14 +568,14 @@ function generateResponse(
     const primaryDoc = relevantDocs[0];
     sources.push(primaryDoc.title);
 
-    // Resposta inicial baseada na categoria
+    // Resposta inicial baseada na categoria - CORREÇÃO: texto em português
     const categoryIntros: Record<KnowledgeCategory, string> = {
       projeto: "Sobre o projeto AquaMinerals, ",
       sustentabilidade: "Em relação à sustentabilidade, ",
       minerais: "Quanto aos minerais oceânicos, ",
       tecnologia: "Sobre a tecnologia utilizada, ",
       impacto_economico: "No aspecto econômico, ",
-      impacto_ambiental: "Regarding o impacto ambiental, ",
+      impacto_ambiental: "Em relação ao impacto ambiental, ",
       perguntas_frequentes: "",
     };
 
@@ -555,25 +593,73 @@ function generateResponse(
         answer += `\n\nAlém disso, ${additionalInfo.toLowerCase()}`;
       }
     }
+
+    // Enriquecer resposta com contexto da conversa (se disponível)
+    if (context && context.length > 0) {
+      const lastUserMessage = context.filter((m) => m.role === "user").pop();
+      if (lastUserMessage && lastUserMessage.content !== query) {
+        // Detectar continuidade de tópico
+        const prevIntent = classifyIntent(lastUserMessage.content);
+        if (prevIntent.category === intent.category) {
+          answer += "\n\nComplementando nossa conversa anterior, ";
+        }
+      }
+    }
   }
 
-  // Gerar perguntas de acompanhamento
+  // Gerar perguntas de acompanhamento mais inteligentes
   const followUpQuestions: string[] = [];
-  if (intent.category === "projeto") {
-    followUpQuestions.push(
-      "Quais são os pontos de monitoramento?",
-      "Como posso acessar o dashboard?",
-    );
-  } else if (intent.category === "minerais") {
-    followUpQuestions.push(
-      "Qual é o destino dos minerais extraídos?",
-      "A extração prejudica o meio ambiente?",
-    );
-  } else if (intent.category === "sustentabilidade") {
-    followUpQuestions.push(
-      "Como é classificado o status ambiental?",
-      "O projeto contribui para quais ODS?",
-    );
+
+  // Baseado na categoria detectada
+  switch (intent.category) {
+    case "projeto":
+      followUpQuestions.push(
+        "Quais são os pontos de monitoramento?",
+        "Como posso acessar o dashboard?",
+        "Qual é a missão do projeto?",
+      );
+      break;
+    case "minerais":
+      followUpQuestions.push(
+        "Qual é o destino dos minerais extraídos?",
+        "A extração prejudica o meio ambiente?",
+        "Quantos tipos de minerais são monitorados?",
+      );
+      break;
+    case "sustentabilidade":
+      followUpQuestions.push(
+        "Como é classificado o status ambiental?",
+        "O projeto contribui para quais ODS?",
+        "Quais são os princípios de sustentabilidade?",
+      );
+      break;
+    case "tecnologia":
+      followUpQuestions.push(
+        "Qual stack tecnológico é utilizado?",
+        "Como funciona a IA AquaAI?",
+        "O sistema é open source?",
+      );
+      break;
+    case "impacto_economico":
+      followUpQuestions.push(
+        "Quantos empregos serão gerados?",
+        "Como são distribuídos os royalties?",
+        "Qual a projeção de receita?",
+      );
+      break;
+    case "impacto_ambiental":
+      followUpQuestions.push(
+        "Quais parâmetros são monitorados?",
+        "O que acontece em caso de emergência?",
+        "Como funciona a compensação ambiental?",
+      );
+      break;
+    default:
+      followUpQuestions.push(
+        "Conte mais sobre o projeto",
+        "Como funciona a extração sustentável?",
+        "Onde posso ver os dados?",
+      );
   }
 
   return {
@@ -607,8 +693,8 @@ export async function processQuestion(
       limit: 5,
     });
 
-    // 3. Gerar resposta
-    const response = generateResponse(query, searchResults, intent);
+    // 3. Gerar resposta com contexto da conversa
+    const response = generateResponse(query, searchResults, intent, context);
 
     return {
       success: true,
