@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 // IMPORTANTE: Importa do repositório do próprio módulo AUTH
-import type { IUsersRepository } from "../repositories/IUsersRepository.js"; 
+import type { IUsersRepository } from "../repositories/IUsersRepository.js";
 import { EmailAlreadyExistsError } from "../errors/EmailAlreadyExistsError.js";
 import type { RegisterBodyDto } from "../validators/auth.validators.js";
 
@@ -9,7 +9,7 @@ export class RegisterUserService {
 
   async execute({ name, email, password }: RegisterBodyDto) {
     const userAlreadyExists = await this.usersRepository.findByEmail(email);
-    
+
     if (userAlreadyExists) {
       throw new EmailAlreadyExistsError();
     }

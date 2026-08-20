@@ -15,7 +15,10 @@ export class PrismaReportsRepository implements IReportsRepository {
     return prisma.environmentalReport.create({ data });
   }
 
-  async findAll(filters?: { status?: ReportStatus; type?: ReportType }): Promise<EnvironmentalReport[]> {
+  async findAll(filters?: {
+    status?: ReportStatus;
+    type?: ReportType;
+  }): Promise<EnvironmentalReport[]> {
     return prisma.environmentalReport.findMany({
       where: filters,
       include: {

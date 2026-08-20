@@ -31,6 +31,5 @@
     "removeComments": false
   },
   "include": ["src/**/*.ts", "prisma/seed.ts"],
-  "exclude": ["backend", "node_modules", "dist"],
-
+  "exclude": ["backend", "node_modules", "dist"]
 }

@@ -1,5 +1,5 @@
 import { t as __commonJSMin } from "../_runtime.mjs";
-import { f as globalthis_default, p as init_globalthis } from "./@tanstack/router-core+[...].mjs";
+import { m as init_globalthis, p as globalthis_default } from "./@tanstack/router-core+[...].mjs";
 //#region node_modules/lodash/isArray.js
 var require_isArray = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = Array.isArray;
@@ -53,8 +53,10 @@ var require__getRawTag = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			var unmasked = true;
 		} catch (e) {}
 		var result = nativeObjectToString.call(value);
-		if (unmasked) if (isOwn) value[symToStringTag] = tag;
-		else delete value[symToStringTag];
+		if (unmasked) {
+			if (isOwn) value[symToStringTag] = tag;
+			else delete value[symToStringTag];
+		}
 		return result;
 	}
 	module.exports = getRawTag;
@@ -1018,7 +1020,7 @@ var require__baseToString = /* @__PURE__ */ __commonJSMin(((exports, module) => 
 	var isArray = require_isArray();
 	var isSymbol = require_isSymbol();
 	/** Used as references for various `Number` constants. */
-	var INFINITY = Infinity;
+	var INFINITY = 1 / 0;
 	/** Used to convert symbols to primitives and strings. */
 	var symbolProto = Symbol ? Symbol.prototype : void 0;
 	var symbolToString = symbolProto ? symbolProto.toString : void 0;
@@ -1095,7 +1097,7 @@ var require__castPath = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 var require__toKey = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var isSymbol = require_isSymbol();
 	/** Used as references for various `Number` constants. */
-	var INFINITY = Infinity;
+	var INFINITY = 1 / 0;
 	/**
 	* Converts `value` to a string key if it's not a string or symbol.
 	*
@@ -3099,7 +3101,7 @@ var require__createSet = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var Set = require__Set();
 	var noop = require_noop();
 	var setToArray = require__setToArray();
-	module.exports = !(Set && 1 / setToArray(new Set([, -0]))[1] == Infinity) ? noop : function(values) {
+	module.exports = !(Set && 1 / setToArray(new Set([, -0]))[1] == 1 / 0) ? noop : function(values) {
 		return new Set(values);
 	};
 }));
@@ -3227,9 +3229,10 @@ var require__baseFlatten = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		result || (result = []);
 		while (++index < length) {
 			var value = array[index];
-			if (depth > 0 && predicate(value)) if (depth > 1) baseFlatten(value, depth - 1, predicate, isStrict, result);
-			else arrayPush(result, value);
-			else if (!isStrict) result[result.length] = value;
+			if (depth > 0 && predicate(value)) {
+				if (depth > 1) baseFlatten(value, depth - 1, predicate, isStrict, result);
+				else arrayPush(result, value);
+			} else if (!isStrict) result[result.length] = value;
 		}
 		return result;
 	}
@@ -4418,7 +4421,7 @@ var require__baseRange = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 var require_toFinite = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var toNumber = require_toNumber();
 	/** Used as references for various `Number` constants. */
-	var INFINITY = Infinity;
+	var INFINITY = 1 / 0;
 	var MAX_INTEGER = 17976931348623157e292;
 	/**
 	* Converts `value` to a finite number.

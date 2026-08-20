@@ -1,17 +1,44 @@
 import { createFileRoute, Link, useRouterState } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
-  Waves, LayoutDashboard, Users, MapPin, FlaskConical, Bell, Settings,
-  Search, Plus, MoreHorizontal, TrendingUp, TrendingDown, LogOut, ArrowUpRight,
+  Waves,
+  LayoutDashboard,
+  Users,
+  MapPin,
+  FlaskConical,
+  Bell,
+  Settings,
+  Search,
+  Plus,
+  MoreHorizontal,
+  TrendingUp,
+  TrendingDown,
+  LogOut,
+  ArrowUpRight,
 } from "lucide-react";
 import {
-  Area, AreaChart, Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis,
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from "recharts";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/admin")({
@@ -92,12 +119,18 @@ function Admin() {
         </nav>
         <div className="border-t border-sidebar-border p-3">
           <div className="flex items-center gap-3 rounded-lg p-2">
-            <Avatar className="h-9 w-9"><AvatarFallback>PA</AvatarFallback></Avatar>
+            <Avatar className="h-9 w-9">
+              <AvatarFallback>PA</AvatarFallback>
+            </Avatar>
             <div className="min-w-0 flex-1">
               <div className="truncate text-sm font-medium">Pedro Alves</div>
               <div className="truncate text-xs text-muted-foreground">Administrador</div>
             </div>
-            <Button variant="ghost" size="icon" asChild><Link to="/"><LogOut className="h-4 w-4" /></Link></Button>
+            <Button variant="ghost" size="icon" asChild>
+              <Link to="/">
+                <LogOut className="h-4 w-4" />
+              </Link>
+            </Button>
           </div>
         </div>
       </aside>
@@ -110,14 +143,20 @@ function Admin() {
             <Input placeholder="Buscar em pontos, análises, usuários..." className="pl-9" />
           </div>
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon"><Bell className="h-4 w-4" /></Button>
-            <Button className="bg-gradient-ocean text-white"><Plus className="mr-1 h-4 w-4" /> Novo ponto</Button>
+            <Button variant="ghost" size="icon">
+              <Bell className="h-4 w-4" />
+            </Button>
+            <Button className="bg-gradient-ocean text-white">
+              <Plus className="mr-1 h-4 w-4" /> Novo ponto
+            </Button>
           </div>
         </header>
 
         <div className="min-w-0 flex-1 p-4 sm:p-8">
           <div className="mb-6">
-            <Badge variant="secondary" className="mb-2">Painel administrativo</Badge>
+            <Badge variant="secondary" className="mb-2">
+              Painel administrativo
+            </Badge>
             <h1 className="font-display text-3xl font-bold">Visão geral</h1>
             <p className="text-muted-foreground">Métricas consolidadas da plataforma.</p>
           </div>
@@ -133,11 +172,22 @@ function Admin() {
               >
                 <div className="flex items-start justify-between">
                   <div className="text-sm text-muted-foreground">{k.label}</div>
-                  <Button variant="ghost" size="icon" className="h-6 w-6"><MoreHorizontal className="h-4 w-4" /></Button>
+                  <Button variant="ghost" size="icon" className="h-6 w-6">
+                    <MoreHorizontal className="h-4 w-4" />
+                  </Button>
                 </div>
                 <div className="mt-2 font-display text-3xl font-bold">{k.value}</div>
-                <div className={cn("mt-1 flex items-center gap-1 text-xs", k.up ? "text-eco" : "text-destructive")}>
-                  {k.up ? <TrendingUp className="h-3.5 w-3.5" /> : <TrendingDown className="h-3.5 w-3.5" />}
+                <div
+                  className={cn(
+                    "mt-1 flex items-center gap-1 text-xs",
+                    k.up ? "text-eco" : "text-destructive",
+                  )}
+                >
+                  {k.up ? (
+                    <TrendingUp className="h-3.5 w-3.5" />
+                  ) : (
+                    <TrendingDown className="h-3.5 w-3.5" />
+                  )}
                   {k.delta} vs. ontem
                 </div>
               </motion.div>
@@ -151,7 +201,9 @@ function Admin() {
                   <h3 className="font-display font-semibold">Coletas — últimos 14 dias</h3>
                   <p className="text-xs text-muted-foreground">Volume diário agregado</p>
                 </div>
-                <Button variant="ghost" size="sm">Ver relatório <ArrowUpRight className="ml-1 h-3.5 w-3.5" /></Button>
+                <Button variant="ghost" size="sm">
+                  Ver relatório <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+                </Button>
               </div>
               <div className="h-64">
                 <ResponsiveContainer width="100%" height="100%">
@@ -163,10 +215,33 @@ function Admin() {
                       </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-                    <XAxis dataKey="d" stroke="var(--color-muted-foreground)" fontSize={11} tickLine={false} axisLine={false} />
-                    <YAxis stroke="var(--color-muted-foreground)" fontSize={11} tickLine={false} axisLine={false} />
-                    <Tooltip contentStyle={{ background: "var(--color-card)", border: "1px solid var(--color-border)", borderRadius: 12 }} />
-                    <Area type="monotone" dataKey="coletas" stroke="var(--chart-1)" strokeWidth={2.5} fill="url(#ad)" />
+                    <XAxis
+                      dataKey="d"
+                      stroke="var(--color-muted-foreground)"
+                      fontSize={11}
+                      tickLine={false}
+                      axisLine={false}
+                    />
+                    <YAxis
+                      stroke="var(--color-muted-foreground)"
+                      fontSize={11}
+                      tickLine={false}
+                      axisLine={false}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        background: "var(--color-card)",
+                        border: "1px solid var(--color-border)",
+                        borderRadius: 12,
+                      }}
+                    />
+                    <Area
+                      type="monotone"
+                      dataKey="coletas"
+                      stroke="var(--chart-1)"
+                      strokeWidth={2.5}
+                      fill="url(#ad)"
+                    />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>
@@ -178,10 +253,27 @@ function Admin() {
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={trend}>
                     <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-                    <XAxis dataKey="d" stroke="var(--color-muted-foreground)" fontSize={11} tickLine={false} axisLine={false} />
-                    <YAxis stroke="var(--color-muted-foreground)" fontSize={11} tickLine={false} axisLine={false} />
-                    <Tooltip contentStyle={{ background: "var(--color-card)", border: "1px solid var(--color-border)", borderRadius: 12 }} />
-                    <Bar dataKey="alertas" fill="var(--chart-4)" radius={[6,6,0,0]} />
+                    <XAxis
+                      dataKey="d"
+                      stroke="var(--color-muted-foreground)"
+                      fontSize={11}
+                      tickLine={false}
+                      axisLine={false}
+                    />
+                    <YAxis
+                      stroke="var(--color-muted-foreground)"
+                      fontSize={11}
+                      tickLine={false}
+                      axisLine={false}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        background: "var(--color-card)",
+                        border: "1px solid var(--color-border)",
+                        borderRadius: 12,
+                      }}
+                    />
+                    <Bar dataKey="alertas" fill="var(--chart-4)" radius={[6, 6, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
@@ -194,7 +286,9 @@ function Admin() {
                 <h3 className="font-display font-semibold">Usuários recentes</h3>
                 <p className="text-xs text-muted-foreground">Últimos acessos à plataforma</p>
               </div>
-              <Button variant="outline" size="sm">Gerenciar</Button>
+              <Button variant="outline" size="sm">
+                Gerenciar
+              </Button>
             </div>
             <Table>
               <TableHeader>
@@ -211,14 +305,30 @@ function Admin() {
                   <TableRow key={u.email}>
                     <TableCell>
                       <div className="flex items-center gap-3">
-                        <Avatar className="h-8 w-8"><AvatarFallback>{u.name.split(" ").map(n => n[0]).join("").slice(0,2)}</AvatarFallback></Avatar>
+                        <Avatar className="h-8 w-8">
+                          <AvatarFallback>
+                            {u.name
+                              .split(" ")
+                              .map((n) => n[0])
+                              .join("")
+                              .slice(0, 2)}
+                          </AvatarFallback>
+                        </Avatar>
                         <span className="font-medium">{u.name}</span>
                       </div>
                     </TableCell>
                     <TableCell className="text-muted-foreground">{u.email}</TableCell>
                     <TableCell>{u.role}</TableCell>
-                    <TableCell><Badge variant="outline" className={cn("border", statusBadge[u.status])}>{u.status}</Badge></TableCell>
-                    <TableCell><Button variant="ghost" size="icon"><MoreHorizontal className="h-4 w-4" /></Button></TableCell>
+                    <TableCell>
+                      <Badge variant="outline" className={cn("border", statusBadge[u.status])}>
+                        {u.status}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>
+                      <Button variant="ghost" size="icon">
+                        <MoreHorizontal className="h-4 w-4" />
+                      </Button>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

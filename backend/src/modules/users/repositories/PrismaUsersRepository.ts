@@ -11,7 +11,10 @@ export class PrismaUsersRepository implements IUsersRepository {
     return prisma.user.findFirst({ where: { email, deletedAt: null } });
   }
 
-  async update(id: string, data: { name?: string; email?: string; password?: string }): Promise<User> {
+  async update(
+    id: string,
+    data: { name?: string; email?: string; password?: string },
+  ): Promise<User> {
     return prisma.user.update({ where: { id }, data });
   }
 

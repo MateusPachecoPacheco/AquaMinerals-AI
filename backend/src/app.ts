@@ -40,28 +40,28 @@ export async function buildApp(options: FastifyServerOptions = {}): Promise<Fast
 
   // 1. Segurança e CORS
   await registerSecurity(app);
-  
+
   // ✅ CORS mais flexível para debug
   const corsOrigins = env.CORS_ORIGIN.split(",").map((origin) => origin.trim());
   app.log.info({ corsOrigins }, "CORS configurado para as origens");
-  
+
   await app.register(fastifyCors, {
     origin: (origin, callback) => {
       // Permite requisições sem origin (ex: Postman, mobile apps)
       if (!origin) {
         return callback(null, true);
       }
-      
+
       // Verifica se a origem está na lista permitida
       if (corsOrigins.includes(origin)) {
         return callback(null, true);
       }
-      
+
       // Em desenvolvimento, permite qualquer localhost
       if (isDevelopment && (origin.includes("localhost") || origin.includes("127.0.0.1"))) {
         return callback(null, true);
       }
-      
+
       // Log de CORS bloqueado para debug
       app.log.warn({ origin, corsOrigins }, "CORS bloqueado para origem");
       callback(new Error("Not allowed by CORS"), false);
@@ -111,8 +111,9 @@ export async function buildApp(options: FastifyServerOptions = {}): Promise<Fast
   });
 
   // 4. Encapsulamento da API (Versionamento e Módulos de Negócio)
-    // 4. Encapsulamento da API (Versionamento e Módulos de Negócio)
-    await app.register(async function (api) {
+  // 4. Encapsulamento da API (Versionamento e Módulos de Negócio)
+  await app.register(
+    async function (api) {
       await api.register(authRoutes, { prefix: "/auth" });
       await api.register(usersRoutes, { prefix: "/users" });
       await api.register(dashboardRoutes, { prefix: "/dashboard" });
@@ -121,7 +122,9 @@ export async function buildApp(options: FastifyServerOptions = {}): Promise<Fast
       await api.register(newsletterRoutes, { prefix: "/community/newsletter" });
       await api.register(aiRoutes, { prefix: "/ai" });
       await api.register(adminRoutes, { prefix: "/admin" }); // ← ADICIONAR ESTA LINHA
-    }, { prefix: env.API_PREFIX });
+    },
+    { prefix: env.API_PREFIX },
+  );
 
   // 5. Hooks de Banco de Dados
   app.addHook("onReady", async () => {

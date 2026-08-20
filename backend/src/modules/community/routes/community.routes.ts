@@ -11,29 +11,41 @@ export async function communityRoutes(app: FastifyInstance): Promise<void> {
   // Todas as rotas abaixo exigem autenticação
   app.addHook("preHandler", verifyJwt);
 
-  app.post("/reports", {
-    schema: {
-      tags: ["Comunidade"],
-      summary: "Criar uma nova denúncia ambiental ou sugestão",
-      security: [{ bearerAuth: [] }],
+  app.post(
+    "/reports",
+    {
+      schema: {
+        tags: ["Comunidade"],
+        summary: "Criar uma nova denúncia ambiental ou sugestão",
+        security: [{ bearerAuth: [] }],
+      },
     },
-  }, communityController.createReport);
+    communityController.createReport,
+  );
 
-  app.get("/reports", {
-    schema: {
-      tags: ["Comunidade"],
-      summary: "Listar denúncias e sugestões (com filtros opcionais)",
-      security: [{ bearerAuth: [] }],
+  app.get(
+    "/reports",
+    {
+      schema: {
+        tags: ["Comunidade"],
+        summary: "Listar denúncias e sugestões (com filtros opcionais)",
+        security: [{ bearerAuth: [] }],
+      },
     },
-  }, communityController.listReports);
+    communityController.listReports,
+  );
 
   // Rota exclusiva para Moderadores e Admins atualizarem o status
-  app.patch("/reports/:id/status", {
-    preHandler: [verifyUserRole(UserRole.ADMIN, UserRole.MODERATOR)],
-    schema: {
-      tags: ["Comunidade"],
-      summary: "Atualizar status de uma denúncia (Apenas Admins/Moderadores)",
-      security: [{ bearerAuth: [] }],
+  app.patch(
+    "/reports/:id/status",
+    {
+      preHandler: [verifyUserRole(UserRole.ADMIN, UserRole.MODERATOR)],
+      schema: {
+        tags: ["Comunidade"],
+        summary: "Atualizar status de uma denúncia (Apenas Admins/Moderadores)",
+        security: [{ bearerAuth: [] }],
+      },
     },
-  }, communityController.updateStatus);
+    communityController.updateStatus,
+  );
 }

@@ -1,5 +1,5 @@
 export function renderErrorPage(): string {
-    return `<!doctype html>
+  return `<!doctype html>
   <html lang="en">
     <head>
       <meta charset="utf-8" />
@@ -27,5 +27,4 @@ export function renderErrorPage(): string {
       </div>
     </body>
   </html>`;
-  }
-  
+}

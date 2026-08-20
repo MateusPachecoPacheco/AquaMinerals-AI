@@ -5,7 +5,7 @@ export class GetDashboardMetricsService {
 
   async execute() {
     const metrics = await this.dashboardRepository.getMetrics();
-    
+
     // Formatação amigável para o Frontend (arredondando casas decimais)
     return {
       users: metrics.totalUsers,

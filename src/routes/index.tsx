@@ -83,10 +83,26 @@ const features = [
 ];
 
 const steps = [
-  { step: "01", title: "Coleta", desc: "Amostras de água captadas em pontos estratégicos do litoral." },
-  { step: "02", title: "Análise Química", desc: "Determinação de composição mineral, salinidade e parâmetros físico-químicos." },
-  { step: "03", title: "Processamento IA", desc: "Modelos identificam padrões, anomalias e correlações ambientais." },
-  { step: "04", title: "Visualização", desc: "Dashboards, mapas e relatórios acessíveis a comunidade e pesquisadores." },
+  {
+    step: "01",
+    title: "Coleta",
+    desc: "Amostras de água captadas em pontos estratégicos do litoral.",
+  },
+  {
+    step: "02",
+    title: "Análise Química",
+    desc: "Determinação de composição mineral, salinidade e parâmetros físico-químicos.",
+  },
+  {
+    step: "03",
+    title: "Processamento IA",
+    desc: "Modelos identificam padrões, anomalias e correlações ambientais.",
+  },
+  {
+    step: "04",
+    title: "Visualização",
+    desc: "Dashboards, mapas e relatórios acessíveis a comunidade e pesquisadores.",
+  },
 ];
 
 function Home() {
@@ -111,14 +127,19 @@ function Home() {
             </Badge>
             <h1 className="text-balance font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
               A tecnologia que transforma{" "}
-              <span className="text-gradient-ocean">dados do oceano</span> em conhecimento sustentável.
+              <span className="text-gradient-ocean">dados do oceano</span> em conhecimento
+              sustentável.
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground sm:text-xl">
               A AquaMinerals integra sensores, ciência oceanográfica e inteligência artificial para
               monitorar a saúde do mar e impulsionar a economia azul.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Button asChild size="lg" className="bg-gradient-ocean text-white shadow-glow hover:opacity-95">
+              <Button
+                asChild
+                size="lg"
+                className="bg-gradient-ocean text-white shadow-glow hover:opacity-95"
+              >
                 <Link to="/dashboard">
                   Explorar Plataforma <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -156,12 +177,15 @@ function Home() {
       <section className="py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="mx-auto max-w-2xl text-center">
-            <Badge variant="secondary" className="mb-4">Diferenciais</Badge>
+            <Badge variant="secondary" className="mb-4">
+              Diferenciais
+            </Badge>
             <h2 className="font-display text-3xl font-bold sm:text-5xl">
               Ciência oceânica, refinada para escala.
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Uma plataforma que combina rigor científico com experiência de produto de nível mundial.
+              Uma plataforma que combina rigor científico com experiência de produto de nível
+              mundial.
             </p>
           </motion.div>
 
@@ -189,8 +213,12 @@ function Home() {
       <section className="border-y border-border/60 bg-secondary/30 py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} className="mx-auto max-w-2xl text-center">
-            <Badge variant="secondary" className="mb-4">Como funciona</Badge>
-            <h2 className="font-display text-3xl font-bold sm:text-5xl">Do oceano ao insight, em quatro etapas.</h2>
+            <Badge variant="secondary" className="mb-4">
+              Como funciona
+            </Badge>
+            <h2 className="font-display text-3xl font-bold sm:text-5xl">
+              Do oceano ao insight, em quatro etapas.
+            </h2>
           </motion.div>
 
           <div className="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -242,7 +270,12 @@ function Home() {
                 <Button asChild size="lg" variant="secondary">
                   <Link to="/dashboard">Abrir Dashboard</Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-white/30 bg-transparent text-white hover:bg-white/10">
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="border-white/30 bg-transparent text-white hover:bg-white/10"
+                >
                   <Link to="/aqua-ai">Falar com AquaAI</Link>
                 </Button>
               </div>

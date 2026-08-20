@@ -12,8 +12,8 @@ export interface IReportsRepository {
   }): Promise<EnvironmentalReport>;
 
   findAll(filters?: { status?: ReportStatus; type?: ReportType }): Promise<EnvironmentalReport[]>;
-  
+
   findById(id: string): Promise<EnvironmentalReport | null>;
-  
+
   updateStatus(id: string, status: ReportStatus): Promise<EnvironmentalReport>;
 }

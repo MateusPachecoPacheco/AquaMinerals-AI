@@ -1,7 +1,14 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { GraduationCap, MessageSquareWarning, Lightbulb, Calendar, Users, ArrowRight } from "lucide-react";
+import {
+  GraduationCap,
+  MessageSquareWarning,
+  Lightbulb,
+  Calendar,
+  Users,
+  ArrowRight,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -32,7 +39,11 @@ const cards: Array<{
     title: "Curso Oceano em Dados",
     desc: "Formação gratuita sobre ciência oceânica para estudantes e educadores.",
     cta: "Inscrever-se",
-    action: { type: "toast", message: "Inscrição iniciada! Verifique seu e-mail para continuar.", kind: "success" },
+    action: {
+      type: "toast",
+      message: "Inscrição iniciada! Verifique seu e-mail para continuar.",
+      kind: "success",
+    },
   },
   {
     icon: Users,
@@ -40,7 +51,11 @@ const cards: Array<{
     title: "Guardiões da Baía",
     desc: "Rede de moradores que colaboram no monitoramento comunitário.",
     cta: "Participar",
-    action: { type: "toast", message: "Bem-vindo à rede Guardiões da Baía! Em breve você receberá o kit de monitoramento.", kind: "success" },
+    action: {
+      type: "toast",
+      message: "Bem-vindo à rede Guardiões da Baía! Em breve você receberá o kit de monitoramento.",
+      kind: "success",
+    },
   },
   {
     icon: MessageSquareWarning,
@@ -48,7 +63,12 @@ const cards: Array<{
     title: "Reporte um incidente",
     desc: "Registre anomalias observadas no litoral com fotos e localização.",
     cta: "Enviar denúncia",
-    action: { type: "toast", message: "Canal de denúncias aberto. Faça login para registrar sua denúncia com geolocalização.", kind: "info" },
+    action: {
+      type: "toast",
+      message:
+        "Canal de denúncias aberto. Faça login para registrar sua denúncia com geolocalização.",
+      kind: "info",
+    },
   },
   {
     icon: Lightbulb,
@@ -56,7 +76,11 @@ const cards: Array<{
     title: "Envie sua ideia",
     desc: "Contribua com melhorias para a plataforma e novos indicadores.",
     cta: "Sugerir",
-    action: { type: "toast", message: "Obrigado! Sua sugestão foi registrada e será analisada pela equipe.", kind: "success" },
+    action: {
+      type: "toast",
+      message: "Obrigado! Sua sugestão foi registrada e será analisada pela equipe.",
+      kind: "success",
+    },
   },
   {
     icon: Calendar,
@@ -64,7 +88,12 @@ const cards: Array<{
     title: "Fórum da Economia Azul",
     desc: "Encontro anual com pesquisadores, gestores e comunidade.",
     cta: "Ver agenda",
-    action: { type: "toast", message: "📅 Fórum da Economia Azul — Novembro de 2026, Madre de Deus/BA. Inscrições em breve!", kind: "info" },
+    action: {
+      type: "toast",
+      message:
+        "📅 Fórum da Economia Azul — Novembro de 2026, Madre de Deus/BA. Inscrições em breve!",
+      kind: "info",
+    },
   },
   {
     icon: GraduationCap,
@@ -72,7 +101,11 @@ const cards: Array<{
     title: "Trilha ambiental infantil",
     desc: "Material didático para o ensino fundamental sobre o oceano.",
     cta: "Acessar",
-    action: { type: "toast", message: "Material didático infantil disponível! Baixe o PDF na sua área de estudante.", kind: "success" },
+    action: {
+      type: "toast",
+      message: "Material didático infantil disponível! Baixe o PDF na sua área de estudante.",
+      kind: "success",
+    },
   },
 ];
 
@@ -120,7 +153,9 @@ export default function Community() {
     <SiteLayout>
       <section className="relative overflow-hidden bg-gradient-hero py-24 sm:py-32">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <Badge variant="outline" className="glass mb-6">Comunidade</Badge>
+          <Badge variant="outline" className="glass mb-6">
+            Comunidade
+          </Badge>
           <h1 className="font-display text-4xl font-bold sm:text-6xl">
             Ciência é <span className="text-gradient-ocean">coletiva</span>.
           </h1>
@@ -138,11 +173,7 @@ export default function Community() {
               disabled={isSubscribing}
               required
             />
-            <Button
-              type="submit"
-              className="bg-gradient-ocean text-white"
-              disabled={isSubscribing}
-            >
+            <Button type="submit" className="bg-gradient-ocean text-white" disabled={isSubscribing}>
               {isSubscribing ? "Assinando..." : "Assinar"}
             </Button>
           </form>
@@ -176,7 +207,8 @@ export default function Community() {
                   className="mt-4 justify-start p-0 text-primary hover:bg-transparent"
                   onClick={() => handleCardAction(c.action)}
                 >
-                  {c.cta} <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  {c.cta}{" "}
+                  <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </motion.div>
             ))}

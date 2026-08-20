@@ -7,7 +7,7 @@ export function verifyUserRole(...roles: UserRole[]) {
     if (!request.user) {
       throw new AppError("Usuário não autenticado.", 401);
     }
-    
+
     if (!roles.includes(request.user.role as UserRole)) {
       throw new AppError("Você não tem permissão para acessar esta rota.", 403);
     }

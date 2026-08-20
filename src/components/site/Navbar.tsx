@@ -28,11 +28,7 @@ export function Navbar() {
       <div className="glass-strong border-b border-border/60">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center gap-2 shrink-0">
-            <img
-              src="/favicon.svg"
-              alt="AquaMinerals"
-              className="h-9 w-9 rounded-xl shadow-glow"
-            />
+            <img src="/favicon.svg" alt="AquaMinerals" className="h-9 w-9 rounded-xl shadow-glow" />
             <div className="flex flex-col leading-none">
               <span className="font-display text-base font-bold tracking-tight">AquaMinerals</span>
               <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
@@ -50,9 +46,7 @@ export function Navbar() {
                   to={item.to}
                   className={cn(
                     "relative rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
-                    active
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground",
+                    active ? "text-foreground" : "text-muted-foreground hover:text-foreground",
                   )}
                 >
                   {item.label}
@@ -71,10 +65,13 @@ export function Navbar() {
           {/* Desktop: Área do usuário */}
           <div className="hidden items-center gap-2 lg:flex">
             <ThemeToggle />
-            
+
             {isAuthenticated ? (
               <div className="flex items-center gap-3">
-                <Link to="/dashboard" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                <Link
+                  to="/dashboard"
+                  className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+                >
                   <div className="w-9 h-9 rounded-full bg-gradient-ocean flex items-center justify-center shadow-glow">
                     <span className="text-white font-bold text-sm">
                       {user?.name?.charAt(0).toUpperCase()}
@@ -85,12 +82,7 @@ export function Navbar() {
                     <span className="text-xs text-muted-foreground capitalize">{user?.role}</span>
                   </div>
                 </Link>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  onClick={logout}
-                  className="gap-1"
-                >
+                <Button variant="outline" size="sm" onClick={logout} className="gap-1">
                   <LogOut className="h-4 w-4" />
                   Sair
                 </Button>
@@ -100,7 +92,11 @@ export function Navbar() {
                 <Button asChild variant="ghost" size="sm">
                   <Link to="/login">Entrar</Link>
                 </Button>
-                <Button asChild size="sm" className="bg-gradient-ocean text-white shadow-elegant hover:opacity-90">
+                <Button
+                  asChild
+                  size="sm"
+                  className="bg-gradient-ocean text-white shadow-elegant hover:opacity-90"
+                >
                   <Link to="/register">Cadastrar</Link>
                 </Button>
               </>
@@ -143,11 +139,13 @@ export function Navbar() {
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-semibold text-foreground truncate">{user?.name}</p>
                       <p className="text-xs text-muted-foreground truncate">{user?.email}</p>
-                      <p className="text-xs text-muted-foreground capitalize mt-0.5">{user?.role}</p>
+                      <p className="text-xs text-muted-foreground capitalize mt-0.5">
+                        {user?.role}
+                      </p>
                     </div>
                   </div>
                 )}
-                
+
                 {/* Links de navegação */}
                 {nav.map((item) => (
                   <Link
@@ -168,9 +166,9 @@ export function Navbar() {
                 {/* Botões de autenticação */}
                 <div className="mt-3 pt-3 border-t border-border/60 flex gap-2">
                   {isAuthenticated ? (
-                    <Button 
-                      variant="outline" 
-                      className="flex-1 gap-2" 
+                    <Button
+                      variant="outline"
+                      className="flex-1 gap-2"
                       onClick={() => {
                         logout();
                         setOpen(false);
@@ -182,10 +180,14 @@ export function Navbar() {
                   ) : (
                     <>
                       <Button asChild variant="outline" className="flex-1">
-                        <Link to="/login" onClick={() => setOpen(false)}>Entrar</Link>
+                        <Link to="/login" onClick={() => setOpen(false)}>
+                          Entrar
+                        </Link>
                       </Button>
                       <Button asChild className="flex-1 bg-gradient-ocean text-white">
-                        <Link to="/register" onClick={() => setOpen(false)}>Cadastrar</Link>
+                        <Link to="/register" onClick={() => setOpen(false)}>
+                          Cadastrar
+                        </Link>
                       </Button>
                     </>
                   )}

@@ -1,27 +1,45 @@
 import { o as __toESM } from "../../_runtime.mjs";
 import { u as require_react } from "../@floating-ui/react-dom+[...].mjs";
-import { n as Primitive, o as useComposedRefs, s as require_jsx_runtime } from "./react-arrow+[...].mjs";
-import { i as useLayoutEffect2, o as createContextScope } from "./react-avatar+[...].mjs";
+import { a as Primitive, c as createContextScope, d as useComposedRefs, f as require_jsx_runtime, s as useLayoutEffect2 } from "./react-avatar+[...].mjs";
 import { t as composeEventHandlers } from "../radix-ui__primitive.mjs";
-//#region node_modules/@radix-ui/react-use-controllable-state/dist/index.mjs
+//#region node_modules/@radix-ui/react-use-effect-event/dist/index.mjs
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
+var __defProp$4 = Object.defineProperty;
+var __name$4 = (target, value) => __defProp$4(target, "name", {
+	value,
+	configurable: true
+});
+var useReactEffectEvent = import_react[" useEffectEvent ".trim().toString()];
+var useReactInsertionEffect = import_react[" useInsertionEffect ".trim().toString()];
+function useEffectEvent(callback) {
+	if (typeof useReactEffectEvent === "function") return useReactEffectEvent(callback);
+	const ref = import_react.useRef(() => {
+		throw new Error("Cannot call an event handler while rendering.");
+	});
+	if (typeof useReactInsertionEffect === "function") useReactInsertionEffect(() => {
+		ref.current = callback;
+	});
+	else useLayoutEffect2(() => {
+		ref.current = callback;
+	});
+	return import_react.useMemo(() => ((...args) => ref.current?.(...args)), []);
+}
+__name$4(useEffectEvent, "useEffectEvent");
+//#endregion
+//#region node_modules/@radix-ui/react-use-controllable-state/dist/index.mjs
+var __defProp$3 = Object.defineProperty;
+var __name$3 = (target, value) => __defProp$3(target, "name", {
+	value,
+	configurable: true
+});
 var useInsertionEffect = import_react[" useInsertionEffect ".trim().toString()] || useLayoutEffect2;
-function useControllableState({ prop, defaultProp, onChange = () => {}, caller }) {
+function useControllableState({ prop, defaultProp, onChange = /* @__PURE__ */ __name$3(() => {}, "onChange"), caller }) {
 	const [uncontrolledProp, setUncontrolledProp, onChangeRef] = useUncontrolledState({
 		defaultProp,
 		onChange
 	});
 	const isControlled = prop !== void 0;
-	const value = isControlled ? prop : uncontrolledProp;
-	{
-		const isControlledRef = import_react.useRef(prop !== void 0);
-		import_react.useEffect(() => {
-			const wasControlled = isControlledRef.current;
-			if (wasControlled !== isControlled) console.warn(`${caller} is changing from ${wasControlled ? "controlled" : "uncontrolled"} to ${isControlled ? "controlled" : "uncontrolled"}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`);
-			isControlledRef.current = isControlled;
-		}, [isControlled, caller]);
-	}
-	return [value, import_react.useCallback((nextValue) => {
+	return [isControlled ? prop : uncontrolledProp, import_react.useCallback((nextValue) => {
 		if (isControlled) {
 			const value2 = isFunction$1(nextValue) ? nextValue(prop) : nextValue;
 			if (value2 !== prop) onChangeRef.current?.(value2);
@@ -33,6 +51,7 @@ function useControllableState({ prop, defaultProp, onChange = () => {}, caller }
 		onChangeRef
 	])];
 }
+__name$3(useControllableState, "useControllableState");
 function useUncontrolledState({ defaultProp, onChange }) {
 	const [value, setValue] = import_react.useState(defaultProp);
 	const prevValueRef = import_react.useRef(value);
@@ -52,11 +71,69 @@ function useUncontrolledState({ defaultProp, onChange }) {
 		onChangeRef
 	];
 }
+__name$3(useUncontrolledState, "useUncontrolledState");
 function isFunction$1(value) {
 	return typeof value === "function";
 }
+__name$3(isFunction$1, "isFunction");
+var SYNC_STATE = Symbol("RADIX:SYNC_STATE");
+function useControllableStateReducer(reducer, userArgs, initialArg, init) {
+	const { prop: controlledState, defaultProp, onChange: onChangeProp, caller } = userArgs;
+	const isControlled = controlledState !== void 0;
+	const onChange = useEffectEvent(onChangeProp);
+	const args = [{
+		...initialArg,
+		state: defaultProp
+	}];
+	if (init) args.push(init);
+	const [internalState, dispatch] = import_react.useReducer((state2, action) => {
+		if (action.type === SYNC_STATE) return {
+			...state2,
+			state: action.state
+		};
+		const next = reducer(state2, action);
+		if (isControlled && !Object.is(next.state, state2.state)) onChange(next.state);
+		return next;
+	}, ...args);
+	const uncontrolledState = internalState.state;
+	const prevValueRef = import_react.useRef(uncontrolledState);
+	import_react.useEffect(() => {
+		if (prevValueRef.current !== uncontrolledState) {
+			prevValueRef.current = uncontrolledState;
+			if (!isControlled) onChange(uncontrolledState);
+		}
+	}, [
+		uncontrolledState,
+		prevValueRef,
+		isControlled
+	]);
+	const state = import_react.useMemo(() => {
+		if (controlledState !== void 0) return {
+			...internalState,
+			state: controlledState
+		};
+		return internalState;
+	}, [internalState, controlledState]);
+	import_react.useEffect(() => {
+		if (isControlled && !Object.is(controlledState, internalState.state)) dispatch({
+			type: SYNC_STATE,
+			state: controlledState
+		});
+	}, [
+		controlledState,
+		internalState.state,
+		isControlled
+	]);
+	return [state, dispatch];
+}
+__name$3(useControllableStateReducer, "useControllableStateReducer");
 //#endregion
 //#region node_modules/@radix-ui/react-use-size/dist/index.mjs
+var __defProp$2 = Object.defineProperty;
+var __name$2 = (target, value) => __defProp$2(target, "name", {
+	value,
+	configurable: true
+});
 function useSize(element) {
 	const [size, setSize] = import_react.useState(void 0);
 	useLayoutEffect2(() => {
@@ -91,21 +168,27 @@ function useSize(element) {
 	}, [element]);
 	return size;
 }
+__name$2(useSize, "useSize");
 //#endregion
 //#region node_modules/@radix-ui/react-presence/dist/index.mjs
+var __defProp$1 = Object.defineProperty;
+var __name$1 = (target, value) => __defProp$1(target, "name", {
+	value,
+	configurable: true
+});
 function useStateMachine(initialState, machine) {
 	return import_react.useReducer((state, event) => {
 		return machine[state][event] ?? state;
 	}, initialState);
 }
-var Presence = (props) => {
+__name$1(useStateMachine, "useStateMachine");
+var Presence = /* @__PURE__ */ __name$1((props) => {
 	const { present, children } = props;
 	const presence = usePresence(present);
 	const child = typeof children === "function" ? children({ present: presence.isPresent }) : import_react.Children.only(children);
 	const ref = useStableComposedRefs(presence.ref, getElementRef(child));
 	return typeof children === "function" || presence.isPresent ? import_react.cloneElement(child, { ref }) : null;
-};
-Presence.displayName = "Presence";
+}, "Presence");
 function usePresence(present) {
 	const [node, setNode] = import_react.useState();
 	const stylesRef = import_react.useRef(null);
@@ -148,7 +231,7 @@ function usePresence(present) {
 		if (node) {
 			let timeoutId;
 			const ownerWindow = node.ownerDocument.defaultView ?? window;
-			const handleAnimationEnd = (event) => {
+			const handleAnimationEnd = /* @__PURE__ */ __name$1((event) => {
 				const isCurrentAnimation = getAnimationName(stylesRef.current).includes(CSS.escape(event.animationName));
 				if (event.target === node && isCurrentAnimation) {
 					send("ANIMATION_END");
@@ -160,10 +243,10 @@ function usePresence(present) {
 						});
 					}
 				}
-			};
-			const handleAnimationStart = (event) => {
+			}, "handleAnimationEnd");
+			const handleAnimationStart = /* @__PURE__ */ __name$1((event) => {
 				if (event.target === node) prevAnimationNameRef.current = getAnimationName(stylesRef.current);
-			};
+			}, "handleAnimationStart");
 			node.addEventListener("animationstart", handleAnimationStart);
 			node.addEventListener("animationcancel", handleAnimationEnd);
 			node.addEventListener("animationend", handleAnimationEnd);
@@ -187,10 +270,12 @@ function usePresence(present) {
 		}, [])
 	};
 }
+__name$1(usePresence, "usePresence");
 function setRef(ref, value) {
 	if (typeof ref === "function") return ref(value);
 	else if (ref !== null && ref !== void 0) ref.current = value;
 }
+__name$1(setRef, "setRef");
 function useStableComposedRefs(...refs) {
 	const refsRef = import_react.useRef(refs);
 	refsRef.current = refs;
@@ -211,9 +296,11 @@ function useStableComposedRefs(...refs) {
 		};
 	}, []);
 }
+__name$1(useStableComposedRefs, "useStableComposedRefs");
 function getAnimationName(styles) {
 	return styles?.animationName || "none";
 }
+__name$1(getAnimationName, "getAnimationName");
 function getElementRef(element) {
 	let getter = Object.getOwnPropertyDescriptor(element.props, "ref")?.get;
 	let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
@@ -223,24 +310,15 @@ function getElementRef(element) {
 	if (mayWarn) return element.props.ref;
 	return element.props.ref || element.ref;
 }
-//#endregion
-//#region node_modules/@radix-ui/react-use-previous/dist/index.mjs
-function usePrevious(value) {
-	const ref = import_react.useRef({
-		value,
-		previous: value
-	});
-	return import_react.useMemo(() => {
-		if (ref.current.value !== value) {
-			ref.current.previous = ref.current.value;
-			ref.current.value = value;
-		}
-		return ref.current.previous;
-	}, [value]);
-}
+__name$1(getElementRef, "getElementRef");
 //#endregion
 //#region node_modules/@radix-ui/react-checkbox/dist/index.mjs
 var import_jsx_runtime = require_jsx_runtime();
+var __defProp = Object.defineProperty;
+var __name = (target, value) => __defProp(target, "name", {
+	value,
+	configurable: true
+});
 var CHECKBOX_NAME = "Checkbox";
 var [createCheckboxContext, createCheckboxScope] = createContextScope(CHECKBOX_NAME);
 var [CheckboxProviderImpl, useCheckboxContext] = createCheckboxContext(CHECKBOX_NAME);
@@ -255,6 +333,7 @@ function CheckboxProvider(props) {
 	const [control, setControl] = import_react.useState(null);
 	const [bubbleInput, setBubbleInput] = import_react.useState(null);
 	const hasConsumerStoppedPropagationRef = import_react.useRef(false);
+	const [userInteractionCount, onUserInteraction] = import_react.useReducer((count) => count + 1, 0);
 	const isFormControl = control ? !!form || !!control.closest("form") : true;
 	const context = {
 		checked,
@@ -266,6 +345,8 @@ function CheckboxProvider(props) {
 		form,
 		value,
 		hasConsumerStoppedPropagationRef,
+		userInteractionCount,
+		onUserInteraction,
 		required,
 		defaultChecked: isIndeterminate(defaultChecked) ? false : defaultChecked,
 		isFormControl,
@@ -278,15 +359,16 @@ function CheckboxProvider(props) {
 		children: isFunction(internal_do_not_use_render) ? internal_do_not_use_render(context) : children
 	});
 }
+__name(CheckboxProvider, "CheckboxProvider");
 var TRIGGER_NAME = "CheckboxTrigger";
-var CheckboxTrigger = import_react.forwardRef(({ __scopeCheckbox, onKeyDown, onClick, ...checkboxProps }, forwardedRef) => {
-	const { control, value, disabled, checked, required, setControl, setChecked, hasConsumerStoppedPropagationRef, isFormControl, bubbleInput } = useCheckboxContext(TRIGGER_NAME, __scopeCheckbox);
+var CheckboxTrigger = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name(function CheckboxTrigger2({ __scopeCheckbox, onKeyDown, onClick, ...checkboxProps }, forwardedRef) {
+	const { control, value, disabled, checked, required, setControl, setChecked, hasConsumerStoppedPropagationRef, onUserInteraction, isFormControl, bubbleInput } = useCheckboxContext(TRIGGER_NAME, __scopeCheckbox);
 	const composedRefs = useComposedRefs(forwardedRef, setControl);
 	const initialCheckedStateRef = import_react.useRef(checked);
 	import_react.useEffect(() => {
 		const form = control?.form;
 		if (form) {
-			const reset = () => setChecked(initialCheckedStateRef.current);
+			const reset = /* @__PURE__ */ __name(() => setChecked(initialCheckedStateRef.current), "reset");
 			form.addEventListener("reset", reset);
 			return () => form.removeEventListener("reset", reset);
 		}
@@ -306,6 +388,7 @@ var CheckboxTrigger = import_react.forwardRef(({ __scopeCheckbox, onKeyDown, onC
 			if (event.key === "Enter") event.preventDefault();
 		}),
 		onClick: composeEventHandlers(onClick, (event) => {
+			onUserInteraction();
 			setChecked((prevChecked) => isIndeterminate(prevChecked) ? true : !prevChecked);
 			if (bubbleInput && isFormControl) {
 				hasConsumerStoppedPropagationRef.current = event.isPropagationStopped();
@@ -313,9 +396,8 @@ var CheckboxTrigger = import_react.forwardRef(({ __scopeCheckbox, onKeyDown, onC
 			}
 		})
 	});
-});
-CheckboxTrigger.displayName = TRIGGER_NAME;
-var Checkbox = import_react.forwardRef((props, forwardedRef) => {
+}, "CheckboxTrigger"));
+var Checkbox = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name(function Checkbox2(props, forwardedRef) {
 	const { __scopeCheckbox, name, checked, defaultChecked, required, disabled, value, onCheckedChange, form, ...checkboxProps } = props;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CheckboxProvider, {
 		__scopeCheckbox,
@@ -333,10 +415,9 @@ var Checkbox = import_react.forwardRef((props, forwardedRef) => {
 			__scopeCheckbox
 		}), isFormControl && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CheckboxBubbleInput, { __scopeCheckbox })] })
 	});
-});
-Checkbox.displayName = CHECKBOX_NAME;
+}, "Checkbox"));
 var INDICATOR_NAME = "CheckboxIndicator";
-var CheckboxIndicator = import_react.forwardRef((props, forwardedRef) => {
+var CheckboxIndicator = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name(function CheckboxIndicator2(props, forwardedRef) {
 	const { __scopeCheckbox, forceMount, ...indicatorProps } = props;
 	const context = useCheckboxContext(INDICATOR_NAME, __scopeCheckbox);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Presence, {
@@ -352,31 +433,38 @@ var CheckboxIndicator = import_react.forwardRef((props, forwardedRef) => {
 			}
 		})
 	});
-});
-CheckboxIndicator.displayName = INDICATOR_NAME;
+}, "CheckboxIndicator"));
 var BUBBLE_INPUT_NAME = "CheckboxBubbleInput";
-var CheckboxBubbleInput = import_react.forwardRef(({ __scopeCheckbox, ...props }, forwardedRef) => {
-	const { control, hasConsumerStoppedPropagationRef, checked, defaultChecked, required, disabled, name, value, form, bubbleInput, setBubbleInput } = useCheckboxContext(BUBBLE_INPUT_NAME, __scopeCheckbox);
+var CheckboxBubbleInput = /* @__PURE__ */ import_react.forwardRef(/* @__PURE__ */ __name(function CheckboxBubbleInput2({ __scopeCheckbox, onClick, ...props }, forwardedRef) {
+	const { control, hasConsumerStoppedPropagationRef, userInteractionCount, checked, defaultChecked, required, disabled, name, value, form, bubbleInput, setBubbleInput } = useCheckboxContext(BUBBLE_INPUT_NAME, __scopeCheckbox);
 	const composedRefs = useComposedRefs(forwardedRef, setBubbleInput);
-	const prevChecked = usePrevious(checked);
 	const controlSize = useSize(control);
+	const shouldStopClickPropagationRef = import_react.useRef(false);
+	const prevCheckedRef = import_react.useRef(checked);
+	const prevUserInteractionCountRef = import_react.useRef(userInteractionCount);
 	import_react.useEffect(() => {
 		const input = bubbleInput;
 		if (!input) return;
 		const inputProto = window.HTMLInputElement.prototype;
 		const setChecked = Object.getOwnPropertyDescriptor(inputProto, "checked").set;
-		const bubbles = !hasConsumerStoppedPropagationRef.current;
-		if (prevChecked !== checked && setChecked) {
+		const isUserInteraction = userInteractionCount !== prevUserInteractionCountRef.current;
+		prevUserInteractionCountRef.current = userInteractionCount;
+		const checkedChanged = prevCheckedRef.current !== checked;
+		prevCheckedRef.current = checked;
+		const bubbles = !(isUserInteraction && hasConsumerStoppedPropagationRef.current);
+		if (checkedChanged && setChecked) {
+			shouldStopClickPropagationRef.current = !isUserInteraction;
 			const event = new Event("click", { bubbles });
 			input.indeterminate = isIndeterminate(checked);
 			setChecked.call(input, isIndeterminate(checked) ? false : checked);
 			input.dispatchEvent(event);
+			shouldStopClickPropagationRef.current = false;
 		}
 	}, [
 		bubbleInput,
-		prevChecked,
 		checked,
-		hasConsumerStoppedPropagationRef
+		hasConsumerStoppedPropagationRef,
+		userInteractionCount
 	]);
 	const defaultCheckedRef = import_react.useRef(isIndeterminate(checked) ? false : checked);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.input, {
@@ -391,6 +479,9 @@ var CheckboxBubbleInput = import_react.forwardRef(({ __scopeCheckbox, ...props }
 		...props,
 		tabIndex: -1,
 		ref: composedRefs,
+		onClick: composeEventHandlers(onClick, (event) => {
+			if (shouldStopClickPropagationRef.current) event.stopPropagation();
+		}),
 		style: {
 			...props.style,
 			...controlSize,
@@ -401,16 +492,18 @@ var CheckboxBubbleInput = import_react.forwardRef(({ __scopeCheckbox, ...props }
 			transform: "translateX(-100%)"
 		}
 	});
-});
-CheckboxBubbleInput.displayName = BUBBLE_INPUT_NAME;
+}, "CheckboxBubbleInput"));
 function isFunction(value) {
 	return typeof value === "function";
 }
+__name(isFunction, "isFunction");
 function isIndeterminate(checked) {
 	return checked === "indeterminate";
 }
+__name(isIndeterminate, "isIndeterminate");
 function getState(checked) {
 	return isIndeterminate(checked) ? "indeterminate" : checked ? "checked" : "unchecked";
 }
+__name(getState, "getState");
 //#endregion
-export { useSize as a, Presence as i, CheckboxIndicator as n, useControllableState as o, usePrevious as r, Checkbox as t };
+export { useControllableState as a, useSize as i, CheckboxIndicator as n, Presence as r, Checkbox as t };

@@ -9,7 +9,7 @@ export class GetUserProfileService {
     if (!user) {
       throw new AppError("Usuário não encontrado.", 404);
     }
-    
+
     const { password, ...userWithoutPassword } = user;
     return userWithoutPassword;
   }

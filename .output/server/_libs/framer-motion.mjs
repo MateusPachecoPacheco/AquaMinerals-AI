@@ -1,6 +1,6 @@
 import { a as __toCommonJS, n as __esmMin, o as __toESM, r as __exportAll } from "../_runtime.mjs";
 import { u as require_react } from "./@floating-ui/react-dom+[...].mjs";
-import { s as require_jsx_runtime } from "./@radix-ui/react-arrow+[...].mjs";
+import { f as require_jsx_runtime } from "./@radix-ui/react-avatar+[...].mjs";
 
 //#region node_modules/unenv/dist/runtime/_internal/utils.mjs
 /* @__NO_SIDE_EFFECTS__ */
@@ -978,7 +978,8 @@ function matchOrder(origin, target) {
 	for (let i = 0; i < target.values.length; i++) {
 		const type = target.types[i];
 		const originIndex = origin.indexes[type][pointers[type]];
-		orderedOrigin[i] = origin.values[originIndex] ?? 0;
+		const originValue = origin.values[originIndex] ?? 0;
+		orderedOrigin[i] = originValue;
 		pointers[type]++;
 	}
 	return orderedOrigin;
@@ -2507,7 +2508,8 @@ var acceleratedValues = /* @__PURE__ */ new Set([
 	"opacity",
 	"clipPath",
 	"filter",
-	"transform"
+	"transform",
+	"backgroundColor"
 ]);
 //#endregion
 //#region node_modules/motion-dom/dist/es/animation/waapi/utils/is-browser-color.mjs
@@ -2533,13 +2535,15 @@ var colorProperties = /* @__PURE__ */ new Set([
 var supportsWaapi = /*@__PURE__*/ memo(() => Object.hasOwnProperty.call(Element.prototype, "animate"));
 function supportsBrowserAnimation(options) {
 	const { motionValue, name, repeatDelay, repeatType, damping, type, keyframes } = options;
+	const subject = motionValue?.owner?.current;
 	/**
-	* We use this check instead of isHTMLElement() because we explicitly
-	* **don't** want elements in different timing contexts (i.e. popups)
-	* to be accelerated, as it's not possible to sync these animations
-	* properly with those driven from the main window frameloop.
+	* We use instanceof checks instead of isHTMLElement()/isSVGElement()
+	* because we explicitly **don't** want elements in different timing
+	* contexts (i.e. popups) to be accelerated, as it's not possible to sync
+	* these animations properly with those driven from the main window
+	* frameloop.
 	*/
-	if (!(motionValue?.owner?.current instanceof HTMLElement)) return false;
+	if (!(subject instanceof HTMLElement) && !(subject instanceof SVGElement)) return false;
 	const { onUpdate, transformTemplate } = motionValue.owner.getProps();
 	return supportsWaapi() && name && (acceleratedValues.has(name) || colorProperties.has(name) && hasBrowserOnlyColors(keyframes)) && (name !== "transform" || !transformTemplate) && !onUpdate && !repeatDelay && repeatType !== "mirror" && damping !== 0 && type !== "inertia";
 }
@@ -3791,14 +3795,15 @@ function isDragActive() {
 //#endregion
 //#region node_modules/motion-dom/dist/es/gestures/drag/state/set-active.mjs
 function setDragLock(axis) {
-	if (axis === "x" || axis === "y") if (isDragging[axis]) return null;
-	else {
-		isDragging[axis] = true;
-		return () => {
-			isDragging[axis] = false;
-		};
-	}
-	else if (isDragging.x || isDragging.y) return null;
+	if (axis === "x" || axis === "y") {
+		if (isDragging[axis]) return null;
+		else {
+			isDragging[axis] = true;
+			return () => {
+				isDragging[axis] = false;
+			};
+		}
+	} else if (isDragging.x || isDragging.y) return null;
 	else {
 		isDragging.x = isDragging.y = true;
 		return () => {
@@ -4262,19 +4267,20 @@ function updateMotionValuesFromProps(element, next, prev) {
 		* create a new motion value from that
 		*/
 		element.addValue(key, motionValue(nextValue, { owner: element }));
-		else if (prevValue !== nextValue)
- /**
-		* If this is a flat value that has changed, update the motion value
-		* or create one if it doesn't exist. We only want to do this if we're
-		* not handling the value with our animation state.
-		*/
-		if (element.hasValue(key)) {
-			const existingValue = element.getValue(key);
-			if (existingValue.liveStyle === true) existingValue.jump(nextValue);
-			else if (!existingValue.hasAnimated) existingValue.set(nextValue);
-		} else {
-			const latestValue = element.getStaticValue(key);
-			element.addValue(key, motionValue(latestValue !== void 0 ? latestValue : nextValue, { owner: element }));
+		else if (prevValue !== nextValue) {
+			/**
+			* If this is a flat value that has changed, update the motion value
+			* or create one if it doesn't exist. We only want to do this if we're
+			* not handling the value with our animation state.
+			*/
+			if (element.hasValue(key)) {
+				const existingValue = element.getValue(key);
+				if (existingValue.liveStyle === true) existingValue.jump(nextValue);
+				else if (!existingValue.hasAnimated) existingValue.set(nextValue);
+			} else {
+				const latestValue = element.getStaticValue(key);
+				element.addValue(key, motionValue(latestValue !== void 0 ? latestValue : nextValue, { owner: element }));
+			}
 		}
 	}
 	for (const key in prev) if (next[key] === void 0) element.removeValue(key);
@@ -5097,8 +5103,10 @@ var correctBorderRadius = { correct: (latest, node) => {
 	* If latest is a string, if it's a percentage we can return immediately as it's
 	* going to be stretched appropriately. Otherwise, if it's a pixel, convert it to a number.
 	*/
-	if (typeof latest === "string") if (px.test(latest)) latest = parseFloat(latest);
-	else return latest;
+	if (typeof latest === "string") {
+		if (px.test(latest)) latest = parseFloat(latest);
+		else return latest;
+	}
 	return `${pixelsToPercent(latest, node.target.x)}% ${pixelsToPercent(latest, node.target.y)}%`;
 } };
 //#endregion
@@ -5162,6 +5170,15 @@ var HTMLVisualElement = class extends DOMVisualElement {
 		super(...arguments);
 		this.type = "html";
 		this.renderInstance = renderHTML;
+	}
+	mount(instance) {
+		/**
+		* If a custom component forwards its ref to something other than a
+		* HTML/SVG element (a class instance, an imperative handle) there's
+		* nothing for Motion to style, measure or attach gestures to. #2777
+		*/
+		Boolean(instance.style);
+		super.mount(instance);
 	}
 	readValueFromInstance(instance, key) {
 		if (transformProps.has(key)) return this.projection?.isProjecting ? defaultTransformValue(key) : readTransformValue(instance, key);
@@ -5553,9 +5570,10 @@ function createAnimationState(visualElement) {
 				let valueHasChanged = false;
 				if (isKeyframesTarget(next) && isKeyframesTarget(prev)) valueHasChanged = !shallowCompare(next, prev) || variantDidChange;
 				else valueHasChanged = next !== prev;
-				if (valueHasChanged) if (next !== void 0 && next !== null) markToAnimate(key);
-				else removedKeys.add(key);
-				else if (next !== void 0 && removedKeys.has(key))
+				if (valueHasChanged) {
+					if (next !== void 0 && next !== null) markToAnimate(key);
+					else removedKeys.add(key);
+				} else if (next !== void 0 && removedKeys.has(key))
  /**
 				* If next hasn't changed and it isn't undefined, we want to check if it's
 				* been removed by a higher priority
@@ -6711,8 +6729,10 @@ function createProjectionNode$1({ attachResizeListener, defaultParent, measureSc
 			* a relativeParent. This will allow a component to perform scale correction
 			* even if no animation has started.
 			*/
-			if (!this.targetDelta && !this.relativeTarget) if (this.options.layoutAnchor !== false && relativeParent && relativeParent.layout) this.createRelativeTarget(relativeParent, this.layout.layoutBox, relativeParent.layout.layoutBox);
-			else this.removeRelativeTarget();
+			if (!this.targetDelta && !this.relativeTarget) {
+				if (this.options.layoutAnchor !== false && relativeParent && relativeParent.layout) this.createRelativeTarget(relativeParent, this.layout.layoutBox, relativeParent.layout.layoutBox);
+				else this.removeRelativeTarget();
+			}
 			/**
 			* If we have no relative target or no target delta our target isn't valid
 			* for this frame.
@@ -7494,7 +7514,7 @@ function PopChild({ children, isPresent, anchorX, anchorY, root, pop }) {
 		direction: "ltr"
 	});
 	const { nonce } = (0, import_react.useContext)(MotionConfigContext);
-	const composedRef = useComposedRefs(ref, children.props?.ref ?? children?.ref);
+	const composedRef = useComposedRefs(ref, pop !== false ? children.props?.ref ?? children?.ref : void 0);
 	/**
 	* We create and inject a style block so we can apply this explicit
 	* sizing in a non-destructive manner by just deleting the style block.
@@ -8234,14 +8254,15 @@ function useMotionRef(visualState, visualElement, externalRef) {
 		if (instance) visualState.onMount?.(instance);
 		if (visualElement) instance ? visualElement.mount(instance) : visualElement.unmount();
 		const ref = externalRefContainer.current;
-		if (typeof ref === "function") if (instance) {
-			const cleanup = ref(instance);
-			if (typeof cleanup === "function") refCleanup.current = cleanup;
-		} else if (refCleanup.current) {
-			refCleanup.current();
-			refCleanup.current = null;
-		} else ref(instance);
-		else if (ref) ref.current = instance;
+		if (typeof ref === "function") {
+			if (instance) {
+				const cleanup = ref(instance);
+				if (typeof cleanup === "function") refCleanup.current = cleanup;
+			} else if (refCleanup.current) {
+				refCleanup.current();
+				refCleanup.current = null;
+			} else ref(instance);
+		} else if (ref) ref.current = instance;
 	}, [visualElement]);
 }
 //#endregion
