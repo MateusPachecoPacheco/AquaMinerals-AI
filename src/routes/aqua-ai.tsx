@@ -27,12 +27,11 @@ export const Route = createFileRoute("/aqua-ai")({
 type Msg = Message;
 
 const suggestions = [
-  "Como está a qualidade da água hoje?",
-  "Quais minerais foram encontrados esta semana?",
-  "Quais pontos estão em estado crítico?",
-  "Explique o índice de preservação",
-  "Os minerais que estão aptos para extração, para onde eles vão?",
-  "Quais impactos econômicos essa tecnologia poderia gerar para cidades costeiras?",
+  "O que é o AquaMinerals?",
+  "O que são minerais estratégicos?",
+  "Como o projeto contribui para a sustentabilidade?",
+  "Por que estudar minerais marinhos?",
+  "Qual é o objetivo do projeto?",
 ];
 
 function AquaAI() {

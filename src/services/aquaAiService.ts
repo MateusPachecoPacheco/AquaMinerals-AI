@@ -1,6 +1,7 @@
 // AquaAI Knowledge Base Service
 // Implements RAG (Retrieval Augmented Generation) pattern for intelligent responses
 // Evolução: Respostas dinâmicas baseadas em contexto e intenções múltiplas
+// Atualização: Base de conhecimento oficial do AquaMinerals com foco educacional/científico
 
 import type {
   KnowledgeDocument,
@@ -13,62 +14,83 @@ import type {
   ServiceResponse,
 } from "@/types/ai";
 
-// Base de conhecimento estática - em produção seria carregada dinamicamente
+// ============================================================================
+// BASE DE CONHECIMENTO OFICIAL - AQUAMINERALS
+// Estas informações representam o conhecimento verificado do projeto.
+// A IA deve utilizar APENAS estas fontes para gerar respostas confiáveis.
+// ============================================================================
+
 const KNOWLEDGE_BASE: KnowledgeDocument[] = [
   {
-    id: "projeto",
-    title: "Visão Geral do Projeto",
+    id: "o_que_e_aquaminerals",
+    title: "O que é o AquaMinerals?",
     category: "projeto",
-    content: `O AquaMinerals é uma plataforma tecnológica de demonstração sobre extração sustentável de minerais presentes na água do oceano. O projeto utiliza inovação, inteligência artificial e análise de dados para apresentar como a exploração responsável dos recursos marítimos pode gerar desenvolvimento econômico sem causar impactos ambientais negativos.
+    content: `O AquaMinerals é uma startup/projeto que desenvolveu um site e aplicativo para mapear o potencial de minerais marinhos em Madre de Deus, unindo tecnologia, ciência e sustentabilidade.
 
-Localização: Baía de Madre de Deus, Bahia, Brasil.
+O projeto prioriza estudo + mapeamento + análise de dados antes de qualquer exploração. O objetivo é incentivar decisões mais sustentáveis.
 
-Pontos de monitoramento: MDD-01 (Baía de Aratu), MDD-02 (Ilha de Bimbarras), MDD-03 (Suape Norte), MDD-04 (Rio Paraguaçu), MDD-05 (Ponta de Suape), MDD-06 (Ilha das Fontes).
+A tecnologia depende cada vez mais de minerais estratégicos, sendo importante estudar formas mais responsáveis de compreender e utilizar esses recursos.
 
-Objetivos: Demonstrar que é possível conciliar desenvolvimento econômico com preservação ambiental através de tecnologia e inovação.`,
+Objetivo principal: Transformar dados do ambiente marinho em conhecimento que possa apoiar pesquisa, inovação e sustentabilidade, começando por Madre de Deus.`,
     keywords: [
+      "aquaminerals",
       "projeto",
-      "objetivo",
-      "localização",
+      "startup",
+      "mapeamento",
+      "minerais marinhos",
       "madre de deus",
-      "bahia",
-      "monitoramento",
-      "pontos",
+      "tecnologia",
+      "ciência",
+      "sustentabilidade",
+      "objetivo",
+      "finalidade",
+      "propósito",
     ],
     lastUpdated: "2024-01-15",
   },
   {
-    id: "minerais",
-    title: "Minerais Oceânicos",
+    id: "minerais_estrategicos",
+    title: "O que são Minerais Estratégicos?",
     category: "minerais",
-    content: `Os oceanos contêm aproximadamente 3,5% de sais dissolvidos. Os principais minerais monitorados são:
+    content: `São minerais essenciais para a produção de baterias, celulares, computadores, veículos elétricos e outras tecnologias modernas.
 
-Sódio (Na): 38% - Indústria química, dessalinização
-Magnésio (Mg): 22% - Ligas metálicas leves, suplementos
-Cálcio (Ca): 14% - Construção, suplementos alimentícios
-Potássio (K): 12% - Fertilizantes agrícolas, farmacêutica
-Outros: 14% - 33 elementos adicionais incluindo lítio, ferro, zinco
+Os oceanos contêm aproximadamente 3,5% de sais dissolvidos. Os principais minerais monitorados incluem:
+
+- Sódio (Na): Indústria química, dessalinização
+- Magnésio (Mg): Ligas metálicas leves, suplementos
+- Cálcio (Ca): Construção, suplementos alimentícios
+- Potássio (K): Fertilizantes agrícolas, farmacêutica
+- Lítio (Li): Baterias de alta performance, veículos elétricos
+- E outros 33 elementos adicionais
 
 Total de minerais monitorados: 37 tipos distintos.
 
 Destino dos minerais: Indústria tecnológica, setor energético, materiais avançados, pesquisa científica, aplicações medicinais.`,
     keywords: [
+      "minerais estratégicos",
       "minerais",
-      "sódio",
+      "baterias",
+      "celulares",
+      "computadores",
+      "veículos elétricos",
+      "tecnologias",
+      "lítio",
       "magnésio",
+      "sódio",
       "cálcio",
       "potássio",
-      "lítio",
       "extração",
       "composição",
     ],
     lastUpdated: "2024-01-15",
   },
   {
-    id: "sustentabilidade",
-    title: "Sustentabilidade Ambiental",
+    id: "protecao_ambiental",
+    title: "Como o Projeto Protege o Meio Ambiente?",
     category: "sustentabilidade",
-    content: `Princípios de sustentabilidade do AquaMinerals:
+    content: `Ao priorizar o estudo e o mapeamento antes de qualquer exploração, o projeto incentiva decisões mais sustentáveis.
+
+Princípios de sustentabilidade do AquaMinerals:
 
 1. Mínimo Impacto Ambiental: Processos não invasivos, monitoramento contínuo
 2. Economia Circular: Aproveitamento integral, minimização de resíduos
@@ -83,104 +105,111 @@ Classificação de status:
 
 ODS 14 - Vida na Água: Contribuição direta para conservação dos oceanos e uso sustentável dos recursos marinhos.`,
     keywords: [
-      "sustentabilidade",
+      "proteção ambiental",
       "meio ambiente",
-      "impacto",
+      "sustentabilidade",
+      "impacto ambiental",
+      "preservação",
+      "conservação",
       "ods",
       "monitoramento",
-      "ph",
-      "temperatura",
-      "status",
+      "estudo",
+      "mapeamento",
+      "exploração",
     ],
     lastUpdated: "2024-01-15",
   },
   {
-    id: "tecnologia",
-    title: "Tecnologia Utilizada",
-    category: "tecnologia",
-    content: `Stack tecnológico do AquaMinerals:
+    id: "importancia_projeto",
+    title: "Por que o Projeto é Importante para o Futuro?",
+    category: "projeto",
+    content: `Porque a tecnologia depende cada vez mais de minerais estratégicos, e precisamos encontrar formas mais responsáveis de estudá-los e utilizá-los.
 
-Frontend: React 19 com TypeScript, TanStack Router, TailwindCSS 4, Framer Motion, Recharts, React Leaflet.
+A tecnologia moderna depende de minerais para:
+- Baterias de dispositivos eletrônicos
+- Veículos elétricos
+- Computadores e smartphones
+- Infraestrutura de telecomunicações
+- Energias renováveis
 
-Backend: Node.js com Fastify, Prisma ORM, PostgreSQL, APIs REST.
+O AquaMinerals pode contribuir para:
+- Pesquisa científica sobre recursos marinhos
+- Inovação tecnológica em extração sustentável
+- Sustentabilidade ambiental através do monitoramento
+- Desenvolvimento regional começando por Madre de Deus
 
-Inteligência Artificial: Processamento de linguagem natural, Sistema RAG (Retrieval Augmented Generation), Base de conhecimento especializada.
-
-Arquitetura da AquaAI:
-1. Recebe pergunta em linguagem natural
-2. Processa e identifica intenção
-3. Busca informações na base de conhecimento
-4. Gera resposta contextualizada
-
-Infraestrutura: Docker, CI/CD, Monitoramento e observabilidade.`,
+É fundamental estudar formas responsáveis de compreender e utilizar esses recursos antes de qualquer exploração.`,
     keywords: [
+      "importância",
+      "futuro",
+      "relevância",
       "tecnologia",
-      "react",
-      "typescript",
-      "nodejs",
-      "ia",
-      "inteligência artificial",
-      "arquitetura",
-      "stack",
-    ],
-    lastUpdated: "2024-01-15",
-  },
-  {
-    id: "impacto_economico",
-    title: "Impacto Econômico",
-    category: "impacto_economico",
-    content: `Impactos econômicos do AquaMinerals para regiões costeiras:
-
-Geração de Empregos:
-- Pesquisa: 15-25 empregos diretos
-- Implementação: 50-100 empregos diretos
-- Operação: 30-60 empregos diretos
-- Expansão: 100-200 empregos diretos
-Cada emprego direto gera ~3 empregos indiretos.
-
-Receitas Fiscais: Royalties distribuídos entre União (45%), Estado (25%) e Municípios (30%).
-
-Multiplicador Econômico: Cada R$ 1 investido gera R$ 5 em atividade econômica regional.
-
-Projeções (5 anos):
-- Cenário Conservador: R$ 20 milhões/ano
-- Cenário Moderado: R$ 80 milhões/ano
-- Cenário Otimista: R$ 250 milhões/ano
-
-Benefícios para comunidades: Diversificação econômica, capacitação profissional, melhoria de infraestrutura, desenvolvimento regional.`,
-    keywords: [
-      "econômico",
-      "empregos",
-      "receita",
-      "royalties",
-      "investimento",
+      "minerais estratégicos",
+      "responsabilidade",
+      "pesquisa",
+      "inovação",
       "desenvolvimento",
-      "comunidade",
     ],
     lastUpdated: "2024-01-15",
   },
   {
-    id: "impacto_ambiental",
-    title: "Impacto Ambiental e Monitoramento",
-    category: "impacto_ambiental",
-    content: `Compromisso ambiental do AquaMinerals:
+    id: "objetivo_principal",
+    title: "Qual é o Objetivo Principal do AquaMinerals?",
+    category: "projeto",
+    content: `Transformar dados do ambiente marinho em conhecimento que apoie pesquisas, inovação e sustentabilidade, começando por Madre de Deus.
 
-Parâmetros Monitorados Continuamente:
-- pH: Limite crítico < 7.5 ou > 8.5
-- Temperatura: Variação máxima 2°C
-- Oxigênio Dissolvido: Mínimo 5 mg/L
-- Turbidez: Máximo 10 NTU
-- Salinidade: 33-40 PSU
+O projeto busca:
+- Mapear o potencial de minerais marinhos
+- Unir tecnologia, ciência e sustentabilidade
+- Priorizar estudo e análise antes da exploração
+- Incentivar decisões mais sustentáveis
+- Apoiar pesquisas científicas
+- Promover inovação tecnológica
+- Contribuir para a sustentabilidade ambiental
 
-Protocolos de Emergência:
-Nível 1 - Anomalia Leve: Alerta e monitoramento intensificado
-Nível 2 - Incidente Moderado: Notificação ao gestor ambiental
-Nível 3 - Emergência: Suspensão total, notificação aos órgãos ambientais
+Localização: Baía de Madre de Deus, Bahia, Brasil.
 
-Compensação Ambiental: 3.5% da receita destinado a projetos de conservação, pesquisa e educação ambiental.
+Pontos de monitoramento: MDD-01 (Baía de Aratu), MDD-02 (Ilha de Bimbarras), MDD-03 (Suape Norte), MDD-04 (Rio Paraguaçu), MDD-05 (Ponta de Suape), MDD-06 (Ilha das Fontes).`,
+    keywords: [
+      "objetivo principal",
+      "missão",
+      "finalidade",
+      "propósito",
+      "meta",
+      "foco",
+      "transformar dados",
+      "conhecimento",
+      "pesquisas",
+      "inovação",
+      "sustentabilidade",
+    ],
+    lastUpdated: "2024-01-15",
+  },
+  {
+    id: "localizacao_pontos",
+    title: "Localização e Pontos de Monitoramento",
+    category: "projeto",
+    content: `O projeto está localizado na Baía de Madre de Deus, Bahia, Brasil.
 
-Resultados: 95%+ dos dias em status "Ótimo" nos pontos principais.`,
-    keywords: ["ambiental", "monitoramento", "emergência", "compensação", "parâmetros", "limites"],
+Pontos de monitoramento:
+- MDD-01: Baía de Aratu
+- MDD-02: Ilha de Bimbarras
+- MDD-03: Suape Norte
+- MDD-04: Rio Paraguaçu
+- MDD-05: Ponta de Suape
+- MDD-06: Ilha das Fontes
+
+Estes pontos foram selecionados por sua relevância estratégica e importância ecológica para o estudo de minerais marinhos.`,
+    keywords: [
+      "localização",
+      "pontos de monitoramento",
+      "madre de deus",
+      "bahia",
+      "baía",
+      "mdd",
+      "região",
+      "área",
+    ],
     lastUpdated: "2024-01-15",
   },
 ];
@@ -505,51 +534,20 @@ function generateResponse(
   context?: Message[],
 ): RAGResponse {
   if (results.length === 0) {
-    // Tentativa de resposta contextual mesmo sem resultados diretos
-    const normalizedQuery = normalizeText(query);
-
-    // Detectar padrões comuns e gerar respostas úteis
-    if (
-      normalizedQuery.includes("impacto econômico") ||
-      normalizedQuery.includes("cidades costeiras")
-    ) {
-      return {
-        answer:
-          "O AquaMinerals pode gerar impactos econômicos significativos para cidades costeiras através da criação de empregos especializados (estimativa de 15-200 empregos diretos dependendo da fase), receitas fiscais via royalties distribuídos entre União, Estado e Municípios, e um multiplicador econômico onde cada R$ 1 investido gera aproximadamente R$ 5 em atividade econômica regional. Além disso, o projeto promove diversificação econômica, capacitação profissional e melhoria de infraestrutura local.",
-        sources: ["Impacto Econômico"],
-        confidence: 0.75,
-        followUpQuestions: [
-          "Como são distribuídos os royalties?",
-          "Quantos empregos serão criados?",
-          "Qual o cenário de projeção para 5 anos?",
-        ],
-      };
-    }
-
-    if (normalizedQuery.includes("extração") && normalizedQuery.includes("sustentável")) {
-      return {
-        answer:
-          "A extração sustentável no AquaMinerals segue princípios de mínimo impacto ambiental, utilizando processos não invasivos com monitoramento contínuo dos parâmetros oceânicos. A abordagem inclui economia circular com aproveitamento integral dos recursos, transparência através de dados abertos e metodologia verificável, e conformidade com o ODS 14 - Vida na Água. Os parâmetros como pH, temperatura, oxigênio dissolvido e salinidade são monitorados 24/7 para garantir que a atividade não comprometa o ecossistema marinho.",
-        sources: ["Sustentabilidade Ambiental", "Impacto Ambiental e Monitoramento"],
-        confidence: 0.8,
-        followUpQuestions: [
-          "Quais parâmetros são monitorados?",
-          "Como é classificado o status ambiental?",
-          "O que acontece em caso de emergência?",
-        ],
-      };
-    }
-
+    // FALLBACK INTELIGENTE - Não inventar informações
+    // Esta é uma regra crítica: nunca inventar fatos sobre o projeto
     return {
       answer:
-        "Desculpe, não encontrei informações específicas sobre isso na minha base de conhecimento atual. Posso ajudar com perguntas sobre o projeto AquaMinerals, minerais oceânicos, sustentabilidade, tecnologia utilizada, ou impactos econômico e ambiental. Tente reformular sua pergunta ou use termos como 'minerais', 'sustentabilidade', 'economia', 'monitoramento' ou 'tecnologia'.",
+        "Essa informação não está disponível na base de conhecimento atual do AquaMinerals. " +
+        "Posso explicar o que já sabemos sobre: o que é o AquaMinerals, minerais estratégicos, " +
+        "como o projeto protege o meio ambiente, por que o projeto é importante, e qual é o objetivo principal.",
       sources: [],
       confidence: 0,
       followUpQuestions: [
-        "Como funciona a extração sustentável?",
-        "Quais minerais são monitorados?",
-        "Onde o projeto está localizado?",
-        "Quais impactos econômicos essa tecnologia gera?",
+        "O que é o AquaMinerals?",
+        "O que são minerais estratégicos?",
+        "Como o projeto contribui para a sustentabilidade?",
+        "Qual é o objetivo do projeto?",
       ],
     };
   }
@@ -568,14 +566,14 @@ function generateResponse(
     const primaryDoc = relevantDocs[0];
     sources.push(primaryDoc.title);
 
-    // Resposta inicial baseada na categoria - CORREÇÃO: texto em português
+    // Resposta inicial baseada na categoria
     const categoryIntros: Record<KnowledgeCategory, string> = {
-      projeto: "Sobre o projeto AquaMinerals, ",
-      sustentabilidade: "Em relação à sustentabilidade, ",
-      minerais: "Quanto aos minerais oceânicos, ",
-      tecnologia: "Sobre a tecnologia utilizada, ",
-      impacto_economico: "No aspecto econômico, ",
-      impacto_ambiental: "Em relação ao impacto ambiental, ",
+      projeto: "",
+      sustentabilidade: "",
+      minerais: "",
+      tecnologia: "",
+      impacto_economico: "",
+      impacto_ambiental: "",
       perguntas_frequentes: "",
     };
 
@@ -590,11 +588,11 @@ function generateResponse(
       sources.push(relevantDocs[1].title);
       const additionalInfo = results[1].excerpts[0];
       if (additionalInfo) {
-        answer += `\n\nAlém disso, ${additionalInfo.toLowerCase()}`;
+        answer += `\n\n${additionalInfo}`;
       }
     }
 
-    // Enriquecer resposta com contexto da conversa (se disponível)
+    // Enriquecer resposta com contexto da conversa (memória contextual)
     if (context && context.length > 0) {
       const lastUserMessage = context.filter((m) => m.role === "user").pop();
       if (lastUserMessage && lastUserMessage.content !== query) {
@@ -614,51 +612,51 @@ function generateResponse(
   switch (intent.category) {
     case "projeto":
       followUpQuestions.push(
-        "Quais são os pontos de monitoramento?",
-        "Como posso acessar o dashboard?",
-        "Qual é a missão do projeto?",
+        "O que são minerais estratégicos?",
+        "Como o projeto protege o meio ambiente?",
+        "Por que Madre de Deus foi escolhida?",
       );
       break;
     case "minerais":
       followUpQuestions.push(
-        "Qual é o destino dos minerais extraídos?",
+        "Para que servem esses minerais?",
         "A extração prejudica o meio ambiente?",
         "Quantos tipos de minerais são monitorados?",
       );
       break;
     case "sustentabilidade":
       followUpQuestions.push(
-        "Como é classificado o status ambiental?",
+        "Quais parâmetros são monitorados?",
         "O projeto contribui para quais ODS?",
-        "Quais são os princípios de sustentabilidade?",
+        "Como é classificado o status ambiental?",
       );
       break;
     case "tecnologia":
       followUpQuestions.push(
-        "Qual stack tecnológico é utilizado?",
         "Como funciona a IA AquaAI?",
-        "O sistema é open source?",
+        "Que tecnologias são utilizadas?",
+        "Os dados são acessíveis ao público?",
       );
       break;
     case "impacto_economico":
       followUpQuestions.push(
-        "Quantos empregos serão gerados?",
+        "Quais benefícios para a comunidade local?",
         "Como são distribuídos os royalties?",
-        "Qual a projeção de receita?",
+        "Há geração de empregos?",
       );
       break;
     case "impacto_ambiental":
       followUpQuestions.push(
-        "Quais parâmetros são monitorados?",
         "O que acontece em caso de emergência?",
-        "Como funciona a compensação ambiental?",
+        "Como funciona o monitoramento?",
+        "Quais são os limites críticos?",
       );
       break;
     default:
       followUpQuestions.push(
-        "Conte mais sobre o projeto",
-        "Como funciona a extração sustentável?",
-        "Onde posso ver os dados?",
+        "O que é o AquaMinerals?",
+        "O que são minerais estratégicos?",
+        "Qual é o objetivo do projeto?",
       );
   }
 
