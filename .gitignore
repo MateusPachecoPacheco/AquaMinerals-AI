@@ -1,3 +1,26 @@
 ```
+# Dependencies
+node_modules/
+
+# Build outputs
 .output/
+dist/
+build/
+target/
+
+# Temporary files
+*.tmp
+*.swp
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Logs
+*.log
+
+# Editors
+.vscode/
+.idea/
 ```

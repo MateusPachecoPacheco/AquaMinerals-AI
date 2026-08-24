@@ -25,13 +25,7 @@ const KNOWLEDGE_BASE: KnowledgeDocument[] = [
     id: "o_que_e_aquaminerals",
     title: "O que é o AquaMinerals?",
     category: "projeto",
-    content: `O AquaMinerals é uma startup/projeto que desenvolveu um site e aplicativo para mapear o potencial de minerais marinhos em Madre de Deus, unindo tecnologia, ciência e sustentabilidade.
-
-O projeto prioriza estudo + mapeamento + análise de dados antes de qualquer exploração. O objetivo é incentivar decisões mais sustentáveis.
-
-A tecnologia depende cada vez mais de minerais estratégicos, sendo importante estudar formas mais responsáveis de compreender e utilizar esses recursos.
-
-Objetivo principal: Transformar dados do ambiente marinho em conhecimento que possa apoiar pesquisa, inovação e sustentabilidade, começando por Madre de Deus.`,
+    content: `O AquaMinerals é uma startup que desenvolveu um site e aplicativo para mapear o potencial de minerais marinhos em Madre de Deus, unindo tecnologia, ciência e sustentabilidade.`,
     keywords: [
       "aquaminerals",
       "projeto",
@@ -50,22 +44,9 @@ Objetivo principal: Transformar dados do ambiente marinho em conhecimento que po
   },
   {
     id: "minerais_estrategicos",
-    title: "O que são Minerais Estratégicos?",
+    title: "O que são minerais estratégicos?",
     category: "minerais",
-    content: `São minerais essenciais para a produção de baterias, celulares, computadores, veículos elétricos e outras tecnologias modernas.
-
-Os oceanos contêm aproximadamente 3,5% de sais dissolvidos. Os principais minerais monitorados incluem:
-
-- Sódio (Na): Indústria química, dessalinização
-- Magnésio (Mg): Ligas metálicas leves, suplementos
-- Cálcio (Ca): Construção, suplementos alimentícios
-- Potássio (K): Fertilizantes agrícolas, farmacêutica
-- Lítio (Li): Baterias de alta performance, veículos elétricos
-- E outros 33 elementos adicionais
-
-Total de minerais monitorados: 37 tipos distintos.
-
-Destino dos minerais: Indústria tecnológica, setor energético, materiais avançados, pesquisa científica, aplicações medicinais.`,
+    content: `São minerais essenciais para a produção de baterias, celulares, computadores, veículos elétricos e outras tecnologias modernas.`,
     keywords: [
       "minerais estratégicos",
       "minerais",
@@ -74,36 +55,14 @@ Destino dos minerais: Indústria tecnológica, setor energético, materiais avan
       "computadores",
       "veículos elétricos",
       "tecnologias",
-      "lítio",
-      "magnésio",
-      "sódio",
-      "cálcio",
-      "potássio",
-      "extração",
-      "composição",
     ],
     lastUpdated: "2024-01-15",
   },
   {
     id: "protecao_ambiental",
-    title: "Como o Projeto Protege o Meio Ambiente?",
+    title: "Como esse site protege o meio ambiente?",
     category: "sustentabilidade",
-    content: `Ao priorizar o estudo e o mapeamento antes de qualquer exploração, o projeto incentiva decisões mais sustentáveis.
-
-Princípios de sustentabilidade do AquaMinerals:
-
-1. Mínimo Impacto Ambiental: Processos não invasivos, monitoramento contínuo
-2. Economia Circular: Aproveitamento integral, minimização de resíduos
-3. Transparência: Dados abertos, metodologia verificável
-
-Monitoramento de parâmetros: pH (7.8-8.4 ideal), temperatura (24-28°C), oxigênio dissolvido (>6 mg/L), salinidade (33-37 PSU), turbidez (<5 NTU).
-
-Classificação de status:
-- Ótimo (Verde): Todos parâmetros dentro da faixa ideal
-- Atenção (Amarelo): Um ou mais parâmetros fora da faixa
-- Crítico (Vermelho): Múltiplos parâmetros críticos, requer intervenção
-
-ODS 14 - Vida na Água: Contribuição direta para conservação dos oceanos e uso sustentável dos recursos marinhos.`,
+    content: `Ao priorizar o estudo e o mapeamento antes de qualquer exploração, o projeto incentiva decisões mais sustentáveis.`,
     keywords: [
       "proteção ambiental",
       "meio ambiente",
@@ -111,8 +70,6 @@ ODS 14 - Vida na Água: Contribuição direta para conservação dos oceanos e u
       "impacto ambiental",
       "preservação",
       "conservação",
-      "ods",
-      "monitoramento",
       "estudo",
       "mapeamento",
       "exploração",
@@ -121,24 +78,9 @@ ODS 14 - Vida na Água: Contribuição direta para conservação dos oceanos e u
   },
   {
     id: "importancia_projeto",
-    title: "Por que o Projeto é Importante para o Futuro?",
+    title: "Por que esse projeto é importante para o futuro?",
     category: "projeto",
-    content: `Porque a tecnologia depende cada vez mais de minerais estratégicos, e precisamos encontrar formas mais responsáveis de estudá-los e utilizá-los.
-
-A tecnologia moderna depende de minerais para:
-- Baterias de dispositivos eletrônicos
-- Veículos elétricos
-- Computadores e smartphones
-- Infraestrutura de telecomunicações
-- Energias renováveis
-
-O AquaMinerals pode contribuir para:
-- Pesquisa científica sobre recursos marinhos
-- Inovação tecnológica em extração sustentável
-- Sustentabilidade ambiental através do monitoramento
-- Desenvolvimento regional começando por Madre de Deus
-
-É fundamental estudar formas responsáveis de compreender e utilizar esses recursos antes de qualquer exploração.`,
+    content: `Porque a tecnologia depende cada vez mais de minerais estratégicos, e precisamos encontrar formas mais responsáveis de estudá-los e utilizá-los.`,
     keywords: [
       "importância",
       "futuro",
@@ -154,22 +96,9 @@ O AquaMinerals pode contribuir para:
   },
   {
     id: "objetivo_principal",
-    title: "Qual é o Objetivo Principal do AquaMinerals?",
+    title: "Qual é o objetivo principal do AquaMinerals?",
     category: "projeto",
-    content: `Transformar dados do ambiente marinho em conhecimento que apoie pesquisas, inovação e sustentabilidade, começando por Madre de Deus.
-
-O projeto busca:
-- Mapear o potencial de minerais marinhos
-- Unir tecnologia, ciência e sustentabilidade
-- Priorizar estudo e análise antes da exploração
-- Incentivar decisões mais sustentáveis
-- Apoiar pesquisas científicas
-- Promover inovação tecnológica
-- Contribuir para a sustentabilidade ambiental
-
-Localização: Baía de Madre de Deus, Bahia, Brasil.
-
-Pontos de monitoramento: MDD-01 (Baía de Aratu), MDD-02 (Ilha de Bimbarras), MDD-03 (Suape Norte), MDD-04 (Rio Paraguaçu), MDD-05 (Ponta de Suape), MDD-06 (Ilha das Fontes).`,
+    content: `Transformar dados do ambiente marinho em conhecimento que apoie pesquisas, inovação e sustentabilidade, começando por Madre de Deus.`,
     keywords: [
       "objetivo principal",
       "missão",
@@ -182,33 +111,6 @@ Pontos de monitoramento: MDD-01 (Baía de Aratu), MDD-02 (Ilha de Bimbarras), MD
       "pesquisas",
       "inovação",
       "sustentabilidade",
-    ],
-    lastUpdated: "2024-01-15",
-  },
-  {
-    id: "localizacao_pontos",
-    title: "Localização e Pontos de Monitoramento",
-    category: "projeto",
-    content: `O projeto está localizado na Baía de Madre de Deus, Bahia, Brasil.
-
-Pontos de monitoramento:
-- MDD-01: Baía de Aratu
-- MDD-02: Ilha de Bimbarras
-- MDD-03: Suape Norte
-- MDD-04: Rio Paraguaçu
-- MDD-05: Ponta de Suape
-- MDD-06: Ilha das Fontes
-
-Estes pontos foram selecionados por sua relevância estratégica e importância ecológica para o estudo de minerais marinhos.`,
-    keywords: [
-      "localização",
-      "pontos de monitoramento",
-      "madre de deus",
-      "bahia",
-      "baía",
-      "mdd",
-      "região",
-      "área",
     ],
     lastUpdated: "2024-01-15",
   },
@@ -546,8 +448,8 @@ function generateResponse(
       followUpQuestions: [
         "O que é o AquaMinerals?",
         "O que são minerais estratégicos?",
-        "Como o projeto contribui para a sustentabilidade?",
-        "Qual é o objetivo do projeto?",
+        "Como esse site protege o meio ambiente?",
+        "Qual é o objetivo principal do AquaMinerals?",
       ],
     };
   }
@@ -613,8 +515,8 @@ function generateResponse(
     case "projeto":
       followUpQuestions.push(
         "O que são minerais estratégicos?",
-        "Como o projeto protege o meio ambiente?",
-        "Por que Madre de Deus foi escolhida?",
+        "Como esse site protege o meio ambiente?",
+        "Por que esse projeto é importante para o futuro?",
       );
       break;
     case "minerais":
@@ -656,7 +558,7 @@ function generateResponse(
       followUpQuestions.push(
         "O que é o AquaMinerals?",
         "O que são minerais estratégicos?",
-        "Qual é o objetivo do projeto?",
+        "Qual é o objetivo principal do AquaMinerals?",
       );
   }
 
