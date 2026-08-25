@@ -28,10 +28,11 @@ type Msg = Message;
 
 const suggestions = [
   "O que é o AquaMinerals?",
-  "O que são minerais estratégicos?",
-  "Como o projeto contribui para a sustentabilidade?",
-  "Por que estudar minerais marinhos?",
-  "Qual é o objetivo do projeto?",
+  "Por que procurar minerais no mar?",
+  "Como a AquaAI funciona?",
+  "Como a inteligência artificial ajuda?",
+  "O que é o mapa interativo?",
+  "Como o projeto protege o meio ambiente?",
 ];
 
 function AquaAI() {
