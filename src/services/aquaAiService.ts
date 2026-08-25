@@ -25,7 +25,7 @@ const KNOWLEDGE_BASE: KnowledgeDocument[] = [
     id: "o_que_e_aquaminerals",
     title: "O que é o AquaMinerals?",
     category: "projeto",
-    content: `O AquaMinerals é uma startup/projeto que desenvolveu um site e aplicativo para mapear o potencial de minerais marinhos em Madre de Deus, unindo tecnologia, ciência e sustentabilidade.
+    content: `O AquaMinerals é uma startup que utiliza tecnologia e inteligência artificial para mapear o potencial de minerais presentes no mar de Madre de Deus, incentivando pesquisas sustentáveis.
 
 O projeto prioriza estudo + mapeamento + análise de dados antes de qualquer exploração. O objetivo é incentivar decisões mais sustentáveis.
 
@@ -45,14 +45,15 @@ Objetivo principal: Transformar dados do ambiente marinho em conhecimento que po
       "objetivo",
       "finalidade",
       "propósito",
+      "o que é",
     ],
     lastUpdated: "2024-01-15",
   },
   {
-    id: "minerais_estrategicos",
-    title: "O que são Minerais Estratégicos?",
+    id: "por_que_procurar_minerais_no_mar",
+    title: "Por que procurar minerais no mar?",
     category: "minerais",
-    content: `São minerais essenciais para a produção de baterias, celulares, computadores, veículos elétricos e outras tecnologias modernas.
+    content: `Porque a água do mar e os sedimentos marinhos contêm diversos minerais que podem ser estudados como alternativas futuras de obtenção desses recursos.
 
 Os oceanos contêm aproximadamente 3,5% de sais dissolvidos. Os principais minerais monitorados incluem:
 
@@ -67,6 +68,12 @@ Total de minerais monitorados: 37 tipos distintos.
 
 Destino dos minerais: Indústria tecnológica, setor energético, materiais avançados, pesquisa científica, aplicações medicinais.`,
     keywords: [
+      "por que procurar",
+      "minerais no mar",
+      "água do mar",
+      "sedimentos marinhos",
+      "alternativas futuras",
+      "obtenção de recursos",
       "minerais estratégicos",
       "minerais",
       "baterias",
@@ -85,10 +92,101 @@ Destino dos minerais: Indústria tecnológica, setor energético, materiais avan
     lastUpdated: "2024-01-15",
   },
   {
+    id: "como_aquaai_funciona",
+    title: "Como a AquaAI funciona?",
+    category: "tecnologia",
+    content: `Ela responde perguntas sobre o projeto e interpreta informações ambientais para explicar como o mapeamento inteligente pode auxiliar pesquisas.
+
+A AquaAI é uma assistente virtual especializada que:
+
+- Responde perguntas sobre o projeto AquaMinerals
+- Interpreta informações ambientais
+- Explica como o mapeamento inteligente pode auxiliar pesquisas
+- Fornece informações sobre minerais marinhos
+- Orienta sobre sustentabilidade e proteção ambiental
+
+A IA utiliza um sistema RAG (Retrieval Augmented Generation) para buscar informações na base de conhecimento oficial e gerar respostas precisas e contextualizadas.`,
+    keywords: [
+      "como funciona",
+      "aquaai",
+      "ia",
+      "inteligência artificial",
+      "responde perguntas",
+      "interpreta informações",
+      "mapeamento inteligente",
+      "auxiliar pesquisas",
+      "assistente virtual",
+      "tecnologia",
+      "sistema rag",
+    ],
+    lastUpdated: "2024-01-15",
+  },
+  {
+    id: "como_ia_ajuda",
+    title: "Como a inteligência artificial ajuda?",
+    category: "tecnologia",
+    content: `Ela organiza e interpreta dados ambientais para indicar áreas com maior potencial para futuras pesquisas.
+
+A inteligência artificial no projeto AquaMinerals:
+
+- Organiza dados ambientais coletados
+- Interpreta informações sobre qualidade da água
+- Indica áreas com maior potencial para pesquisas
+- Identifica padrões nos dados de minerais
+- Facilita a tomada de decisões sustentáveis
+- Processa grandes volumes de dados oceanográficos
+
+A IA torna possível analisar informações complexas de forma rápida e eficiente, apoiando pesquisadores e gestores nas decisões sobre estudos marinhos.`,
+    keywords: [
+      "como a ia ajuda",
+      "inteligência artificial",
+      "organiza dados",
+      "interpreta dados",
+      "dados ambientais",
+      "indicar áreas",
+      "maior potencial",
+      "futuras pesquisas",
+      "tecnologia",
+      "análise de dados",
+      "padrões",
+    ],
+    lastUpdated: "2024-01-15",
+  },
+  {
+    id: "o_que_e_mapa_interativo",
+    title: "O que é o mapa interativo?",
+    category: "tecnologia",
+    content: `É uma ferramenta que representa a região da Baía de Todos-os-Santos, mostrando áreas estudadas e informações ambientais.
+
+O mapa interativo do AquaMinerals:
+
+- Representa a região da Baía de Todos-os-Santos
+- Mostra áreas estudadas e pontos de monitoramento
+- Exibe informações ambientais em tempo real
+- Permite visualizar dados de pH, temperatura, oxigênio dissolvido, salinidade e turbidez
+- Indica o status de cada ponto de monitoramento (ótimo, atenção ou crítico)
+- Facilita o entendimento da situação ambiental da região
+
+É uma ferramenta essencial para pesquisadores, estudantes e comunidade acompanharem o estado do ambiente marinho.`,
+    keywords: [
+      "mapa interativo",
+      "ferramenta",
+      "baía de todos-os-santos",
+      "áreas estudadas",
+      "informações ambientais",
+      "pontos de monitoramento",
+      "visualização",
+      "dados ambientais",
+      "tecnologia",
+      "plataforma",
+    ],
+    lastUpdated: "2024-01-15",
+  },
+  {
     id: "protecao_ambiental",
-    title: "Como o Projeto Protege o Meio Ambiente?",
+    title: "Como o projeto protege o meio ambiente?",
     category: "sustentabilidade",
-    content: `Ao priorizar o estudo e o mapeamento antes de qualquer exploração, o projeto incentiva decisões mais sustentáveis.
+    content: `Priorizando o estudo e o mapeamento antes de qualquer exploração, reduzindo riscos e incentivando decisões responsáveis.
 
 Princípios de sustentabilidade do AquaMinerals:
 
@@ -96,12 +194,9 @@ Princípios de sustentabilidade do AquaMinerals:
 2. Economia Circular: Aproveitamento integral, minimização de resíduos
 3. Transparência: Dados abertos, metodologia verificável
 
-Monitoramento de parâmetros: pH (7.8-8.4 ideal), temperatura (24-28°C), oxigênio dissolvido (>6 mg/L), salinidade (33-37 PSU), turbidez (<5 NTU).
+Ao priorizar o estudo e o mapeamento antes de qualquer exploração, o projeto incentiva decisões mais sustentáveis e reduz riscos ambientais.
 
-Classificação de status:
-- Ótimo (Verde): Todos parâmetros dentro da faixa ideal
-- Atenção (Amarelo): Um ou mais parâmetros fora da faixa
-- Crítico (Vermelho): Múltiplos parâmetros críticos, requer intervenção
+Monitoramento de parâmetros: pH (7.8-8.4 ideal), temperatura (24-28°C), oxigênio dissolvido (>6 mg/L), salinidade (33-37 PSU), turbidez (<5 NTU).
 
 ODS 14 - Vida na Água: Contribuição direta para conservação dos oceanos e uso sustentável dos recursos marinhos.`,
     keywords: [
@@ -116,6 +211,8 @@ ODS 14 - Vida na Água: Contribuição direta para conservação dos oceanos e u
       "estudo",
       "mapeamento",
       "exploração",
+      "decisões responsáveis",
+      "reduzir riscos",
     ],
     lastUpdated: "2024-01-15",
   },
