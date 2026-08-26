@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="oceanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c4a6e" />
+      <stop offset="50%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="crystalHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <path d="M32 4 L56 18 L56 46 L32 60 L8 46 L8 18 Z" fill="url(#oceanGradient)" stroke="#0c4a6e" stroke-width="1"/>
+  <path d="M32 16 C 32 16, 22 28, 22 36 C 22 42, 26 46, 32 46 C 38 46, 42 42, 42 36 C 42 28, 32 16, 32 16 Z" fill="url(#crystalHighlight)" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.9"/>
+  <circle cx="28" cy="32" r="2" fill="#ffffff" opacity="0.8"/>
+  <circle cx="36" cy="38" r="1" fill="#ffffff" opacity="0.5"/>
+  <path d="M32 4 L32 16 M56 18 L42 28 M8 18 L22 28 M56 46 L42 40 M8 46 L22 40 M32 60 L32 46" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.3" fill="none"/>
+</svg>

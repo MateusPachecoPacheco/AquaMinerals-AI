@@ -1,0 +1,42 @@
+services:
+  postgres:
+    # Usamos a versão Alpine (muito mais leve e com menor superfície de ataque)
+    image: postgres:16-alpine
+    container_name: aquaminerals_db
+    restart: unless-stopped
+    
+    environment:
+      # EXTREMA SEGURANÇA: Nunca usamos o usuário padrão 'postgres' em projetos reais
+      POSTGRES_USER: aquaminerals_admin
+      POSTGRES_PASSWORD: AquaM1n3rals_S3cur3_P@ssw0rd_2026!X9
+      POSTGRES_DB: aquaminerals
+      
+    ports:
+      # Mapeamos a porta 25432 do seu PC para a porta 5432 interna do container
+      - "127.0.0.1:25432:5432" 
+      
+    volumes:
+      # Persistência dos dados (se o container cair, os dados não são perdidos)
+      - aquaminerals_pgdata:/var/lib/postgresql/data
+      
+    networks:
+      - aquaminerals_network
+      
+    # Segurança adicional do Docker: impede que o container escale privilégios
+    security_opt:
+      - no-new-privileges:true
+      
+    # Healthcheck para garantir que o banco está 100% pronto antes de aceitar conexões
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aquaminerals_admin -d aquaminerals"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  aquaminerals_pgdata:
+    driver: local
+
+networks:
+  aquaminerals_network:
+    driver: bridge
